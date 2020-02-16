@@ -1,0 +1,13 @@
+<template name='alert'>
+  <view class='shadow' wx:if="{{show_alert}}">  </view>
+    <view wx:if="{{show_alert}}" class='temp_box'>
+          <view class='top'>
+              {{title}}
+          </view>
+          <view class='bot'>
+            <view class='cancel' catchtap='bind_cancel'>{{cancel_text}}</view>  
+            <button wx:if="{{show_btn}}" class='btn_userinfo' open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo" >{{submit_text}}</button>
+            <view class='submit' catchtap="bind_ok" wx:else>{{submit_text}}</view>    
+          </view>
+    </view>
+</template>

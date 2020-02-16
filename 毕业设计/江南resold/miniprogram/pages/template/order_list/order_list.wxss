@@ -1,0 +1,29 @@
+.temp_box{
+  display: flex;
+  flex-direction: row;
+  height: 200rpx;
+  width: 720rpx;
+  font-size: 28rpx;
+  margin-top: 20rpx;
+  border-radius:5%; 
+  border-right: 1rpx solid rgb(92, 252, 217);
+  border-left: 1rpx solid rgb(92, 252, 217);
+}
+.left{
+  text-align: center;
+  width:40%;
+  height: 100%;
+}
+.right{
+  font-size: 26rpx;
+  width:60%;
+  height: 100%;
+
+}
+image{
+  width: 150rpx;
+  height: 150rpx;
+}
+.time{
+  color:#aaa 
+}

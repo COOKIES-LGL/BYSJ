@@ -1,0 +1,55 @@
+.shadow{
+  width: 750rpx;
+  height: 1200rpx;
+  background-color: rgb(0,0,0);
+  position: absolute;
+  top: 0rpx;
+  opacity: 0.7;
+  z-index: 2
+}
+.temp_box{
+  height: 260rpx;
+  width: 700rpx;
+  font-size: 28rpx;
+  position: absolute;
+  left: 25rpx;
+  top: 400rpx;
+  border-radius:5%; 
+  z-index: 2;
+    background-color: #fff;
+}
+.top{
+  margin-top: 10rpx;
+  text-align: center;
+  width:100%;
+  font-size: 36rpx;
+  height: 170rpx;
+  background-color: #fff;
+}
+.bot{
+  width:100%;
+  display: flex;
+  flex-direction:row;
+  justify-content: space-around;
+  height: 80rpx;
+  font-size: 32rpx;
+  text-align: center;
+  line-height: 80rpx;
+}
+.submit{
+  width:350rpx;
+  height: 80rpx;
+  background-color: rgb(92, 252, 217);
+}
+.cancel{
+  width:350rpx;
+  height: 80rpx;
+}
+.btn_userinfo{
+  width:350rpx;
+  height: 80rpx;
+  background-color: rgb(92, 252, 217);
+}
+button::after{/**设置按钮默认属性边框**/
+  border: 0px;
+}

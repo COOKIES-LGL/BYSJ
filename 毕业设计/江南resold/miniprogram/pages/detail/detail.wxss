@@ -1,0 +1,59 @@
+/* pages/center/center.wxss */
+.box{
+  width: 750rpx;
+  height: 1200rpx;
+  position: relative;
+}
+.bg_icon{
+  width: 750rpx;
+  height: 500rpx;
+}
+image{
+  width: 750rpx;
+  height: 500rpx; 
+}
+.reac{
+  position: absolute;
+  top: 350rpx;
+  left: 0rpx;
+  width:0;
+  height:0;
+  border-width:150rpx 600rpx 0 150rpx;
+  border-style:solid;
+  border-color:transparent rgb(255, 255, 255)  transparent transparent ;
+}
+.nickname{
+  position: absolute;
+  width:750rpx;
+  height: 100rpx;
+  top: 400rpx;
+  left: 80rpx;
+}
+.yuan_box{
+    margin-top: 40rpx;
+}
+.yuan{
+  width: 700rpx;
+  margin-left:15rpx; 
+  height: 100rpx;
+  border-bottom: 1rpx solid #eee;
+  display: flex;
+  flex-direction: row;
+  line-height: 100rpx;
+  font-size: 26rpx;
+}
+.yuan image{
+ margin-left: 50rpx;
+ margin-top: 10rpx;
+ height: 60rpx;
+ width: 40rpx;
+}
+.text{
+  text-indent: 2ex;
+}
+.bingo{
+width: 100%;
+height: 100%;
+margin-left: 20rpx;
+background:linear-gradient(rgb(255 ,154, 195),rgb( 255, 86, 114));
+}

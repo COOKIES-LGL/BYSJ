@@ -1,0 +1,219 @@
+.bigBox{
+  width: 92%;
+  margin-left: 4%;
+  font-size: 32rpx;
+  height: 1120rpx;
+}
+.check_box{
+  width: 100%;
+  height: 60rpx;
+  margin-top: 10rpx;
+}
+.check_radio{
+  border-radius: 10rpx;
+  height: 60rpx;
+  width: 40%;
+  float: left;
+  margin-left:45rpx; 
+  background-color:rgb(255,255,255);
+  color: rgb(45,173,251);
+  text-align: center;
+  line-height: 60rpx;
+  box-shadow: 5rpx 2rpx 2rpx 3rpx; 
+}
+.hover_radio{
+  border-radius: 10rpx;
+  height: 60rpx;
+  width: 40%;
+  float: left;
+  margin-left:45rpx; 
+  background-color:rgb(45, 173, 251);
+  color: rgb(255,255,255);
+  text-align: center;
+  line-height: 60rpx; 
+}
+.img{
+  margin-top: 10rpx;
+  height: 70rpx;
+  width: 100%;
+  color:rgb(255,255,255);
+  font-size: 32rpx;
+  text-align: center;
+  border-radius:15rpx;
+  background-color: rgb(45, 173, 251);
+}
+.add_img{
+float: left;
+display: line-block;
+line-height:70rpx; 
+margin-left: 30rpx;
+}
+.img_icon{
+  float: left;
+  width: 40rpx;
+  height: 40rpx;
+  margin-top: 15rpx;
+  margin-left:280rpx;
+}
+image{
+  margin-top: 10rpx;
+  height:250rpx;
+}
+.inputView{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  font-size: 26rpx;
+  height: 60rpx;
+  color: rgb(74, 74, 74);
+  line-height: 60rpx;
+  margin-top: 12rpx;
+}
+.text1{
+  width: 150rpx;
+  float: left;
+  height: 60rpx;
+  text-align: center;
+  color: rgb(45, 173, 251)
+}
+.text{
+  width: 160rpx;
+  float: left;
+  height: 60rpx;
+}
+.input1{
+text-align: center;
+height: 60rpx;
+float: left;
+background-color: rgb(245, 245, 245);
+width: 170rpx;
+}
+.input{
+text-align: right;
+margin-left: 16rpx;
+height: 60rpx;
+float: left;
+background-color: rgb(245, 245, 245);
+width: 500rpx;
+}
+.input_price{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 375rpx;
+  height: 60rpx;
+}
+.input3{
+margin-left: 16rpx;
+text-align: right;
+height: 60rpx;
+float: left;
+color: rgb(125,125,125);
+background-color: rgb(245, 245, 245);
+width: 515rpx;
+}
+.imgText3{
+   margin-top: 5rpx;
+}
+.input2{
+width: 690rpx;
+height: 120rpx;
+line-height: 30rpx;
+float: left;
+font-size: 32rpx;
+background-color: rgb(245, 245, 245);
+}
+
+.item13{
+  border-top: 2rpx solid rgb(225,225,225);
+  border-bottom: 2rpx solid rgb(225,225,225);
+  left:0rpx;
+  position: fixed;
+  bottom: 0rpx;
+  width:100%;
+  height: 100rpx;
+}
+.imgText2{
+  margin-top: 5rpx;
+}
+.left{
+width: 60%;
+height: 100rpx;
+float: left;
+ background-color: #fff;
+}
+.right{
+  height: 100rpx;
+  width:40%;
+  float: left;
+  background-color: rgb(45, 173, 251);
+  color: rgb(255,255,255);
+  text-align: center;
+  line-height: 100rpx;
+  font-size: 36rpx;
+}
+.sub-btns {
+    height: 120rpx;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 96%;
+    margin-top: 10rpx;
+    margin-left: 2%;
+    justify-content: space-around;
+    text-align: center;
+}
+.sub-btn {
+    width: 22%;
+    height: 50rpx;
+    background-color: rgb(245,245,245);
+    font-size: 26rpx;
+    color: rgb(155,155,155);
+    line-height: 50rpx;
+    border-radius: 10rpx;  
+}
+.hover_btn{
+     width: 20%;
+     background:linear-gradient(rgb(44, 203 ,250),rgb(45 ,169 ,251));
+    font-size: 26rpx;
+    color: rgb(255,255,255);
+    line-height: 50rpx;
+    border-radius: 10rpx;  
+}
+.fix{
+  position: fixed;
+  right: 0rpx;
+  bottom: 200rpx;
+  height: 145rpx;
+  width: 120rpx;
+  animation: run 2s linear infinite; 
+}
+@keyframes run {
+  0%{
+      bottom: 200rpx;
+       width: 120rpx;
+  }
+  20%{
+      bottom: 210rpx;
+  width: 124rpx;
+
+  }
+  40%{
+      bottom: 230rpx;
+  width: 128rpx;
+
+  }
+  60%{
+      bottom: 250rpx;
+  width: 128rpx;
+
+  }
+  80%{
+    bottom: 220rpx;
+    width: 125rpx;
+  }
+  100%{
+      bottom: 200rpx;
+  width: 120rpx;
+  }
+}

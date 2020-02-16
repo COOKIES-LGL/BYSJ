@@ -1,0 +1,43 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/center/center",
+    "pages/send/send",
+    "pages/order/order",
+    "pages/detail/detail",
+    "pages/order_list/order_list",
+    "pages/sort/sort"
+  ],
+  "window": {
+    "backgroundColor": "#F6F6F6",
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#F6F6F6",
+    "navigationBarTitleText": "江南resold",
+    "navigationBarTextStyle": "black"
+  },
+  "cloud":true,
+  "tabBar": {
+    "list": [
+      {
+      "pagePath": "pages/send/send",
+      "text": "发布",
+      "iconPath": "images/fabu2.png",
+      "selectedIconPath": "images/fabu.png"
+      },
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "images/shouye2.png",
+        "selectedIconPath": "images/shouye.png"
+      },
+      {
+        "pagePath": "pages/center/center",
+        "text": "我的",
+        "iconPath": "images/wode2.png",
+        "selectedIconPath": "images/wode.png"
+      }
+    ]
+  }
+  
+  
+}

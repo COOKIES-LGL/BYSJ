@@ -1,0 +1,106 @@
+/**index.wxss**/
+@import "../template/order_item/order_item.wxss";/**模板样式**/
+page {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+.slide-image{
+  width: 750rpx;
+}
+.top{
+height: 320rpx;
+width: 750rpx;
+}
+.top_nav{
+height: 300rpx;
+width: 750rpx;
+margin-top: 10rpx;
+display: flex;
+flex-direction: row;
+flex-wrap: wrap;
+justify-content: space-around;
+}
+.top_item{
+  height: 140rpx;
+  width: 160rpx;
+   display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.img{
+  width: 70%;
+  height:70%;
+  margin-left:25rpx; 
+}
+.item_name{
+  margin-top: 5rpx;
+  font-size: 24rpx;
+  text-align: center;
+}
+.bot{
+height: 60%;
+width: 730rpx;
+margin-left: 15rpx;
+}
+.type{
+  width: 90%;
+  margin-left: 5%;
+  height: 60rpx;
+}
+picker{
+   width: 100%;
+  height: 60rpx;
+  display: flex;
+  flex-direction: row;
+  background:linear-gradient(rgb(0, 255, 200),rgb(0, 255, 150));
+  text-align: center;
+  line-height: 60rpx;
+  font-size: 32rpx;
+}
+.inner_text{
+ width: 700rpx;
+  text-align: center;
+}
+picker image{
+ margin-right: 20rpx;
+ height: 20rpx;
+ width: 35rpx;
+}
+.fix{
+  position: fixed;
+  right: 0rpx;
+  bottom: 200rpx;
+  width: 120rpx;
+  animation: run 2s linear infinite; 
+}
+@keyframes run {
+  0%{
+      bottom: 200rpx;
+       width: 120rpx;
+  }
+  20%{
+      bottom: 210rpx;
+  width: 124rpx;
+
+  }
+  40%{
+      bottom: 230rpx;
+  width: 128rpx;
+
+  }
+  60%{
+      bottom: 250rpx;
+  width: 128rpx;
+
+  }
+  80%{
+    bottom: 220rpx;
+    width: 125rpx;
+  }
+  100%{
+      bottom: 200rpx;
+  width: 120rpx;
+  }
+}
+

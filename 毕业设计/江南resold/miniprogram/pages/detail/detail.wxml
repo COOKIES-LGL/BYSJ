@@ -1,0 +1,36 @@
+<!--pages/detail/detail.wxml-->
+<!--pages/center/center.wxml-->
+<view class='box'>
+  <view class='bg_icon'>
+   <image mode='aspectFit' src='{{user.image}}'></image>
+  </view>
+  <view class='nickname'>{{user.nickname}}</view>
+  <view class='reac'></view>
+<view class='yuan_box'>
+  <view class='yuan' bindtap='to_same' >
+    <image src='../../images/center1 (1).png'></image>
+    <view class='text'>相似商品</view>
+  </view>
+  <view class='yuan'>
+    <image src='../../images/center1 (4).png'></image>
+    <view class='text'>发布人:{{username}}</view>
+  </view>
+  <view class='yuan'>
+    <image src='../../images/center1 (2).png'></image>
+    <view class='text'>价格:{{price_min}}￥---{{price_max}}￥</view>
+  </view>
+  <view class='yuan'>
+    <image src='../../images/center1 (3).png'></image>
+    <view class='text'>备注:{{remark}}</view>
+  </view>
+  <view class='yuan'>
+    <image src='../../images/center1 (4).png'></image>
+    <view class='text'>联系方式:{{phone}}</view>
+  </view>
+  <view class='yuan'>
+    <button class='bingo' bindtap='bingo'>bingo订单</button>
+  </view>
+</view>
+</view>
+
+

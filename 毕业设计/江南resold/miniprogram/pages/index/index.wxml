@@ -1,0 +1,34 @@
+<!--index.wxml-->
+  <swiper autoplay="true" interval="5000" duration="1000" indicator-dots="true" indicator-active-color='#F00a'>
+        <block wx:for="{{banner}}" wx:key="loop" >
+        <swiper-item bindtap="function">
+           <image src="{{item}}" mode='widthFix' class="slide-image" width="355" height="150"/>
+        </swiper-item>
+        </block>
+  </swiper>
+<import src='../template/order_item/order_item.wxml' />
+<view class='top'>
+  <view class='top_nav'>
+    <view class='top_item'  wx:key='22'  wx:for="{{options}}">
+      <image mode='aspectFit' class='img' src='{{item.img}}'></image>
+      <view class='item_name'>{{item.name}}</view>
+    </view>
+  </view>
+</view>
+<view class='type'>
+     <picker bindchange="bindPickerType" value="{{index}}" range="{{array}}">               
+        <view class="inner_text" wx:if="{{Changed == true}}">
+              {{array[index]}}
+        </view>
+        <view class="inner_text"  wx:else>
+            <view> 类型<image src='../../images/Shape@2x.png'></image></view> 
+        </view>
+     </picker>
+</view>
+<view class='bot'>
+  <block  wx:key='222' wx:for="{{order_items}}">
+    <template is='order_item' data='{{...item}}'></template>
+  </block>
+</view>
+<image bindtap='nav_sort' class='fix' src='../../images/fix.png' ></image>
+

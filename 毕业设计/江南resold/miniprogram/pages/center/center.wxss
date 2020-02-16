@@ -1,0 +1,93 @@
+/* pages/center/center.wxss */
+@import "../template/alert/alert.wxss";
+.box{
+  width: 750rpx;
+  height: 1200rpx;
+  position: relative;
+}
+.bg_icon{
+  float: left;
+  width: 750rpx;
+  height: 500rpx;
+}
+image{
+  width: 750rpx;
+  height: 500rpx; 
+}
+.reac{
+  position: absolute;
+  top: 350rpx;
+  left: 0rpx;
+  width:0;
+  height:0;
+  border-width:150rpx 600rpx 0 150rpx;
+  border-style:solid;
+  border-color:transparent rgb(255, 255, 255)  transparent transparent ;
+  z-index: 1;
+}
+.nickname{
+  position: absolute;
+  width:750rpx;
+  height: 100rpx;
+  top: 400rpx;
+  left: 80rpx;
+}
+.yuan_box{
+    margin-top: 40rpx;
+}
+.yuan{
+  width: 700rpx;
+  margin-left:15rpx; 
+  height: 100rpx;
+  border-bottom: 1rpx solid #eee;
+  display: flex;
+  flex-direction: row;
+  line-height: 100rpx;
+  font-size: 26rpx;
+}
+.yuan image{
+ margin-left: 50rpx;
+ margin-top: 10rpx;
+ height: 60rpx;
+ width: 40rpx;
+}
+.text{
+  text-indent: 2ex;
+}
+.fix{
+  position: fixed;
+  right: 0rpx;
+  bottom: 200rpx;
+  width: 120rpx;
+    height: 145rpx;
+  animation: run 2s linear infinite; 
+}
+@keyframes run {
+  0%{
+      bottom: 200rpx;
+       width: 120rpx;
+  }
+  20%{
+      bottom: 210rpx;
+  width: 124rpx;
+
+  }
+  40%{
+      bottom: 230rpx;
+  width: 128rpx;
+
+  }
+  60%{
+      bottom: 250rpx;
+  width: 128rpx;
+
+  }
+  80%{
+    bottom: 220rpx;
+    width: 125rpx;
+  }
+  100%{
+      bottom: 200rpx;
+  width: 120rpx;
+  }
+}

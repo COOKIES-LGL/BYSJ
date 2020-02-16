@@ -1,0 +1,15 @@
+<template name='order_list'>
+   <view class='temp_box' bindtap='to_detail' data-Id='{{id}}' >
+        <view class='left'>
+           <view class='temp_img'>
+            <image mode='aspectFit' src='{{image}}'></image>
+           </view>
+           <view class='temp_title'>{{title}}</view>
+        </view>
+        <view class='right'>
+           <view class='remark'>{{remark}}</view>
+           <view class='price'>报价{{price_min}}元-----{{price_max}}元</view>
+           <view class='time'>{{time}}</view>
+        </view>
+   </view>
+</template>

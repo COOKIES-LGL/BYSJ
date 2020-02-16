@@ -1,0 +1,54 @@
+<!--pages/send/send.wxml-->
+<view class='bigBox'>
+         <view class='check_box'>
+            <view catchtap='look_owner' hidden='{{look1}}' class='{{check1}}' >发布物品（卖物）</view>
+            <view catchtap='look_lost' hidden='{{look2}}' class='{{check2}}'>发布预约（买物）</view>
+         </view>
+<view hidden='{{show_box}}' class='show_box'>
+      <view class='img' catchtap='add_image' hidden='{{add}}'  mode='aspectFit'>
+         <image class='img_icon' src='../../images/shangchuan@2x.png'></image>
+         <view class='add_img' >添加图片</view>
+      </view>
+      <image mode='aspectFit'  catchtap='add_image' src='{{avatarPath}}' hidden='{{image}}'></image> 
+      <view class='imgText2'>请选择类别：</view>
+      <view class='sub-btns'>
+        <view wx:for="{{subLists}}" catchtap='onAddInfo' hover-class='hover_btn' data-id='{{index}}' class='sub-btn' wx:key="loop" >
+            <text>{{item}}</text>
+        </view>
+      </view>
+      <view class='inputView'>
+            <view class='text'>物品类目</view>
+      <input value='{{text}}' maxlength='10' class='input' placeholder='点击标签填入，其它请自行输入'  placeholder-class='place' bindblur='bindInput'></input> 
+      </view>
+      <view class='inputView'>
+            <view class='text'>物品名称</view>
+            <input class='input' bindblur='bind_title' type='number' placeholder='请详细填写'  placeholder-class='place'></input>
+      </view>
+      <view class='inputView' wx:if="{{!show}}">
+          <view class='input_price'>
+            <view class='text1'>{{change_text}}最高价</view>
+            <input class='input1' bindblur='bind_max' type='number' placeholder='填写价位￥'  placeholder-class='place'></input>
+          </view>
+          <view class='input_price'>
+            <view class='text1'>{{change_text}}最低价</view>
+            <input class='input1' bindblur='bind_min' type='number' placeholder='填写价位￥'  placeholder-class='place'></input>
+          </view>
+      </view>
+        <view class='inputView' wx:if="{{show}}">
+            <view class='text'>报价</view>
+            <input class='input' bindblur='bind_max' type='number' placeholder='填写价位￥'  placeholder-class='place'></input>
+      </view>
+      <view class='inputView'>
+            <view class='text'>发布人手机号</view>
+            <input class='input' placeholder='必填' type='number' maxlength='11'  placeholder-class='place' bindblur='check_phone'></input>       </view>
+      <view class='imgText3'>详细描述：</view>
+      <view class='inputView'><textarea class='input2' placeholder='输入想说的话'  placeholder-class='place' bindchange='description' ></textarea>
+      </view>
+      <view class='item13'>
+            <view class='left'></view>
+            <view class='right' catchtap='onsubmit'>发布</view>
+      </view>
+    </view>
+      
+  </view>
+  <image bindtap='nav_sort' class='fix' src='../../images/fix.png' ></image>

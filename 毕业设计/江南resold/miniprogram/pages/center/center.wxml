@@ -1,0 +1,31 @@
+<!--pages/center/center.wxml-->
+<import src="../template/alert/alert.wxml"/>
+<template is="alert" data="{{...alert}}"> </template>
+
+<view class='box'>
+  <view class='bg_icon'>
+   <image mode='aspectFit' src='{{user.image}}'></image>
+  </view>
+  <view class='nickname'>{{user.nickname}}</view>
+  <view class='reac'></view>
+<view class='yuan_box'>
+  <view class='yuan' bindtap='to_my_order'>
+    <image src='../../images/center1 (1).png'></image>
+    <view class='text'>我的预约</view>
+  </view>
+  <view class='yuan' bindtap='to_my_sender'>
+    <image src='../../images/center1 (2).png'></image>
+    <view class='text'>我的发布</view>
+  </view>
+  <view class='yuan' bindtap='to_my_history_order'>
+    <image src='../../images/center1 (3).png'></image>
+    <view class='text'>我的历史预约</view>
+  </view>
+  <view class='yuan' bindtap='to_my_history_sender'>
+    <image src='../../images/center1 (4).png'></image>
+    <view class='text'>我的历史发布</view>
+  </view>
+</view>
+</view>
+<image bindtap='nav_sort' class='fix' src='../../images/fix.png' ></image>
+
