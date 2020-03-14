@@ -1,0 +1,13 @@
+/* pages/index/JCZL/JCZL.wxss */
+.nav-btn {
+    width: 92%;
+    margin-left: 4%;
+    display: flex;
+    flex-direction:row;
+    text-align: center;
+    justify-content: space-around;
+    vertical-align: middle;
+}
+.sub{
+  width:33%;
+}

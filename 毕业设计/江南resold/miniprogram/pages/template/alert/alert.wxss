@@ -5,7 +5,7 @@
   position: absolute;
   top: 0rpx;
   opacity: 0.7;
-  z-index: 2
+  z-index: 2000
 }
 .temp_box{
   height: 260rpx;
@@ -14,19 +14,48 @@
   position: absolute;
   left: 25rpx;
   top: 400rpx;
-  border-radius:5%; 
-  z-index: 2;
+  border-top-left-radius:5%; 
+  border-top-right-radius:5%; 
+  z-index: 2000;
     background-color: #fff;
+}
+.verify_box{
+  height: 260rpx;
+  width: 500rpx;
+  font-size: 28rpx;
+  position: absolute;
+  left: 125rpx;
+  top: 400rpx;
+  border-radius:5%;  
+  z-index: 2000;
+  background-color: #fff;
 }
 .top{
   margin-top: 10rpx;
   text-align: center;
+  border-top-left-radius:5%; 
+  border-top-right-radius:5%; 
+  line-height: 150rpx;
   width:100%;
   font-size: 36rpx;
   height: 170rpx;
   background-color: #fff;
 }
 .bot{
+  border-top-left-radius:5%; 
+  border-top-right-radius:5%; 
+  width:100%;
+  display: flex;
+  flex-direction:row;
+  justify-content: space-around;
+  height: 80rpx;
+  font-size: 32rpx;
+  text-align: center;
+  line-height: 80rpx;
+}
+.verifybot{
+  border-bottom-left-radius:5%; 
+  border-bottom-right-radius:5%; 
   width:100%;
   display: flex;
   flex-direction:row;
@@ -39,7 +68,15 @@
 .submit{
   width:350rpx;
   height: 80rpx;
-  background-color: rgb(92, 252, 217);
+  background-color: #1fbef8;
+}
+.verifySubmit{
+  width:500rpx;
+  margin-left: 0rpx;
+  height: 80rpx;
+  background-color: #1fbef8; 
+  border-bottom-left-radius:5%; 
+  border-bottom-right-radius:5%;  
 }
 .cancel{
   width:350rpx;
@@ -48,7 +85,7 @@
 .btn_userinfo{
   width:350rpx;
   height: 80rpx;
-  background-color: rgb(92, 252, 217);
+  background-color: #1fbef8;
 }
 button::after{/**设置按钮默认属性边框**/
   border: 0px;

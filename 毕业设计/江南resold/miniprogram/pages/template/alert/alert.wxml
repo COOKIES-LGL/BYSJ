@@ -11,3 +11,14 @@
           </view>
     </view>
 </template>
+<template name='verifyAlert'>
+  <view class='shadow' wx:if="{{show_alert}}">  </view>
+    <view wx:if="{{show_alert}}" class='verify_box'>
+          <view class='top'>
+              {{title}}
+          </view>
+          <view class='verifybot'>
+            <view class='verifySubmit' catchtap="bind_confirm">{{submit_text}}</view>    
+          </view>
+    </view>
+</template>

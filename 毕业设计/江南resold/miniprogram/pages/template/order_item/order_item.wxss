@@ -2,12 +2,13 @@
   display: flex;
   flex-direction: row;
   height: 200rpx;
-  width: 720rpx;
+  width: 700rpx;
   font-size: 28rpx;
-  margin-top: 20rpx;
-  border-radius:5%; 
-  border-right: 1rpx solid rgb(92, 252, 217);
-  border-left: 1rpx solid rgb(92, 252, 217);
+  margin-left: 25rpx;
+  margin-top: 10rpx;
+  border-radius:6%;
+  border-right: 1rpx solid #1fbef8;
+  border-left: 1rpx solid #1fbef8;
 }
 .left{
   text-align: center;

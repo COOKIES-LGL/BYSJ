@@ -6,8 +6,8 @@
   font-size: 28rpx;
   margin-top: 20rpx;
   border-radius:5%; 
-  border-right: 1rpx solid rgb(92, 252, 217);
-  border-left: 1rpx solid rgb(92, 252, 217);
+  border-right: 2rpx solid  #1fbef8;
+  border-left: 2rpx solid  #1fbef8;
 }
 .left{
   text-align: center;

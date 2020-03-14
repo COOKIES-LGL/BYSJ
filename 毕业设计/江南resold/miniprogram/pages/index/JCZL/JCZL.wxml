@@ -1,0 +1,32 @@
+<view class='type nav-btn'>
+    <view class="sub">
+     <picker bindchange="bindPickerType1" value="{{index}}" range="{{collegeArray}}">               
+        <view class="inner_text" wx:if="{{Changed == true}}">
+              {{collegeArray[index]}}
+        </view>
+        <view class="inner_text"  wx:else>
+            <view>学院<image src='../../images/Shape@2x.png'></image></view> 
+        </view>
+     </picker>
+    </view>
+    <view class="sub">
+     <picker bindchange="bindPickerType2" value="{{index}}" range="{{majorArray}}">               
+        <view class="inner_text" wx:if="{{Changed == true}}">
+              {{majorArray[index]}}
+        </view>
+        <view class="inner_text"  wx:else>
+            <view> 专业<image src='../../images/Shape@2x.png'></image></view> 
+        </view>
+     </picker>
+    </view>
+    <view class="sub">
+     <picker bindchange="bindPickerType3" value="{{index}}" range="{{gradeArray}}">               
+        <view class="inner_text" wx:if="{{Changed == true}}">
+              {{gradeArray[index]}}
+        </view>
+        <view class="inner_text"  wx:else>
+            <view> 年级<image src='../../images/Shape@2x.png'></image></view> 
+        </view>
+     </picker>
+    </view>
+</view>

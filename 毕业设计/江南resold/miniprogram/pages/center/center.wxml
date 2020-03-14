@@ -1,31 +1,104 @@
 <!--pages/center/center.wxml-->
 <import src="../template/alert/alert.wxml"/>
 <template is="alert" data="{{...alert}}"> </template>
-
+<template is="verifyAlert" data="{{...verifyAlert}}"></template>
 <view class='box'>
-  <view class='bg_icon'>
-   <image mode='aspectFit' src='{{user.image}}'></image>
+  <view class="userMesg">
+    <view class='bg_icon' bindtap="userinfoDialog">
+        <image mode='aspectFit' src='{{user.image}}'></image>
+    </view>
+    <view class='nickname'>{{user.nickName}}</view>
+    <view class='reac'></view>
+    <view class='apply'>
+      <image src='../../images/wode/web_heart.jpg'  class="{{addheart}}" catchtap="addHeart" ></image>
+      <view class="likeCount">{{heartNum}}</view>
+    </view>
   </view>
-  <view class='nickname'>{{user.nickname}}</view>
-  <view class='reac'></view>
-<view class='yuan_box'>
-  <view class='yuan' bindtap='to_my_order'>
-    <image src='../../images/center1 (1).png'></image>
-    <view class='text'>我的预约</view>
+
+  <view class='top_nav'>
+  <view class='top_item' data-index="{{index}}" catchtap='navTo'  wx:key='id'  wx:for="{{options}}">
+    <image mode='aspectFit' class='img' src='{{item.img}}'></image>
+    <view class='item_name'>{{item.name}}</view>
   </view>
-  <view class='yuan' bindtap='to_my_sender'>
-    <image src='../../images/center1 (2).png'></image>
-    <view class='text'>我的发布</view>
   </view>
-  <view class='yuan' bindtap='to_my_history_order'>
-    <image src='../../images/center1 (3).png'></image>
-    <view class='text'>我的历史预约</view>
+  <view class="line"></view>
+  <view class='yuan_box'>
+    <view class='yuan' bindtap='to_my_order'>
+      <image src='../../images/center1 (1).png'></image>
+      <view class='text'>我的预约</view>
+    </view>
+    <view class='yuan' bindtap='to_my_sender'>
+      <image src='../../images/center1 (2).png'></image>
+      <view class='text'>我的发布</view>
+    </view>
+    <view class='yuan' bindtap='to_my_history_order'>
+      <image src='../../images/center1 (3).png'></image>
+      <view class='text'>历史预约</view>
+    </view>
+    <view class='yuan' bindtap='to_my_history_sender'>
+      <image src='../../images/center1 (4).png'></image>
+      <view class='text'>历史发布</view>
+    </view>
   </view>
-  <view class='yuan' bindtap='to_my_history_sender'>
-    <image src='../../images/center1 (4).png'></image>
-    <view class='text'>我的历史发布</view>
-  </view>
-</view>
+  <view class="InfoDialog" wx:if="{{showUserInfoDialog}}">
+    <view class="innerForm">
+      <form bindsubmit="formSubmit" bindreset="formReset">
+         <view class="section">
+            <image src="../../images/wode/laba.png"></image>
+            <view class="title">为了更好的使用平台，请完善以下信息！</view>
+         </view>
+         <view class="section">
+            <view class="section__title">手机号:</view>
+            <input type="number" value="{{formValue.phone}}" name="input_phone" maxlength="11" placeholder="please input your phone" />
+         </view>
+         <view class="section">
+            <view class="section__title">微信号:</view>
+            <input name="input_wechat" value="{{form.weChat}}" placeholder="please input your wechat" />
+         </view>
+         <view class="section section_gap">
+            <view class="section__title">学院:</view>
+            <picker name="collegeValue" class="innerPicker"  mode="multiSelector" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{multiArray[0][multiIndex[0]]}}={{multiArray[1][multiIndex[1]]}}" range="{{multiArray}}">
+               <view class="inner_text" wx:if="{{changed1 == true}}">
+                 {{multiArray[0][multiIndex[0]]}}={{multiArray[1][multiIndex[1]]}}
+               </view>
+               <view  wx:else>
+            <view class="inner_text" >请选择您的学院<image src='../../images/Shape@2x.png'></image></view> 
+               </view>
+            </picker>
+         </view>
+         <view class="section section_gap">
+               <view class="section__title">专业:</view>
+               <picker name="majorValue" class="innerPicker" bindchange="bindPickerType1" value="{{collegeArr[collegeIndex]}}" range="{{collegeArr}}">
+               <view class="inner_text" wx:if="{{changed2 == true}}">
+                  {{collegeArr[collegeIndex]}}
+               </view>
+               <view wx:else>
+            <view class="inner_text"  >请选择您的专业<image src='../../images/Shape@2x.png'></image></view> 
+               </view>
+               </picker>
+         </view>
+         <view class="section section_gap">
+            <view class="sectionTitle">年级</view>
+            <radio-group name="radio_group">
+            <label class="radio_click clearfix" wx:for="{{grade}}" wx:key="key">
+               <text>{{item.value}}</text>
+               <radio class="radio" color='#09f' value="{{item.value}}" checked="{{item.checked}}"/>
+            </label>   
+               <!-- <label><radio value="大一"/>大一</label>
+               <label><radio value="大二"/>大二</label>
+               <label><radio value="大三"/>大三</label>
+               <label><radio value="大四"/>大四</label> -->
+            </radio-group>
+         </view>
+         <view class="btn-area">
+            <button  style="color:#1fbef8;" formType="submit">提交</button>
+            <button formType="reset">重置</button>
+         </view>     
+      </form>
+      <view class="closeDialog" catchtap="closeDialog">×</view>
+    </view>
+   </view>
 </view>
 <image bindtap='nav_sort' class='fix' src='../../images/fix.png' ></image>
+
 

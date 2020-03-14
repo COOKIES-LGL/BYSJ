@@ -4,19 +4,24 @@
   width: 750rpx;
   height: 1200rpx;
   position: relative;
+  font-size: 32rpx;
+}
+.userMesg{
+  padding: 30rpx 175rpx;
 }
 .bg_icon{
   float: left;
   width: 750rpx;
-  height: 500rpx;
+  height: 400rpx;
 }
-image{
-  width: 750rpx;
-  height: 500rpx; 
+.bg_icon image{
+  width: 400rpx;
+  height: 400rpx;
+  border-radius:50%; 
 }
 .reac{
   position: absolute;
-  top: 350rpx;
+  top: 280rpx;
   left: 0rpx;
   width:0;
   height:0;
@@ -25,12 +30,62 @@ image{
   border-color:transparent rgb(255, 255, 255)  transparent transparent ;
   z-index: 1;
 }
+.apply{
+  position: absolute;
+  top: 350rpx;
+  left: 40rpx;
+  width:200rpx;
+  height:60rpx;
+  z-index: 100;
+  float: left;
+  display: flex;
+  flex-direction: row;
+}
+
 .nickname{
   position: absolute;
   width:750rpx;
   height: 100rpx;
-  top: 400rpx;
-  left: 80rpx;
+  font-size:45rpx;
+  color:#666;
+  top: 360rpx;
+  left: -10rpx;
+  text-align: right;
+  z-index: 10;
+  text-overflow: ellipsis;
+}
+.top_nav{
+  height: 150rpx;
+  width: 750rpx;
+  margin-top:40rpx;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+.top_item{
+  height: 140rpx;
+  width: 160rpx;
+   display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.img{
+  width: 70%;
+  height:70%;
+  border-radius: 50%;
+  box-shadow: 2rpx 2rpx 5rpx #1fbef8;
+  margin-left:25rpx; 
+}
+.item_name{
+  margin-top: 5rpx;
+  font-size: 24rpx;
+  text-align: center;
+}
+.line image{
+  width:700rpx;
+  margin-left: 25rpx;
+  height:45rpx;
 }
 .yuan_box{
     margin-top: 40rpx;
@@ -62,6 +117,168 @@ image{
     height: 145rpx;
   animation: run 2s linear infinite; 
 }
+.apply image{
+  height: 50rpx;
+  line-height: 60rpx;
+  width : 60rpx;
+  cursor: pointer;
+}
+.likeCount{
+  margin-left: 10rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  width:150rpx;
+  font-size: 30rpx;
+  color: #ccc;
+}
+.InfoDialog{
+   height:100%;
+   position: fixed;
+   top:0rpx;
+   left: 0rpx;
+   width:100%;
+   background-color: rgba(0, 0, 0,0.7);
+   z-index: 100;
+}
+.InfoDialog .innerForm{
+   background: #fff;
+   height: 80%;
+   width:90%;
+   margin-left: 5%;
+   margin-top:10%;
+   position: absolute;
+}
+.InfoDialog .title{
+   color:#1fbef8;
+   font-size: 28rpx;
+   text-indent:0.5rem;
+   line-height:120rpx;
+   height: 120rpx; 
+}
+.InfoDialog form .section{
+   display: flex;
+   flex-direction: row;
+   line-height:70rpx;
+   height: 70rpx;  
+   margin-top:20px;
+}
+
+.section image{
+   width:30px;
+   height:40rpx;
+   margin-top:36rpx;
+   margin-left:20px;
+}
+.InfoDialog .section__title{
+  width:25%;
+  font-size: 28rpx;
+  text-indent: 1rem;
+}
+.InfoDialog input{
+  width:75%;
+   line-height:70rpx;
+   height: 70rpx;  
+  font-size: 28rpx;
+  padding-left: 1.4rem;
+}
+.sectionTitle{
+   width:20%;
+  font-size: 28rpx;
+  text-indent: 1rem;
+}
+.closeDialog{
+   font-size: 40rpx;
+   position: absolute;
+   top:10rpx;
+   right:15rpx;
+   width:30rpx;
+   height:30rpx;
+}
+radio-group{
+   font-size: 28rpx;
+   margin-left: 0rpx;
+}
+radio-group radio{
+   margin-left: 10rpx;
+}
+
+.btn-area{
+   width:100%;
+   display: flex;
+   flex-direction: row;
+   height:100rpx; 
+   position: absolute;
+   bottom: 0rpx; 
+}
+button{
+   border-radius: 0rpx;
+   padding:0rpx;
+   margin-top:0rpx;
+   width:50%;
+   height: q00rpx;
+   text-align: center;
+   display: inline-block;
+   line-height: 100rpx;
+}
+
+button::after{ /*button的边框样式是通过::after方式实现的*/
+border:none;
+}
+
+.button-hover{ /*点击后样式*/
+color:#000;
+background-color: rgb(247, 247, 247);
+}
+.inner_text{
+   line-height:70rpx;
+   height: 70rpx;  
+}
+.innerPicker{
+    line-height:70rpx;
+      height: 70rpx; 
+  width:75%;
+  font-size: 28rpx;
+  text-indent: 1rem;
+   color:#666;
+}
+.inner_text image{
+   margin-left: 80rpx;
+   width:30rpx;
+   height:16rpx;
+}
+
+
+@keyframes addheart {
+  0%{
+      bottom: 0rpx;
+      width: 60rpx;
+      height:50rpx; 
+  }
+  25%{
+      bottom: 10rpx;
+      width: 68rpx;
+      height:56rpx; 
+  }
+  50%{
+      bottom: 15rpx;
+      width: 70rpx;
+      height:60rpx; 
+  }
+  75%{
+      bottom: 10rpx;
+      width: 68rpx;
+      height:56rpx; 
+  }
+  100%{
+      bottom: 0rpx;
+      width: 60rpx;
+      height:50rpx; 
+  }
+}
+
+.addheart {
+animation: addheart 1s linear infinite; 
+}     
 @keyframes run {
   0%{
       bottom: 200rpx;

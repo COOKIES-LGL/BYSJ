@@ -31,8 +31,7 @@ class Base{
       env: 'resold-822f1b'
     })
     console.log(db)
-    return db
-  
+    return db  
   }
 }
 

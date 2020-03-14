@@ -2,39 +2,27 @@
 const app = getApp()
 import { Base } from '../base/common.js';
 const base = new Base();
+
+var touch={
+   startX:"",
+   startY:"",
+   endX:"",
+   endY:""
+}
 Page({
 
   /**
    * 页面的初始数据
    */
+  
   data: {
-    array:[
-      '全部发布',
-      "需求发布",
-      "旧物发布",
-      ],
     banner:['../../images/nav1.png','../../images/nav2.png'],
     index:'',
+    searchInput:'',
     options:[
       {
        img:'../../images/icon8.png',
-       name:'教材课本'
-      },
-      {
-        img: '../../images/icon7.png',
-        name: '试卷资料'
-      },
-      {
-        img: '../../images/icon2.png',
-        name: '运动器材'
-      },
-      {
-        img: '../../images/icon9.png',
-        name: '官方发布'
-      },
-      {
-        img: '../../images/icon3.png',
-        name: '数码产品'
+       name:'教材资料'
       },
       {
         img: '../../images/icon4.png',
@@ -49,6 +37,9 @@ Page({
         name: '其它'
       },
     ],
+    check1:"onchoiced",
+    check2:"btn",
+    toView:"demo1",
     order_items:[
       {
         id:'0',
@@ -72,7 +63,43 @@ Page({
         time: "2019-2-2",
         type:'two',
       },
+      {
+        id: '3',
+        title: "书籍2",
+        price_max: 20,
+        price_min: 15,
+        image: "../../images/book2.png",
+        remark: '完好如新',
+        phone: "17766457213",
+        time: "2019-2-2",
+        type: 'two',
+      },
+      {
+        id: '4',
+        title: "书籍2",
+        price_max: 20,
+        price_min: 15,
+        image: "../../images/book2.png",
+        remark: '完好如新',
+        phone: "17766457213",
+        time: "2019-2-2",
+        type: 'two',
+      },
     ]
+  },
+  bindInput:function(e){
+    var value = e.detail.value;
+    if(value==="jndx"){
+      wx.navigateTo({
+        url: '../innerManager/ManagerHome/ManagerHome',
+      })
+    }else{
+      this.setData({
+        searchInput: value,
+      })
+      //执行搜索
+    }
+
   },
   to_detail:function(event){
     var order_id=base.getDataSet(event,"id");
@@ -81,13 +108,43 @@ Page({
       url: '../detail/detail?id='+order_id,
     })
   },
-  bindPickerType:function(e){
-      console.log('picker发送选择改变，携带值为', e.detail.value)
+  typeCheck:function(event){
+    var listtype = event.currentTarget.dataset.type;
+    if(listtype==="物品发布"){
       this.setData({
-        index: e.detail.value,
-        Changed: true
+        check1 : "onchoiced",
+        check2 : "btn",
+        toView: "demo1"
       })
-      this._reloadData()
+    }else{
+      this.setData({
+        check2: "onchoiced",
+        check1: "btn",
+        toView: "demo2"
+      })
+    }
+  },
+  touchstart: function (event) { 
+    touch.startX = event.touches[0].pageX;
+    touch.startY= event.touches[0].pageY;
+  },
+  touchend: function (e) {
+    var that = this;
+    touch.endX = e.changedTouches[0].clientX;
+    touch.endY = e.changedTouches[0].clientY;
+    if (touch.endX - touch.startX > 50 && Math.abs(touch.endY - touch.startY) < 50) {      //右滑
+      that.setData({
+        check2: "btn",
+        check1: "onchoiced",
+        toView: "demo1"
+      })
+    } else if (touch.endX - touch.startX < -50 && Math.abs(touch.endY - touch.startY) < 50) {   //左滑
+      that.setData({
+        check2: "onchoiced",
+        check1: "btn",
+        toView: "demo2"
+      })
+    }
   },
   _reloadData:function(){
 
@@ -101,10 +158,28 @@ Page({
   onLoad: function (options) {
 
   },
-  nav_sort:function(){
-  wx.navigateTo({
-    url: '../sort/sort',
-  })
+  navTo:function(e){
+     var Index = e.currentTarget.dataset.index;
+     switch(Index){
+       case 0: wx.navigateTo({
+         url: '../index/JCZL/JCZL',
+       });break;
+       case 1: wx.navigateTo({
+         url: '../index/QSYP/QSYP',
+       }); break;
+       case 2: wx.navigateTo({
+         url: '../index/SFFW/SFFW',
+       }); break;
+       case 3: wx.navigateTo({
+         url: '../index/QT/QT',
+       }); break;
+       default:break;
+     }
+  },
+  rankList:function(){
+      wx.navigateTo({
+        url: '../rankList/rankList',
+      })
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -134,7 +209,7 @@ Page({
       duration: 500
     });
     if (this.data.end == false)
-      this._loadMoreData()
+    this._loadMoreData()
   },
   _loadMoreData: function () {
     var page = this.data.nowPaginate + 1;
