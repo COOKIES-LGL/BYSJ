@@ -1,0 +1,7 @@
+@import '../../template/order_list/order_list.wxss';
+page{
+  background-color: #eee;
+}
+.Text{
+  display:flex;justify-content:center;color:#898989;font-size:28rpx;height:50rpx;
+}

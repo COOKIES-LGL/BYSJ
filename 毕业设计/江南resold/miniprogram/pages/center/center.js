@@ -24,20 +24,20 @@ Page({
         showUserInfoDialog:false,
         options: [
           {
-            img: '../../images/wode/green.png',
+            img: '../../images/shezhi.png',
+            name: '设置'
+          },
+          {
+            img: '../../images/gexin.png',
             name: '个性标签'
           },
           {
-            img: '../../images/wode/blue.png',
-            name: '我的地址'
+            img: '../../images/myinfo.png',
+            name: '我的留言'
           },
           {
-            img: '../../images/wode/origin.png',
+            img: '../../images/yijian.png',
             name: '意见反馈'
-          },
-          {
-            img: '../../images/wode/pink.png',
-            name: '设置'
           },
         ],
         show_alert:false,
@@ -54,16 +54,21 @@ Page({
            title: "请输入有效值？", 
            submit_text: "确认",
         },
+        updataTag:false,
         formValue:{
            phone:'',
            weChat:'',
+           college_text: "请选择您的学院",
+           major_text: "请选择您的专业",
+           grade: [
+              { value: '大一', checked: true },
+              { value: '大二', checked: false },
+              { value: '大三', checked: false },
+              { value: '大四', checked: false },
+           ]
         },
-        grade: [
-           { value: '大一',checked: true },
-           { value: '大二',checked: false  },
-           { value: '大三',checked: false  },
-           { value: '大四',checked: false },
-        ]
+
+
   },
 
    /**
@@ -92,19 +97,18 @@ Page({
          cloudApi.updateHeartNum(that.data.heartNum);
    },
    navTo: function (e) {//页面跳转
+      var that = this;
       var Index = e.currentTarget.dataset.index;
       switch (Index) {
-         case 0: wx.navigateTo({
-         url: '../index/JCZL/JCZL',
-         }); break;
+         case 0: that.to_order_list("selfReceive"); break;
          case 1: wx.navigateTo({
-         url: '../index/QSYP/QSYP',
+         url: '../center/mineLabel/mineLabel',
          }); break;
          case 2: wx.navigateTo({
-         url: '../index/SFFW/SFFW',
+         url: '../center/mineMesg/mineMesg',
          }); break;
          case 3: wx.navigateTo({
-         url: '../index/QT/QT',
+         url: '../center/feedback/feedback',
          }); break;
          default: break;
       }
@@ -128,7 +132,6 @@ Page({
             submit_text: c,
          }
       })
-      console.log(this.data.verifyAlert)
    },
    checkstate:function(){//检测是否授权
          var state=wx.getStorageSync("userInfo");
@@ -140,7 +143,6 @@ Page({
                   image: state.avatarUrl,
                   nickName: state.nickName,
                },
-               heartNum: wx.getStorageSync("appUserInfo")[0].heartNum
             })
          }
    },
@@ -169,6 +171,11 @@ Page({
          }
          }
       })
+      if (!wx.getStorageSync("appUserInfo")) {
+         this.setData({
+            showUserInfoDialog: true
+         })
+      }
    },
    insertUser:function(data){
       cloudApi.saveUserData(data);//保存用户数据
@@ -186,21 +193,24 @@ Page({
       })
    },
    formSubmit: function (e) {//表单提交
+      var that = this;
+      wx.showLoading({
+         title: '表单提交中',
+      })
       console.log('form发生了submit事件，携带数据为：', e.detail.value);
       var formData = e.detail.value;
       if(!formData.input_phone){
          this.verify(true, "请输入手机号!","确认");
-      }else if (!this.data.changed1) {
+      } else if (!this.data.changed1 && !this.data.updataTag) {
          this.verify(true, "请选择您的学院！", "确认");
-      }else if (!this.data.changed2) {
+      } else if (!this.data.changed2 && !this.data.updataTag) {
          this.verify(true, "请选择您的专业!", "确认");
-      }else if (!formData.radio_group) {
+      } else if (!formData.radio_group && !this.data.updataTag) {
          this.verify(true, "请选择您的年级!", "确认");
       }else{//提交表单
-         cloudApi.saveAppUserInfo(formData);
+         cloudApi.saveAppUserInfo(formData, that.verify);
          this.closeDialog();
-      }
-      
+      }      
    },
    bind_confirm:function(){
       this.verify(false, "请选择您的年级!", "确认");
@@ -215,6 +225,11 @@ Page({
       })
       this.checkstate();
       this.login();
+      if(options.type=="hasTable"){
+         this.setData({
+            showUserInfoDialog:true
+         })
+      }
    },
    login:function(){
       wx.cloud.callFunction({
@@ -224,13 +239,38 @@ Page({
       }
       });     
    },
+   reflushHeartNum:function(){
+      this.setData({
+         heartNum: wx.getStorageSync("appUserInfo")[0].heartNum
+      })  
+   },
    onShow: function () {
-      cloudApi.queryAppUserInfo();//获取平台用户数据
+      var that = this
+      cloudApi.queryAppUserInfo(that.reflushHeartNum);//获取平台用户数据
+      if (wx.getStorageSync('appUserInfo').length>0){
+         var userInfoData = wx.getStorageSync('appUserInfo')[0];
+        
+         this.setData({
+            formValue: {
+               phone: userInfoData.phone,
+               weChat: userInfoData.wechat,
+               college_text: userInfoData.college,
+               major_text:userInfoData.major,
+               grade: [
+                  { value: '大一', checked: userInfoData.grade=="大一"},
+                  { value: '大二', checked: userInfoData.grade == "大二" },
+                  { value: '大三', checked: userInfoData.grade == "大三" },
+                  { value: '大四', checked: userInfoData.grade == "大四" },
+               ]
+            },
+            updataTag:true
+         })
+      }    
    },
 
    to_order_list:function(order_Type){
       wx.navigateTo({
-      url: '../order_list/order_list?type='+order_Type,
+      url: './orderList/orderList?type='+order_Type,
       success: function(res) {console.log("nav_to"+order_Type)},
       })
    },
@@ -245,6 +285,9 @@ Page({
    },
    to_my_sender: function () {
       this.to_order_list("my_sender");
+   },
+   to_my_receive: function () {
+      this.to_order_list("selfReceive");
    },
    bindMultiPickerChange:function(e){
       console.log('picker发送选择改变，携带值为', e.detail.value)
@@ -274,11 +317,11 @@ Page({
          default: break;   
       }
       switch (data.multiArray[1][data.multiIndex[1]]){
-         case "物联网学院":
+         case "物联网工程学院":
             data.collegeArr = configData[0].wulianwanggongcheng;break;
          case "机械学院":
             data.collegeArr = configData[0].jixeigongcheng; break;
-         case "环土学院":
+         case "环境与土木工程学院":
             data.collegeArr = configData[0].huanjinyutumu; break;
          case "纺织与服装学院":
             data.collegeArr = configData[0].fangzhifuzhuang; break;
@@ -298,9 +341,9 @@ Page({
             data.collegeArr = configData[0].yixueyuan; break;
          case "法学院":
             data.collegeArr = configData[0].faxueyuan; break;
-         case "化工学院":
+         case "化学与材料工程学院":
             data.collegeArr = configData[0].huaxueyucailiao; break;
-         case "北美学院":
+         case "外国语学院":
             data.collegeArr = configData[0].waiguoyu; break;
          case "生物工程学院":
             data.collegeArr = configData[0].shengwugongcheng; break;

@@ -1,0 +1,52 @@
+/* pages/center/sendInfo/sendInfo.wxss */
+.top_box{
+  width:100%;height:100rpx;border-bottom: 1rpx solid #f0f0f0;
+  margin-top: 150rpx;
+}
+.title{
+  font-size:32rpx;line-height:100rpx;padding-left:40rpx;font-weight:bold;
+}
+.text-area{
+    width: 86%;
+    height: 300rpx;
+    margin-left: 5%;
+    margin-top:40rpx;
+    border: 1rpx solid #eee;
+    border-radius: 10rpx;
+    font-size: 30rpx;
+    padding:2%; 
+    background-color: rgb(245,245,245);   
+}
+textarea{
+    width: 100%;
+    height: 300rpx;
+}
+.submit-btn {
+    text-align: center;
+    font-size: 30rpx;
+    background:linear-gradient(rgb(44, 203 ,250),rgb(45 ,169 ,251));
+    color: #fff;
+    width: 680rpx;
+    height: 80rpx;
+    line-height: 80rpx;
+    margin-top: 100rpx;
+    margin-bottom: 50rpx;   
+}
+.sub-btns {
+    height: 70rpx;
+    display: flex;
+    flex-direction: row;
+    width: 94%;
+    margin-top: 10rpx;
+    margin-left: 3%;
+    justify-content: space-around;
+    text-align: center;
+}
+.sub-btn {
+    width: 20%;
+    background:linear-gradient(rgb(245, 245 ,245),rgb(225,225 ,225));
+    font-size: 28rpx;
+    color: rgb(155,155,155);
+    line-height: 70rpx;
+    border-radius: 10rpx;  
+}

@@ -46,10 +46,10 @@
   position: absolute;
   width:750rpx;
   height: 100rpx;
-  font-size:45rpx;
+  font-size:42rpx;
   color:#666;
   top: 360rpx;
-  left: -10rpx;
+  left: -20rpx;
   text-align: right;
   z-index: 10;
   text-overflow: ellipsis;

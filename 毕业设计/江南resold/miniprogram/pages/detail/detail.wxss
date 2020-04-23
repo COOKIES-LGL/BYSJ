@@ -8,9 +8,37 @@
   width: 750rpx;
   height: 500rpx;
 }
+swiper{
+   padding:60rpx 0px; 
+}
+swiper-item{
+   display: flex;
+   justify-content: center;
+   align-items:center;
+}
 image{
-  width: 750rpx;
-  height: 500rpx; 
+   height: 100%;
+}
+.goodsNum{
+   color:rgb(36, 146, 248);
+   text-align:center;
+}
+.senderBox{
+  width: 700rpx;
+  margin-left:15rpx; 
+  height: 100rpx;
+  border-bottom: 2rpx solid rgb(36, 146, 248);
+  display: flex;
+  flex-direction: row;
+  line-height: 100rpx;
+  font-size: 26rpx;
+  padding-bottom:20rpx; 
+}
+.senderBox image{
+   border-radius: 50%;
+   height: 100rpx;
+   width:100rpx;
+   margin-left:30rpx; 
 }
 .reac{
   position: absolute;
@@ -54,6 +82,9 @@ image{
 .bingo{
 width: 100%;
 height: 100%;
+color: #fff;
+position: relative;
+top:30rpx;
 margin-left: 20rpx;
-background:linear-gradient(rgb(255 ,154, 195),rgb( 255, 86, 114));
+background:linear-gradient(rgb(140, 138, 252),rgb(52, 137, 248));
 }

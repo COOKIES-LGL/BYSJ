@@ -1,15 +1,15 @@
 <template name='order_item'>
-   <view class='temp_box' bindtap='to_detail' data-Id='{{id}}' >
-        <view class='left'>
+   <view class='temp_box' wx:key="{{_id}}" bindtap='toDetail' data-type="{{goodsType}}" data-goodsid='{{_id}}' >
+        <view class='top'>
            <view class='temp_img'>
-            <image mode='aspectFit' src='{{image}}'></image>
+            <image mode='aspectFit' src='{{goodsImage[0]}}'></image>
            </view>
-           <view class='temp_title'>{{title}}</view>
         </view>
-        <view class='right'>
-           <view class='remark'>{{remark}}</view>
-           <view class='price'>报价{{price_min}}元-----{{price_max}}元</view>
-           <view class='time'>{{time}}</view>
+        <view class='bottom'>
+           <view class='temp_title'>{{goodsName}}</view>
+           <view class='remark'>{{goodsremark}}</view>
+           <view class='price'>报价{{goodsMinprice}}元-----{{goodsMaxprice}}元</view>
+           <view class='time'>{{releaseTime}}</view>
         </view>
    </view>
 </template>

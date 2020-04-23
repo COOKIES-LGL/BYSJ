@@ -1,6 +1,6 @@
 .shadow{
   width: 750rpx;
-  height: 1200rpx;
+  height: 100%;
   background-color: rgb(0,0,0);
   position: absolute;
   top: 0rpx;
@@ -68,6 +68,7 @@
 .submit{
   width:350rpx;
   height: 80rpx;
+  line-height: 80rpx;
   background-color: #1fbef8;
 }
 .verifySubmit{
@@ -81,6 +82,7 @@
 .cancel{
   width:350rpx;
   height: 80rpx;
+  line-height: 80rpx;
 }
 .btn_userinfo{
   width:350rpx;

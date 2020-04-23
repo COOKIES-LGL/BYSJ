@@ -1,4 +1,0 @@
-/* pages/order_list/order_list.wxss */
-page{
-  background-color: #eee;
-}

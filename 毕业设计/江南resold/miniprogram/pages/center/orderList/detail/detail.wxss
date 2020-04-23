@@ -1,0 +1,95 @@
+/* pages/center/center.wxss */
+.box{
+  width: 750rpx;
+  height: 1200rpx;
+  position: relative;
+}
+.bg_icon{
+  width: 750rpx;
+  height: 500rpx;
+}
+swiper{
+   padding:50rpx 0px; 
+}
+swiper-item{
+   display: flex;
+   justify-content: center;
+   align-items:center;
+}
+image{
+   height: 100%;
+}
+.goodsNum{
+   color:rgb(36, 146, 248);
+   text-align:center;
+}
+.senderBox{
+  width: 700rpx;
+  margin-left:15rpx; 
+  height: 100rpx;
+  border-bottom: 2rpx solid rgb(36, 146, 248);
+  display: flex;
+  flex-direction: row;
+  line-height: 100rpx;
+  font-size: 26rpx;
+  padding-bottom:20rpx; 
+}
+.senderBox image{
+   border-radius: 50%;
+   height: 100rpx;
+   width:100rpx;
+   margin-left:30rpx; 
+}
+.reac{
+  position: absolute;
+  top: 350rpx;
+  left: 0rpx;
+  width:0;
+  height:0;
+  border-width:150rpx 600rpx 0 150rpx;
+  border-style:solid;
+  border-color:transparent rgb(255, 255, 255)  transparent transparent ;
+}
+.nickname{
+  position: absolute;
+  width:750rpx;
+  height: 100rpx;
+  top: 400rpx;
+  left: 80rpx;
+}
+.yuan_box{
+    margin-top: 10rpx;
+}
+.yuan{
+  width: 700rpx;
+  margin-left:15rpx; 
+  height: 100rpx;
+  border-bottom: 1rpx solid #eee;
+  display: flex;
+  flex-direction: row;
+  line-height: 100rpx;
+  font-size: 26rpx;
+}
+.yuan image{
+ margin-left: 50rpx;
+ margin-top: 10rpx;
+ height: 60rpx;
+ width: 40rpx;
+}
+.text{
+  text-indent: 2ex;
+}
+.StatusBox{
+   color:red;
+   font-size: 30rpx;
+   text-align: center;
+}
+.bingo{
+width: 100%;
+height: 100%;
+color: #fff;
+margin-left: 20rpx;
+position: relative;
+top:30rpx;
+background:linear-gradient(rgb(140, 138, 252),rgb(52, 137, 248));
+}

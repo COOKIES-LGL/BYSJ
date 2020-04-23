@@ -1,0 +1,16 @@
+<!--pages/center/sendInfo/sendInfo.wxml-->
+
+    <view class='top_box'>
+     <text class='title'>你遇到的问题是：</text>
+    </view>
+    <view class='sub-btns'>
+        <view wx:for="{{subLists}}" catchtap='onAddInfo' data-id='{{index}}' class='sub-btn' wx:key="loop" >
+            <text>{{item}}</text>
+        </view>
+    </view>
+    <view class='text-area'>
+        <textarea class='text' placeholder='请描述问题，若提交bug，请提供手机系统版本以及微信版本号，最多五十个字哦' bindinput='bindInput' value='{{text}}'></textarea>
+    </view>
+
+
+<button class='submit-btn' catchtap="onSubmit">提交</button>

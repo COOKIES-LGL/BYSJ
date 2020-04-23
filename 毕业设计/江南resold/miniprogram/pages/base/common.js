@@ -14,6 +14,9 @@ class Base{
   getDataSet(event, key) {
   return event.currentTarget.dataset[key]
   }
+  setTimeout(fn,arg){
+     setTimeout(function(){fn(arg)},200);
+  }
   formatNumber(n) {//规范数字
       n = n.toString()
       return n[1] ? n : '0' + n

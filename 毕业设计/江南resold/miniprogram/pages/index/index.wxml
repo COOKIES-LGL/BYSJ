@@ -1,11 +1,16 @@
 <!--index.wxml-->
-
-  <view class="top_search">
+  <import src='../template/order_item/order_item.wxml' />
+  <view class="top_search" hidden="{{hideSearch}}">
     <view class="input_box">
-      <input placeholder='请输入您要搜索的内容' bindinput='bindInput' placeholder-style="margin-left:30rpx;color:#e2e2e2;font-size:32rpx;" />
+      <input placeholder='请输入您要搜索的内容' value="{{searchInput}}" bindinput='bindInput' placeholder-style="margin-left:30rpx;color:#e2e2e2;font-size:28rpx;" bindblur="bindblur" /> 
       <image src="../../images/look@2x.png"></image>
     </view>
-    <view class="position_btn"><image src='../../images/dizhi@2x.png'/> 江南大学</view>
+    <view class="position_btn" catchtap="tapschool"><image src='../../images/dizhi@2x.png'/> 江南大学</view>
+    <view class="list_box" wx:if='{{if_search_list}}'>
+      <block wx:for="{{searchList}}" wx:key='id'>
+         <view class='item_search_list' bindtap='item_search_click' data-Id='{{item}}'>{{item}}</view>
+      </block>
+    </view>
   </view>
   <swiper autoplay="true" interval="5000" duration="1000" indicator-dots="true" indicator-active-color='#F00a'>
           <block wx:for="{{banner}}" wx:key="loop" >
@@ -14,8 +19,9 @@
           </swiper-item>
           </block>
   </swiper>
-  <import src='../template/order_item/order_item.wxml' />
-  <view class='top'>
+
+  <view id="bgimageBox" class='{{fixTop?"fixTop":"top"}}'>
+    <image id="bgImage" src="../../images/bg.png"></image>
     <view class='top_nav'>
     <view class='top_item' data-index="{{index}}" catchtap='navTo'  wx:key='id'  wx:for="{{options}}">
       <image mode='aspectFit' class='img' src='{{item.img}}'></image>
@@ -30,19 +36,24 @@
  <view  class="{{check2}}" data-Type="物品预约" catchtap='typeCheck'>物品预约</view>
 </view>
 <view class='bot'>
-     <scroll-view class="scroll-view_H" scroll-with-animation scroll-into-view="{{toView}}" scroll-x="true" catchtouchstart='touchstart' catchtouchend='touchend' style="width: 100%">
-          <view id="demo1" class="scroll-view-item_H demo-text-1">
-            <block wx:for="{{order_items}}"  wx:key='id' >
-               <template is='order_item' data='{{...item}}'></template>
-            </block>
+     <scroll-view class="scroll-view_H" scroll-with-animation scroll-into-view="{{toView}}" scroll-x="true" style="width: 100%">
+          <view id="demo1" hidden="{{check1!='onchoiced'}}" class="scroll-view-item_H demo-text-1">
+            <view class="demoBox">
+               <block wx:for="{{sell_order_items}}"  wx:key='id' >
+                  <template is='order_item' data='{{...item}}'></template>
+               </block>
+            </view>
           </view>
-          <view id="demo2"  class="scroll-view-item_H demo-text-2">
-            <block  wx:for="{{order_items}}" wx:key='id'>
-               <template is='order_item' data='{{...item}}'></template>
-            </block>
+          <view id="demo2" hidden="{{check2!='onchoiced'}}"  class="scroll-view-item_H demo-text-2">
+           <view class="demoBox">
+               <block  wx:for="{{book_order_items}}" wx:key='id'>
+                  <template is='order_item' data='{{...item}}'></template>
+               </block>
+            </view>
           </view>
       </scroll-view>
+      <view class="noData" hidden="{{noData}}">我是有底线的！</view>
+      <view class="nodata" hidden="{{noListData}}"><image src="../../images/nodata.png"></image><view>暂无数据</view></view>
 </view>
-
 <image bindtap='rankList' class='fix' src='../../images/fix.png' ></image>
 

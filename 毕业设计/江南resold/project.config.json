@@ -6,7 +6,17 @@
 		"es6": true,
 		"postcss": true,
 		"minified": true,
-		"newFeature": true
+		"newFeature": true,
+		"autoAudits": false,
+		"checkInvalidKey": true,
+		"checkSiteMap": true,
+		"uploadWithSourceMap": true,
+		"babelSetting": {
+			"ignore": [],
+			"disablePlugins": [],
+			"outputPath": ""
+		},
+		"enhance": true
 	},
 	"appid": "wx30ab88e31c90ef72",
 	"projectname": "%E6%B1%9F%E5%8D%97resold",
@@ -30,6 +40,10 @@
 		"game": {
 			"list": []
 		},
+		"gamePlugin": {
+			"current": -1,
+			"list": []
+		},
 		"miniprogram": {
 			"current": 2,
 			"list": [
@@ -48,7 +62,14 @@
 				{
 					"id": -1,
 					"name": "send",
-					"pathName": "pages/send/send"
+					"pathName": "pages/send/send",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "pages/index/JCZL/JCZL",
+					"pathName": "pages/index/JCZL/JCZL",
+					"scene": null
 				}
 			]
 		}

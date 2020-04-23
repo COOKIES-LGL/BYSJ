@@ -1,0 +1,11 @@
+<import src='../../template/order_list/order_list.wxml' />
+<view class='order-list'>
+      <block wx:for="{{dataList}}" wx:key="loop">
+         <view class='BOX'>
+            <template is="order_list" data="{{...item,icon_url,username}}" />
+         </view>
+      </block>
+      <view hidden="{{noData}}" style='width:100%;margin-top:20rpx;'>
+            <text class='Text' >没有更多订单信息啦</text>
+      </view>
+</view>

@@ -1,15 +1,19 @@
 <template name='order_list'>
-   <view class='temp_box' bindtap='to_detail' data-Id='{{id}}' >
+   <view class='temp_box'  wx:key="{{_id}}" bindtap='toDetail' data-type="{{goodsType}}" data-goodsid='{{_id}}' >
         <view class='left'>
            <view class='temp_img'>
-            <image mode='aspectFit' src='{{image}}'></image>
+            <image mode='aspectFit' src='{{goodsImage[0]}}'></image>
            </view>
-           <view class='temp_title'>{{title}}</view>
+           <view class='temp_title'>{{goodsName}}</view>
         </view>
         <view class='right'>
-           <view class='remark'>{{remark}}</view>
-           <view class='price'>报价{{price_min}}元-----{{price_max}}元</view>
-           <view class='time'>{{time}}</view>
+           <view class='remark' wx:if="{{goodsStatus==0}}">状态：未被预约</view>
+           <view class='remark' wx:if="{{goodsStatus==1}}">状态：已被预约</view>
+           <view class='remark' wx:if="{{goodsStatus==2}}">状态：已完成</view>
+           <view class='remark'>备注：{{goodsremark}}</view>
+           <view class='price'>报价：{{goodsMinprice}}元--{{goodsMaxprice}}元</view>
+           <view class='time' hidden="{{goodsStatus==2}}">发布时间：{{releaseTime}}</view>
+           <view class='time' wx:if="{{goodsStatus==2}}">完成时间：{{releaseTime}}</view>
         </view>
    </view>
 </template>

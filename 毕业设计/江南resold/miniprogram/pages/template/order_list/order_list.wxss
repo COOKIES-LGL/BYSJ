@@ -1,29 +1,40 @@
 .temp_box{
   display: flex;
   flex-direction: row;
-  height: 200rpx;
+  height: 250rpx;
   width: 720rpx;
   font-size: 28rpx;
+  border-radius:10rpx 20rpx; 
   margin-top: 20rpx;
-  border-radius:5%; 
-  border-right: 2rpx solid  #1fbef8;
-  border-left: 2rpx solid  #1fbef8;
+  padding-top: 10px;
+  margin-left: 15rpx;
+  background: #fff;
+  box-shadow: 5rpx 6rpx #ddd;
+}
+.temp_title{
+   font-size: 24rpx;
 }
 .left{
   text-align: center;
   width:40%;
   height: 100%;
 }
+.temp_box image{
+   margin: 0 auto;
+   height: 180rpx;
+   width:70%;
+}
 .right{
   font-size: 26rpx;
   width:60%;
   height: 100%;
+  padding:40rpx 10rpx; 
+  align-items: center;
+}
+.right view{
+   line-height: 40rpx;
+}
 
-}
-image{
-  width: 150rpx;
-  height: 150rpx;
-}
 .time{
   color:#aaa 
 }

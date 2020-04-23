@@ -1,32 +1,58 @@
-<view class='type nav-btn'>
-    <view class="sub">
-     <picker bindchange="bindPickerType1" value="{{index}}" range="{{collegeArray}}">               
-        <view class="inner_text" wx:if="{{Changed == true}}">
-              {{collegeArray[index]}}
-        </view>
-        <view class="inner_text"  wx:else>
-            <view>学院<image src='../../images/Shape@2x.png'></image></view> 
-        </view>
-     </picker>
-    </view>
-    <view class="sub">
-     <picker bindchange="bindPickerType2" value="{{index}}" range="{{majorArray}}">               
-        <view class="inner_text" wx:if="{{Changed == true}}">
-              {{majorArray[index]}}
-        </view>
-        <view class="inner_text"  wx:else>
-            <view> 专业<image src='../../images/Shape@2x.png'></image></view> 
-        </view>
-     </picker>
-    </view>
-    <view class="sub">
-     <picker bindchange="bindPickerType3" value="{{index}}" range="{{gradeArray}}">               
-        <view class="inner_text" wx:if="{{Changed == true}}">
-              {{gradeArray[index]}}
-        </view>
-        <view class="inner_text"  wx:else>
-            <view> 年级<image src='../../images/Shape@2x.png'></image></view> 
-        </view>
-     </picker>
-    </view>
+  <import src='../../template/order_item/order_item.wxml' />
+<view class="input_box">
+<input placeholder='请输入您要搜索的内容' value="{{searchInput}}" bindblur="bindblur" bindinput='bindInput' placeholder-style="margin-left:30rpx;color:#e2e2e2;font-size:28rpx;" />
+<image src="../../../images/look@2x.png"></image>
+</view>
+<view class="list_box" wx:if='{{if_search_list}}'>
+<block wx:for="{{searchList}}" wx:key='id'>
+   <view class='item_search_list' bindtap='item_search_click' data-Id='{{item}}'>{{item}}</view>
+</block>
+</view>
+<view class="typeCheck">
+ <view  class="{{check1}}" data-Type="物品发布" catchtap='typeCheck'>物品发布</view>
+ <view  class="{{check2}}" data-Type="物品预约" catchtap='typeCheck'>物品预约</view>
+</view>
+<view class="pickerBox">
+   <view class="{{section1}}">
+         <picker name="collegeValue" class="innerPicker"  mode="multiSelector" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{multiArray[1][multiIndex[1]]}}" range="{{multiArray}}">
+            <view class="inner_text" wx:if="{{changed1 == true}}">
+               {{multiArray[1][multiIndex[1]]}}
+            </view>
+            <view  wx:else>
+         <view class="inner_text" >{{college_text}}
+         <image src='../../../images/Shape@2x.png'></image>
+         </view> 
+            </view>
+         </picker>
+   </view>
+   <view class="{{section2}}">
+         <picker name="majorValue" class="innerPicker" bindchange="bindPickerType1" value="{{collegeArr[collegeIndex]}}" range="{{collegeArr}}">
+         <view class="inner_text" wx:if="{{changed2 == true}}">
+            {{collegeArr[collegeIndex]}}
+         </view>
+         <view wx:else>
+      <view class="inner_text"  >{{major_text}}<image src='../../../images/Shape@2x.png'></image></view> 
+         </view>
+         </picker>
+   </view>
+</view>
+
+<view class='bot'>
+          <view hidden="{{check1!='onchoiced'}}" id="demo1" class="scroll-view-item_H demo-text-1">
+            <view class="demoBox">
+               <block wx:for="{{sell_order_items}}"  wx:key='id' >
+                  <template is='order_item' data='{{...item}}'></template>
+               </block>
+            </view>
+          </view>
+          <view hidden="{{check2!='onchoiced'}}" id="demo2"  class="scroll-view-item_H demo-text-2">
+           <view class="demoBox">
+               <block  wx:for="{{book_order_items}}" wx:key='id'>
+                  <template is='order_item' data='{{...item}}'></template>
+               </block>
+            </view>
+          </view>
+      <view class="noData" hidden="{{noData}}">我是有底线的！</view>
+      <view class="nodata" hidden="{{noListData}}">
+      <image src="../../../images/nodata.png"></image><view>暂无数据</view></view>
 </view>

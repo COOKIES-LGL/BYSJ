@@ -23,21 +23,25 @@
   </view>
   <view class="line"></view>
   <view class='yuan_box'>
-    <view class='yuan' bindtap='to_my_order'>
-      <image src='../../images/center1 (1).png'></image>
-      <view class='text'>我的预约</view>
+    <view class='yuan' bindtap='to_my_receive'>
+      <image src='../../images/center1 (3).png'></image>
+      <view class='text'>我的接单</view>
     </view>
     <view class='yuan' bindtap='to_my_sender'>
       <image src='../../images/center1 (2).png'></image>
-      <view class='text'>我的发布</view>
+      <view class='text'>当前卖出发布</view>
     </view>
-    <view class='yuan' bindtap='to_my_history_order'>
-      <image src='../../images/center1 (3).png'></image>
-      <view class='text'>历史预约</view>
+    <view class='yuan' bindtap='to_my_order'>
+      <image src='../../images/center1 (1).png'></image>
+      <view class='text'>当前买入预约</view>
     </view>
     <view class='yuan' bindtap='to_my_history_sender'>
       <image src='../../images/center1 (4).png'></image>
-      <view class='text'>历史发布</view>
+      <view class='text'>历史发单</view>
+    </view>
+    <view class='yuan' bindtap='to_my_history_order'>
+      <image src='../../images/center1 (3).png'></image>
+      <view class='text'>历史接单</view>
     </view>
   </view>
   <view class="InfoDialog" wx:if="{{showUserInfoDialog}}">
@@ -53,16 +57,16 @@
          </view>
          <view class="section">
             <view class="section__title">微信号:</view>
-            <input name="input_wechat" value="{{form.weChat}}" placeholder="please input your wechat" />
+            <input name="input_wechat" value="{{formValue.weChat}}" placeholder="please input your wechat" />
          </view>
          <view class="section section_gap">
             <view class="section__title">学院:</view>
-            <picker name="collegeValue" class="innerPicker"  mode="multiSelector" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{multiArray[0][multiIndex[0]]}}={{multiArray[1][multiIndex[1]]}}" range="{{multiArray}}">
+            <picker name="collegeValue" class="innerPicker"  mode="multiSelector" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{multiArray[1][multiIndex[1]]}}" range="{{multiArray}}">
                <view class="inner_text" wx:if="{{changed1 == true}}">
-                 {{multiArray[0][multiIndex[0]]}}={{multiArray[1][multiIndex[1]]}}
+                 {{multiArray[1][multiIndex[1]]}}
                </view>
                <view  wx:else>
-            <view class="inner_text" >请选择您的学院<image src='../../images/Shape@2x.png'></image></view> 
+            <view class="inner_text" >{{formValue.college_text}}<image src='../../images/Shape@2x.png'></image></view> 
                </view>
             </picker>
          </view>
@@ -73,21 +77,17 @@
                   {{collegeArr[collegeIndex]}}
                </view>
                <view wx:else>
-            <view class="inner_text"  >请选择您的专业<image src='../../images/Shape@2x.png'></image></view> 
+            <view class="inner_text"  >{{formValue.major_text}}<image src='../../images/Shape@2x.png'></image></view> 
                </view>
                </picker>
          </view>
          <view class="section section_gap">
             <view class="sectionTitle">年级</view>
             <radio-group name="radio_group">
-            <label class="radio_click clearfix" wx:for="{{grade}}" wx:key="key">
+            <label class="radio_click clearfix" wx:for="{{formValue.grade}}" wx:key="key">
                <text>{{item.value}}</text>
                <radio class="radio" color='#09f' value="{{item.value}}" checked="{{item.checked}}"/>
             </label>   
-               <!-- <label><radio value="大一"/>大一</label>
-               <label><radio value="大二"/>大二</label>
-               <label><radio value="大三"/>大三</label>
-               <label><radio value="大四"/>大四</label> -->
             </radio-group>
          </view>
          <view class="btn-area">

@@ -5,9 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    user: {
-      image: "../../images/user-unlogin.png",
-      nickname: "年少有为",
+    good: {
     }
   },
 
@@ -15,14 +13,29 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    var that =this; 
+    var id = options.id;
+    var type = options.type;
+    var type = type =="买物"?"bookOrderList":"sellOrderList";
+    var goods = wx.getStorageSync(type);
+    var good;
+    for(var i=0;i<goods.length;i++){
+       if (goods[i]._id == id) {
+          good = goods[i];
+          that.setData({
+             good:good
+          })
+          break;
+       }
+    }
+    console.log(good);
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+     
   },
 
 

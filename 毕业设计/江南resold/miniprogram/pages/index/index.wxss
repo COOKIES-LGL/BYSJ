@@ -4,8 +4,84 @@ page {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  background-color: rgb(245, 245, 245);
 }
-
+.top_phone {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+#bgimageBox{
+   position: relative;
+}
+#bgImage{
+   position: absolute;
+   height: 100rpx;
+   top:20rpx;
+   left: 20%;
+   width:60%;
+}
+ .nodata{
+    width:400rpx;
+    height: 400rpx;
+    float: left;
+    position:absolute;
+    left: 175rpx;
+    top:100rpx;
+    color:#9b9fa0;
+    font-size: 30rpx;
+    text-align: center;
+ }
+.nodata image{
+   margin: 0 auto;
+   width: 80%;
+   height: 90%;
+}
+.top_phone input {
+  width: 100%;
+  margin: 20rpx 40rpx 30rpx 40rpx;
+  border-bottom: 1px solid #d0d0d0;
+  font-size: 50rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  padding-bottom: 10rpx;
+}
+ 
+.top_phone button {
+  width:230rpx;
+  height: 60rpx;
+  padding: 0 auto;
+  font-size: 25rpx;
+  margin: 40rpx 20rpx 20rpx 30rpx;
+  line-height: 60rpx;
+  background: white;
+  border: 1rpx solid #d0d0d0;
+}
+.list_box{
+   position: absolute;
+   left: 0rpx;
+   top:70rpx;
+   float: left;
+   background: rgb(255, 255, 255);
+   width: 100%;
+   padding: 40rpx 0rpx;
+}
+.item_search_list{
+color:#9b9fa0;
+font-size: 28rpx;
+width:80%;
+margin-left: 10%;
+height: 60rpx;
+line-height:60rpx; 
+border-bottom:1rpx solid #e2e3e4;
+}
+.noData{
+   font-size: 28rpx;
+   color:#ccc;
+   text-align: center;
+   margin-bottom: 20rpx;
+   z-index: 100;
+}
 
 .top_search{
   position: fixed;
@@ -24,11 +100,14 @@ page {
   flex-direction: row;
   border-radius: 30rpx;
   width:530rpx;
+  padding-left: 20rpx;
   height: 56rpx;
+  line-height: 56rpx;
   border: 2rpx solid #ccc;
 }
 .input_box input{
   width:90%;
+  font-size: 28rpx;
 }
 .input_box image{
   width:40rpx;
@@ -52,7 +131,17 @@ page {
   height: 160rpx;
   width: 750rpx;
 }
+.fixTop{
+  height: 160rpx;
+  position: fixed;
+  top:0rpx;
+  left:0rpx;
+  width: 750rpx;
+  background: #fff;
+  z-index: 1000;
+}
 .top_nav{
+  background: #fff;
   height: 160rpx;
   width: 750rpx;
   margin-top: 10rpx;
@@ -60,79 +149,96 @@ page {
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-around;
+  z-index: 1000;
 }
 .top_item{
-  height: 140rpx;
+  height: 150rpx;
   width: 160rpx;
    display: flex;
   flex-direction: column;
   justify-content: center;
+  border-radius:20rpx; 
+  padding-top:5rpx; 
 }
 .img{
   width: 70%;
-  height:70%;
+  height:65%;
   border-radius: 50%;
   box-shadow: 2rpx 2rpx 5rpx #1fbef8;
   margin-left:25rpx; 
 }
 .item_name{
-  margin-top: 5rpx;
+  margin-top: 10rpx;
   font-size: 24rpx;
   text-align: center;
 }
-
 .typeCheck{
   width:650rpx;
   margin-left: 50rpx;
+  margin-top: 20rpx;
   font-size: 22rpx;
   height:60rpx;
   text-align: center;
   display: flex;
   flex-direction: row;
   justify-content:space-between;
+  background: #fff;
+  border-radius:15rpx;
+  overflow: hidden
 }
 .btn{
-  width:45%;
+  width:50%;
   height: 100%;
   font-size: 28rpx;
   background: #fff;
   line-height: 60rpx;
-  color:#111;
-  border-radius:10rpx;
-  border:1rpx solid #1fbef8;
-  /* border-bottom:0px solid #fff;  */
+  color:#1fbef8;
 }
 .onchoiced{
-  width:45%;
+  width:50%;
   height: 100%;
   font-size: 28rpx;
   line-height: 60rpx;
-  border-top-left-radius:10rpx;
-  border-top-right-radius:10rpx;
   border:1rpx solid #1fbef8;
-  border-bottom:0px solid #fff; 
-  color:#1fbef8;
-    /* box-shadow:5rpx 5rpx 5px #1fbef8;   */
+  color:#fff;
+  background:linear-gradient(#34c1f5,rgb(27, 124, 252));
 }
 .bot{
-height: auto;
   overflow: hidden;
 width: 750rpx;
+position: relative;
+height:100%;
+overflow-y:auto;
 }
 .scroll-view_H {
   overflow: hidden;
+  zoom: 1;
   height:auto;
   width: 100%;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: center;
   white-space: nowrap;
 }
 
-.scroll-view-item_H {
+.scroll-view_H:after{
+   content: "";
+   display: block;
+   clear: both;
+}
+#demo1{
+  height: auto;
   overflow: hidden;
   width: 100%;
-  display: inline-block;
+  /* position: relative;
+  display: inline-block; */
+}
+#demo2{
+  height: auto;
+  overflow: hidden;
+  width: 100%;
+  /* position: relative;
+  display: inline-block; */
 }
 .type{
   width: 90%;
@@ -153,7 +259,18 @@ picker image{
   right: 0rpx;
   bottom: 200rpx;
   width: 120rpx;
+    height: 145rpx;
   animation: run 2s linear infinite; 
+}
+#demo1 .demoBox{
+   display: flex;
+   flex-flow:row wrap; 
+   height: auto;
+}
+#demo2 .demoBox{
+   display: flex;  
+   flex-flow:row wrap;
+   height: auto;
 }
 @keyframes run {
   0%{
