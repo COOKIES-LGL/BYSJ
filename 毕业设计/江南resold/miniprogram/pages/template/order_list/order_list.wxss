@@ -11,12 +11,15 @@
   background: #fff;
   box-shadow: 5rpx 6rpx #ddd;
 }
+.itemTitle{
+   font-weight: bold;
+}
 .temp_title{
    font-size: 24rpx;
 }
 .left{
   text-align: center;
-  width:40%;
+  width:35%;
   height: 100%;
 }
 .temp_box image{
@@ -26,9 +29,9 @@
 }
 .right{
   font-size: 26rpx;
-  width:60%;
+  width:65%;
   height: 100%;
-  padding:40rpx 10rpx; 
+  padding:30rpx 10rpx 0rpx 10rpx; 
   align-items: center;
 }
 .right view{
@@ -37,4 +40,10 @@
 
 .time{
   color:#aaa 
+}
+.right .remark{
+   width: 100%;
+   overflow: hidden;
+   text-overflow: ellipsis;
+   white-space: nowrap;
 }

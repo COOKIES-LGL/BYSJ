@@ -1,6 +1,8 @@
 import { cloudapi } from "../cloud_api/api_send.js"
 import { configData } from "../config/configData.js/"
+import { Base } from '../base/common.js';
 const cloudApi = new cloudapi
+const base = new Base();
 Page({
 
   /**
@@ -26,10 +28,22 @@ Page({
       major:'',//专业
       code_ID: '',//学生证号
       name: '',//姓名
+      if_search_list:false,
       lost_type: '',//类型
       subLists: [
       '教材课本', '三方服务','寝室用品',"考研资料"
       ],
+      changed1: false,
+      changed2: false,
+      showPicker:false,
+      multiIndex: [0, 0],
+      multiArray: [],
+      section1: "Unsection",
+      section2: "Unsection",
+      college_text: "教材所属学院",
+      major_text: "教材所属专业",
+      collegeArr: ["物联网工程（卓越工程师）", "自动化（卓越工程师）", "自动化", "电气工程及其自动化", "计算机科学与技术", "通信工程", "微电子科学与工程"],
+      collegeIndex: 0,
       goodsName:'',
       goodsName_status:false,
       minPrice:'',
@@ -50,27 +64,30 @@ Page({
    },
    look_owner: function () {
       if (this.data.check1 == 'check_radio') {
-      var that = this;
-      this.setData({
-         check1: 'hover_radio',
-         change_text: '接受',
-         show_box: false,
-         show: true,
-         look2: true,
-         lost_type: 'pick',
-         text:''
-      })
-      if (that.data.check2 == 'hover_radio') {
-         that.setData({
-            check2: 'check_radio'
+         var that = this;
+         this.setData({
+            check1: 'hover_radio',
+            change_text: '接受',
+            show_box: false,
+            show: true,
+            look2: true,
+            lost_type: 'pick',
+            text:'',
+            showPicker: false,
+            goodsName:'',
+            if_search_list:false
          })
-      }
+         if (that.data.check2 == 'hover_radio') {
+            that.setData({
+               check2: 'check_radio'
+            })
+         }
       } else {
-      this.setData({
-         check1: 'check_radio',
-         show_box: true,
-         look2: false,
-      })
+         this.setData({
+            check1: 'check_radio',
+            show_box: true,
+            look2: false,
+         })
       }
    },
    look_lost: function () {
@@ -83,7 +100,10 @@ Page({
          show: false,
          look1: true,
          lost_type: 'lose',
-         text:''
+         text:'',
+         showPicker:false,
+         goodsName:'',
+         if_search_list:false
       })
       if (that.data.check1 == 'hover_radio') {
          that.setData({
@@ -97,6 +117,51 @@ Page({
          look1: false,
       })
       }
+   },
+
+   getsearchTips: function () {//获取搜索数据
+      var searchTextArr = configData[0].searchText;
+      var searchtipArr = [];
+      searchTextArr.find(function (item) {
+         if (wx.getStorageSync("appUserInfo").length > 0) {
+            if (item.college == wx.getStorageSync("appUserInfo")[0].college) {
+               searchtipArr = item.searchtips;
+            }
+         }
+      })
+      if (searchtipArr.length > 0) {
+         this.setData({
+            search_show_list: searchtipArr
+         })
+         wx.setStorageSync("searchtipArr", searchtipArr);
+      }
+   },
+   bindinput: function (e) {
+      if (this.data.showPicker==true){
+         var value = e.detail.value;
+         var searchList = [];
+         if (!value) { searchList = []; return; }
+         this.data.search_show_list.find(function (item) {
+            if (item.indexOf(value) == 0) {
+               searchList.push(item);
+            }
+         })
+         if (searchList.length > 0) {
+            this.setData({
+               if_search_list: true,
+               searchList: searchList
+            })
+         } 
+      }else{
+         return;
+      }
+   },
+   item_search_click: function (event) {
+      var bookValue = base.getDataSet(event, "id");
+      this.setData({
+         goodsName: bookValue,
+         if_search_list: false,
+      })
    },
    bindInput: function (e) {
       var value = e.detail.value;
@@ -172,6 +237,82 @@ Page({
       return false;
       }
    },
+   bindMultiPickerChange: function (e) {
+      console.log('picker发送选择改变，携带值为', e.detail.value)
+      this.setData({
+         multiIndex: e.detail.value,
+         changed1: true,
+         section1: "section"
+      })
+   },
+   bindMultiPickerColumnChange: function (e) {
+      console.log('修改的列为', e.detail.column, '，值为', e.detail.value);
+      var data = {
+         multiArray: this.data.multiArray,
+         multiIndex: this.data.multiIndex,
+         changed1: true,
+         section1: "section",
+         collegeArr: [],
+      };
+      data.multiIndex[e.detail.column] = e.detail.value;
+      switch (e.detail.value) {
+         case 0:
+            data.multiArray[1] = configData[0].north_college;
+            data.multiIndex[1] = 0;
+            break;
+         case 1:
+            data.multiArray[1] = configData[0].south_college;
+            data.multiIndex[1] = 0;
+            break;
+         default: break;
+      }
+      switch (data.multiArray[1][data.multiIndex[1]]) {
+         case "物联网工程学院":
+            data.collegeArr = configData[0].wulianwanggongcheng; break;
+         case "机械学院":
+            data.collegeArr = configData[0].jixeigongcheng; break;
+         case "环境与土木工程学院":
+            data.collegeArr = configData[0].huanjinyutumu; break;
+         case "纺织与服装学院":
+            data.collegeArr = configData[0].fangzhifuzhuang; break;
+         case "设计学院":
+            data.collegeArr = configData[0].shejixueyuan; break;
+         case "人文学院":
+            data.collegeArr = configData[0].renwenxueyuan; break;
+         case "理学院":
+            data.collegeArr = configData[0].lixueyuan; break;
+         case "商学院":
+            data.collegeArr = configData[0].shangxueyuan; break;
+         case "食品学院":
+            data.collegeArr = configData[0].shipin; break;
+         case "药学院":
+            data.collegeArr = configData[0].yaoxueyuan; break;
+         case "医学院":
+            data.collegeArr = configData[0].yixueyuan; break;
+         case "法学院":
+            data.collegeArr = configData[0].faxueyuan; break;
+         case "化学与材料工程学院":
+            data.collegeArr = configData[0].huaxueyucailiao; break;
+         case "外国语学院":
+            data.collegeArr = configData[0].waiguoyu; break;
+         case "生物工程学院":
+            data.collegeArr = configData[0].shengwugongcheng; break;
+         case "数字媒体学院":
+            data.collegeArr = configData[0].shuzimeiti; break;
+         default: break;
+      }
+      console.log(data);
+      this.setData(data);
+      console.log(this.data.collegeArr);
+   },
+   bindPickerType1: function (e) {
+      console.log('picker发送选择改变，携带值为', e.detail.value)
+      this.setData({
+         collegeIndex: e.detail.value,
+         changed2: true,
+         section2: "section",
+      })
+   },
    bindDateChange: function (e) {
       var that = this;
       var value = e.detail.value;
@@ -186,18 +327,35 @@ Page({
       var that = this;
       let id = e.currentTarget.dataset.id;
       console.log(this.data.subLists[id])
+      var bool= id==0?true:false;
+      this.setData({
+         showPicker:bool,
+         goodsName: '',
+         if_search_list: false
+      })
       this.setData({
          text: this.data.subLists[id],
          title_status:true
       })
    },
    initData:function(){
+      this.getsearchTips();
+      this.setData({
+         multiArray: [configData[0].campus, configData[0].north_college]
+      })
       var localInfo = wx.getStorageSync("appUserInfo")[0];
       if (localInfo){
          this.setData({
             phone: localInfo.phone,
             wechat: localInfo.wechat,
             major: localInfo.major,
+         }) 
+      }
+      if(localInfo.major){
+         this.setData({
+            college_text: localInfo.college,
+            major_text: localInfo.major,
+            defaultValue:true,
          }) 
       }  
    },
@@ -314,16 +472,25 @@ Page({
                goodsremark:that.data.description,
                goodsphone:that.data.phone,
                goodswechat:that.data.wechat,
+               goodscollege: that.data.multiArray[1][that.data.multiIndex[1]],
+               goodsmajor: that.data.collegeArr[that.data.collegeIndex],
                send_nickname:userInfo.nickName,
                send_avatarUrl:userInfo.avatarUrl,
                sender_gender: userInfo.gender==1?"男":"女",
                sender_openid:wx.getStorageSync('OPENID'),
-               releaseTime: time.toLocaleString()
+               releaseTime: time.toLocaleString(),
+               receive_openid:'',
+               receiver_nickname:'',
+               receiver_gender:'',
+               receiver_avatarUrl:'',
+               reveiveTime:'',
+               finishTime: '',
             }
             var callback=function(){
                wx.hideLoading();
+               var type = that.data.lost_type == 'lose' ? "my_order" :"my_sender";
                wx.redirectTo({
-                  url: '../center/orderList/orderList?type=2',
+                  url: '../center/orderList/orderList?type=' + type,
                })
             }
             cloudApi.sendOrder(orderForm, callback);

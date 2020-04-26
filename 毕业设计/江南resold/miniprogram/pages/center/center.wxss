@@ -7,16 +7,16 @@
   font-size: 32rpx;
 }
 .userMesg{
-  padding: 30rpx 175rpx;
+  padding: 30rpx 235rpx;
 }
 .bg_icon{
   float: left;
-  width: 750rpx;
+  width: 300rpx;
   height: 400rpx;
 }
 .bg_icon image{
-  width: 400rpx;
-  height: 400rpx;
+  width: 300rpx;
+  height: 300rpx;
   border-radius:50%; 
 }
 .reac{
@@ -48,7 +48,7 @@
   height: 100rpx;
   font-size:42rpx;
   color:#666;
-  top: 360rpx;
+  top: 340rpx;
   left: -20rpx;
   text-align: right;
   z-index: 10;
@@ -108,6 +108,7 @@
 }
 .text{
   text-indent: 2ex;
+  font-size: 30rpx;
 }
 .fix{
   position: fixed;
@@ -124,11 +125,11 @@
   cursor: pointer;
 }
 .likeCount{
-  margin-left: 10rpx;
+  margin-left: 6rpx;
   height: 60rpx;
   line-height: 60rpx;
   width:150rpx;
-  font-size: 30rpx;
+  font-size: 28rpx;
   color: #ccc;
 }
 .InfoDialog{

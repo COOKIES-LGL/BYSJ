@@ -17,6 +17,7 @@ Page({
    data: {
       index: '',
       searchInput: '',
+      couldFuncName:"getOrderTopList",
       hideSearch: false,
       if_phone_list: false,
       search_show_list: [],
@@ -60,52 +61,68 @@ Page({
       nosellListData: true,
       nobookListData: true,
       noListData: true,
+      defaultValue:false,
       noData:true,
       param1: {
          searchMesg: "卖物",
+         college:'',
+         major:'',
          pageSize: 6,
          pageNum: 0,
          goodsTitle:'教材课本',
       },
       param2: {
          searchMesg: "买物",
+         college: '',
+         major: '',
          pageSize: 6,
          pageNum: 0,
          goodsTitle: '教材课本',
       },
-      param3: {
-         searchMesg: "卖物",
-         goodsName: '',
-         pageSize: 6,
-         pageNum: 0,
-         goodsTitle: '教材课本',
-      },
-      param4: {
-         searchMesg: "买物",
-         goodsName: '',
-         pageSize: 6,
-         pageNum: 0,
-         goodsTitle: '教材课本',
-      }
    },
 
    init: function () {
       var up1 = "param1.pageNum";
       var up2 = "param2.pageNum";
+      var college1 = "param1.college";
+      var college2 = "param2.college";
+      var major1 = "param1.major";
+      var major2 = "param2.major";
       this.setData({
          [up1]: 0,
          [up2]: 0,
+         couldFuncName: "getOrderTopList",
       });
+      if (wx.getStorageSync("appUserInfo")[0].major){
+         var college = wx.getStorageSync("appUserInfo")[0].college
+         var major = wx.getStorageSync("appUserInfo")[0].major
+         this.setData({
+            [college1]: college,
+            [college2]: college,
+            college_text: college,
+            major_text: major,
+            [major1]: major,
+            [major2]: major,
+            defaultValue: true,
+            couldFuncName: "getOrderMajorList",
+         })
+      }
       this.getsearchTips();
    },
 
    bindMultiPickerChange: function (e) {
+      wx.showLoading({
+         title: '加载中..',
+         mask: true,
+      })
       console.log('picker发送选择改变，携带值为', e.detail.value)
       this.setData({
          multiIndex: e.detail.value,
          changed1: true,
-         section1:"section"
+         section1:"section",
+         couldFuncName: "getOrdercollegeList",
       })
+      this.reload(1, this.data.multiArray[1][this.data.multiIndex[1]])
    },
    bindMultiPickerColumnChange: function (e) {
       console.log('修改的列为', e.detail.column, '，值为', e.detail.value);
@@ -115,6 +132,7 @@ Page({
          changed1: true,
          section1:"section",
          collegeArr: [],
+         couldFuncName: "getOrdercollegeList",
       };
       data.multiIndex[e.detail.column] = e.detail.value;
       switch (e.detail.value) {
@@ -165,38 +183,67 @@ Page({
       }
       console.log(data);
       this.setData(data);
-      console.log(this.data.collegeArr);
+      this.reload(1, this.data.multiArray[1][this.data.multiIndex[1]])
    },
    bindPickerType1: function (e) {
+      wx.showLoading({
+         title: '加载中..',
+         mask: true,
+      })
       console.log('picker发送选择改变，携带值为', e.detail.value)
       this.setData({
          collegeIndex: e.detail.value,
          changed2: true,
          section2: "section",
+         couldFuncName:"getOrderMajorList",
       })
+      this.reload(2,this.data.collegeArr[this.data.collegeIndex]);
    },
+   reload: function (tag, value) {
+      var college1 = "param1.college";
+      var college2 = "param2.college";
+      var major1 = "param1.major";
+      var major2 = "param2.major";
+      if (tag==1) {
+         this.setData({
+            [college1]: value,
+            [college2]: value,
+         });
+      }else{
+         this.setData({
+            [major1]: value,
+            [major2]: value,
+         });
+      }
+      this.loadData("firstLoad");
+   },
+   renderData: function (tag) {
+      if(tag){
+         if (wx.getStorageSync("TopsellOrderList").length > 0) {
+            this.setData({
+               sell_order_items: wx.getStorageSync("TopsellOrderList"),
+               nosellListData: true
+            })
+         } else {
+            this.setData({
+               nosellListData: false,
+               noListData: false,
+            })
+         }
+      }else{
+         if (wx.getStorageSync("TopbookOrderList").length > 0) {
+            this.setData({
+               book_order_items: wx.getStorageSync("TopbookOrderList"),
+               nobookListData: true
+            })
+         } else {
+            this.setData({
+               nobookListData: false
+            })
+         }
+      }
+      console.log(this.data.noListData)
 
-   renderData: function () {
-      if (wx.getStorageSync("TopsellOrderList").length > 0) {
-         this.setData({
-            sell_order_items: wx.getStorageSync("TopsellOrderList"),
-            nosellListData: true
-         })
-      } else {
-         this.setData({
-            nosellListData: false
-         })
-      }
-      if (wx.getStorageSync("TopbookOrderList").length > 0) {
-         this.setData({
-            book_order_items: wx.getStorageSync("TopbookOrderList"),
-            nobookListData: true
-         })
-      } else {
-         this.setData({
-            nobookListData: false
-         })
-      }
    },
 
    getsearchTips: function () {//获取搜索数据
@@ -246,7 +293,11 @@ Page({
    },
    bindblur:function(e){
       var value = e.detail.value;
+      var that = this;
       this.to_search(value);
+      if (value) {
+         setTimeout(function () { that.to_search(value); }, 300);
+      }
    },
    to_search:function(value){
       wx.navigateTo({
@@ -291,6 +342,10 @@ Page({
    },
 
    typeCheck: function (event) {//发布预约切换
+      wx:wx.showLoading({
+         title: '加载中',
+         mask: true,
+      })
       var listtype = event.currentTarget.dataset.type;
       if (listtype === "物品发布") {
          this.setData({
@@ -307,14 +362,16 @@ Page({
             noListData: this.data.nobookListData
          })
       }
+      this.init();
+      this.loadData("firstLoad");
    },
 
    onShow: function () {
       wx.showLoading({
          title: '加载中',
       });
-      this.loadData("firstLoad");
       this.init();
+      this.loadData("firstLoad");
       let res = wx.getSystemInfoSync()
       wx.setStorageSync('height', res.screenHeight)//获取屏幕高度
    },
@@ -331,6 +388,7 @@ Page({
             [up]: num,
             sell_order_items: newData || that.data.sell_order_items
          });
+         base.setTimeout(that.renderData, true);
       }
       var callback2 = function (num, newData) {
          if (num == 0) {
@@ -342,30 +400,31 @@ Page({
             [up]: num,
             book_order_items: newData || that.data.book_order_items
          });
+         base.setTimeout(that.renderData, false);
       }
       if (res == "firstLoad") {
          wx.setStorageSync("TopsellOrderList", []);
          wx.setStorageSync("TopbookOrderList", []);
          if (this.data.nosellListData) {
-            cloudApi.getOrderTopList(this.data.param1, callback1);
+            cloudApi[this.data.couldFuncName](this.data.param1, callback1);
          } else {
             wx.hideLoading();
          }
          if (this.data.nobookListData) {
-            cloudApi.getOrderTopList(this.data.param2, callback2);
+            cloudApi[this.data.couldFuncName](this.data.param2, callback2);
          } else {
             wx.hideLoading();
          }
       } else {
          if (this.data.toView == "demo1") {
             if (this.data.hasesellData) {
-               cloudApi.getOrderTopList(this.data.param1, callback1);
+               cloudApi[this.data.couldFuncName](this.data.param1, callback1);
             } else {
                wx.hideLoading();
             }
          } else {
             if (this.data.hasebookData) {
-               cloudApi.getOrderTopList(this.data.param2, callback2);
+               cloudApi[this.data.couldFuncName](this.data.param2, callback2);
             } else {
                wx.hideLoading()
             }

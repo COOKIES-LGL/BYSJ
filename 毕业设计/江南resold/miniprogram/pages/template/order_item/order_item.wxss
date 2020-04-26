@@ -31,6 +31,15 @@
   margin-left: 10%;
   height: 150rpx;
 }
+.bottom .remark,.temp_title{
+   width: 100%;
+   overflow: hidden;
+   text-overflow: ellipsis;
+   white-space: nowrap;
+}
 .time{
   color:#aaa 
+}
+.temp_title{
+   font-weight: bold;
 }

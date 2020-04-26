@@ -1,3 +1,6 @@
+import { cloudapi } from "../../cloud_api/api_center.js"
+import { configData } from "../../config/configData.js/"
+const cloudApi = new cloudapi
 Page({
 
   /**
@@ -5,7 +8,7 @@ Page({
    */
   data: {
     subLists:[
-        '隐私泄露','交易失败','平台Bug','打赏失败'
+        '隐私泄露','交易失败','平台Bug','优化建议'
         ],
     text:''
   },
@@ -26,54 +29,33 @@ Page({
   },
 
   onSubmit: function(e) {
+       var that = this;
       if(this.data.text==''){
         wx.showToast({
           title: '亲，反馈信息不能为空',
           icon:'none',
         })
       }else{
-     // let id = wx.getStorageSync('id')
-      let params = {
-        url: 'comments/feedback',
-        setUpUrl:true,
-        type: 'POST',
-        data:{
-            detail: this.data.text,
-            token: wx.getStorageSync('Public_token')
-        },
-        header: {
-          "content-type": "application/x-www-form-urlencoded"
-        }, 
-        sCallback:function(e) {
-            console.log(e)
-            if(e.status==true ){
-                wx.showToast({
-                    title: '提交成功',
-                    icon: 'success'
-                })
-                setTimeout(function(){
-                    wx.navigateBack({})
-                },1500)
-                
-            } else {
-                wx.showModal({
-                    title: '提交失败',
-                    content: '请稍后重新提交',
-                    showCancel:false,
-                    confirmColor: '#FFC002'
-                })
-            }
-        },
-        eCallback:function(e){
-            wx.showModal({
-                title: '提交失败',
-                content: '请稍后重新提交',
-                showCancel: false,
-                confirmColor: '#FFC002'
+         wx.showLoading({
+            title: '提交中',
+         })
+         var callback=function(){
+            wx.hideLoading();
+            wx.showToast({
+               title: '提交成功',
             })
-        }
-      }
-      // base.request(params)
+            that.setData({
+               text:'',
+            })
+         }
+         var param={
+            detail: this.data.text,
+            senderNickname:wx.getStorageSync("userInfo").nickName,
+            senderGender: wx.getStorageSync("userInfo").gender,
+            senderimageUrl: wx.getStorageSync("userInfo").avatarUrl,
+            senderPhone:wx.getStorageSync("appUserInfo")[0].phone,
+         }
+         cloudApi.sendFeedback(param,callback);
       }
   },
 

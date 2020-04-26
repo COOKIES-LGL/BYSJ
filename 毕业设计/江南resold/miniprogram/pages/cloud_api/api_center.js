@@ -5,12 +5,11 @@ import { Base } from "../base/common.js"
 const base = new Base
 
 class cloudapi{
-  constructor() {
-    "use strict"
-     this._db = base.setdb();
-  }
+   constructor() {
+      "use strict"
+      this._db = base.setdb();
+   }
   
-
    saveUserData(param) {//添加用户数据
      var that = this;
      var DATE = base.formatDate(new Date());
@@ -20,7 +19,7 @@ class cloudapi{
         if(res.data.length>0){//已注册过的用户
            return;
         }else{
-           db.collection('user').add({//新用户
+           this._db.collection('user').add({//新用户
               data: {
                  userinfo: param,
                  registTime: DATE,
@@ -34,8 +33,32 @@ class cloudapi{
         console.log(res);
      })    
    }
-
-   saveAppUserInfo(obj,callback){//保存用户平台信息
+   sendFeedback(param,callback){//意见反馈
+      var that = this;
+      var DATE = base.formatDate(new Date());
+      this._db.collection('recommendList').where({
+         _openid: wx.getStorageSync("OPENID")
+      }).get().then(res => {
+         this._db.collection('recommendList').add({//新用户
+            data: {
+               detail: param.detail,
+               senderNickname: param.senderNickname,
+               senderGender: param.senderGender,
+               senderimageUrl: param.senderimageUrl,
+               senderPhone: param.senderPhone,
+               sendTime: DATE,
+            },
+            success(res) {
+               console.log(res);
+               callback();
+            }
+         })
+      }).catch(res => {
+         console.log(res);
+         callback();
+      })    
+   }
+   saveAppUserInfo(obj,_id,callback,callback2){//保存用户平台信息
       this._db.collection('appUserInfo').where({
          _openid: wx.getStorageSync("OPENID")
       }).get().then(res => {
@@ -45,9 +68,11 @@ class cloudapi{
                data: {
                   action: 'update_appUserInfo',
                   formData: obj,
+                  _id:_id
                },
                success:res=>{
                   wx.hideLoading();
+                  callback2();
                   callback(true, "表单提交成功!", "确认");
                },
                fail: err => {
@@ -67,7 +92,7 @@ class cloudapi{
                },
                success(res) {
                   wx.hideLoading();
-                  wx.setStorageSync("appUserInfo", data);
+                  callback2();
                   callback(true, "表单提交成功!", "确认");
                }
             })
@@ -77,12 +102,13 @@ class cloudapi{
       })     
    }
 
-   updateHeartNum(num) {//更新点赞数据
+   updateHeartNum(num,_id) {//更新点赞数据
       wx.cloud.callFunction({
          name: 'updateData',
          data:{
             action: 'update_heartNum',
-            heartNum:num
+            heartNum:num,
+            _id:_id
          },
          success:res=>{
             console.log('[云函数] [login] 调用成功', res)
@@ -113,7 +139,7 @@ class cloudapi{
       var that = this;
       this._db.collection('sendOrders').where(
          {
-            receiver_openid: wx.getStorageSync("OPENID"),
+            receive_openid: wx.getStorageSync("OPENID"),
             goodsStatus: 1
          }
       ).count({
@@ -122,7 +148,7 @@ class cloudapi{
             //可取的次数
             if (obj.pageNum < batchTimes) {
                that._db.collection('sendOrders').where({
-                  receiver_openid: wx.getStorageSync("OPENID"),
+                  receive_openid: wx.getStorageSync("OPENID"),
                   goodsStatus: 1
                })
                   .skip(obj.pageNum * obj.pageSize)

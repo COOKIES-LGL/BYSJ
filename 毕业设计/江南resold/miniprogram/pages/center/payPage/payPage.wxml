@@ -1,0 +1,7 @@
+<view class="box">
+  <view class="Image">
+      <image bindtap="previewImage" src="{{imageSrc[0]}}"></image>  
+  </view>
+   <view class="tips">{{tips}}</view>
+  <view class="mesg">{{message}}</view>
+</view>

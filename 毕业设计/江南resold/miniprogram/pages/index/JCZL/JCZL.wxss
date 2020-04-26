@@ -27,14 +27,15 @@ page {
    border-bottom:1rpx solid #e2e3e4;
 }
  .nodata{
-    width:400rpx;
-    height: 400rpx;
+    width:360rpx;
+    height: 360rpx;
     float: left;
     position:absolute;
-    left: 175rpx;
-    top:100rpx;
+    left: 195rpx;
+    top:400rpx;
     color:#9b9fa0;
-    font-size: 30rpx;
+    font-size: 28rpx;
+    z-index: 100;
     text-align: center;
  }
 .nodata image{

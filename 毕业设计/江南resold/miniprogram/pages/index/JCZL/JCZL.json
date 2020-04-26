@@ -1,3 +1,5 @@
 {
-   "navigationBarTitleText": "教材资料"
+   "navigationBarTitleText": "教材资料",
+   "enablePullDownRefresh": true,
+   "enableReachBottom": true
 }

@@ -1,4 +1,6 @@
 // pages/center/center.js
+import { cloudapi } from "../../../cloud_api/api_delOrder.js"
+const cloudApi = new cloudapi;
 Page({
 
    /**
@@ -34,8 +36,88 @@ Page({
    onShow: function () {
 
    },
+   previewImage: function (e) {
+      var current = this.data.good.goodsImage[0];
+      wx.previewImage({
+         current: current, // 当前显示图片的http链接
+         urls: this.data.good.goodsImage // 需要预览的图片http链接列表
+      })
+   },
+   cancalOrder:function(){
+      wx.showLoading({
+         title: '取消预约中',
+      })
+      var that = this;
+      var userInfo = wx.getStorageSync("userInfo");
+      var param = {
+         _id: that.data.good._id,
+         sender_openid: that.data.good.sender_openid,
+         receive_openid: "",
+         receiver_gender: "",
+         receiver_avatarUrl: "",
+         receiver_nickname: "",
+         receiverTime:'',
+      }
+      var callback = function () {
+         wx.showToast({
+            title: '已取消预约！',
+         })
+         setTimeout(function () {
+            wx.navigateBack({
+               delta: 1
+            })
+         }, 500);
+      }
+      cloudApi.cancelOrder(param, callback);
+   },
+   finishOrder:function(){
+      wx.showLoading({
+         title: '完结订单中',
+      })
+      var that = this;
+      var time = new Date();
+      var userInfo = wx.getStorageSync("userInfo");
+      var param = {
+         _id: that.data.good._id,
+         sender_openid: that.data.good.sender_openid,
+         finishTime:time.toLocaleString()
+      }
+      var callback = function () {
+         wx.showToast({
+            title: '订单已完结！',
+         })
+         setTimeout(function () {
+            wx.redirectTo({
+               url: '../../payPage/payPage',
+            })
+         }, 200);
+      }
+      cloudApi.finishOrder(param, callback);
+   },
 
-
+   deleteOrder: function () {
+      wx.showLoading({
+         title: '取消订单中',
+      })
+      var that = this;
+      var userInfo = wx.getStorageSync("userInfo");
+      var param = {
+         _id: that.data.good._id,
+         sender_openid: that.data.good.sender_openid,
+         goodsImage:that.data.good.goodsImage,
+      }
+      var callback = function () {
+         wx.showToast({
+            title: '订单已取消！',
+         })
+         setTimeout(function () {
+            wx.navigateBack({
+               delta: 1
+            })
+         }, 500);
+      }
+      cloudApi.deleteOrderOrder(param, callback);
+   },
    /**
     * 页面相关事件处理函数--监听用户下拉动作
     */

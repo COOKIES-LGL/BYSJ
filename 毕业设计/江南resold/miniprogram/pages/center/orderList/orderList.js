@@ -14,6 +14,7 @@ Page({
       },
       noData:true,
       funcName:'',
+      type:'',
    },
    toDetail: function (event) {
       var order_id = base.getDataSet(event, "goodsid");
@@ -30,7 +31,6 @@ Page({
                noData:false
             })
          }
-         console.log(newData)
          var up = "param.pageNum";
          that.setData({
             [up]: num,
@@ -39,6 +39,11 @@ Page({
       }
       if (tag == "firstLoad") {
          wx.setStorageSync("selfOrderList", []);
+         var up = "param.pageNum";
+         that.setData({
+            dataList:[],
+            [up]: 0,
+         });
          cloudApi[that.data.funcName](that.data.param, callback1);
          wx.hideLoading(); 
       } else {
@@ -57,29 +62,25 @@ Page({
       wx.setNavigationBarTitle({
          title: title,
       })
-   }, 
-   onLoad: function (options) {
-      wx.showLoading({
-         title: '加载中',
-      })
-      var param = options.type;
+   },
+   initData:function(param){
       var that = this;
       var tag = "firstLoad"
       console.log(param);
-      switch(param){
-         case "my_order": that.data.funcName ="getSelfOrderList";that.setTitle("当前卖出发布");
-         that.data.param.searchMesg = "买物" ;this.loadData(param,tag);break;
-         case "my_sender": that.data.funcName = "getSelfOrderList"; that.setTitle("当前买入预约");
-         that.data.param.searchMesg = "卖物"; this.loadData(param,tag); break;
+      switch (param) {
+         case "my_order": that.data.funcName = "getSelfOrderList"; that.setTitle("当前买入预约");
+            that.data.param.searchMesg = "买物"; this.loadData(param, tag); break;
+         case "my_sender": that.data.funcName = "getSelfOrderList"; that.setTitle("当前卖出发布");
+            that.data.param.searchMesg = "卖物"; this.loadData(param, tag); break;
          case "my_history_order": that.setData({
-            param:{
+            param: {
                goodsStatus: 2,
                pageSize: 6,
-               pageNum: 0 
+               pageNum: 0
             }
          }); that.setTitle("历史发单");
-         that.data.funcName = "getHistoryOrderList1";
-         this.loadData(param,tag);break;
+            that.data.funcName = "getHistoryOrderList1";
+            this.loadData(param, tag); break;
          case "my_history_sender": that.setData({
             param: {
                goodsStatus: 2,
@@ -87,12 +88,21 @@ Page({
                pageNum: 0
             }
          }); that.setTitle("历史接单");
-         that.data.funcName = "getHistoryOrderList1";
-         this.loadData(param,tag);break;
+            that.data.funcName = "getHistoryOrderList1";
+            this.loadData(param, tag); break;
          case 'selfReceive': that.data.funcName = "getOrderIng"; that.setTitle("我的接单");
-         this.loadData(param, tag); break;    
-         default:break;
+            this.loadData(param, tag); break;
+         default: break;
       } 
+   },
+   onLoad: function (options) {
+      wx.showLoading({
+         title: '加载中',
+      })
+      var param = options.type;
+      this.setData({
+         type: param,
+      })
    },
 
    /**
@@ -106,7 +116,7 @@ Page({
     * 生命周期函数--监听页面显示
     */
    onShow: function () {
-
+      this.initData(this.data.type);
    },
 
    /**

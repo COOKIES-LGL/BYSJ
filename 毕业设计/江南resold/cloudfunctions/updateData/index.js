@@ -9,8 +9,9 @@ const wxContext = cloud.getWXContext();
 
 function update_heartNum(event){
    try { // data 传入需要局部更新的数据
-      return db.collection('appUserInfo').where({ _openid: wxContext.OPENID }).update({
+      return db.collection('appUserInfo').doc(event._id).update({
          data: {
+            _openid: wxContext.OPENID,
             heartNum: event.heartNum,
          },
          success(res) {
@@ -28,8 +29,9 @@ function update_heartNum(event){
 function update_appUserInfo(event){
    var formData = event.formData;
    try { // data 传入需要局部更新的数据
-      return db.collection('appUserInfo').where({ _openid: wxContext.OPENID }).update({
+      return db.collection('appUserInfo').doc(event._id).update({
          data: {
+            _openid: wxContext.OPENID,
             phone: formData.input_phone,
             wechat: formData.input_wechat,
             college: formData.collegeValue,
@@ -45,11 +47,88 @@ function update_appUserInfo(event){
    }
 }
 
-function update_order(event){
+function bingoOrder(event){
    try { // data 传入需要局部更新的数据
-      return db.collection('sendOrders').doc('id字段').update({
+      return db.collection('sendOrders').doc(event.obj._id).update({
          data: {
-            isHave: true
+            _openid: event.obj.sender_openid,
+            receive_openid: event.obj.receive_openid,
+            receiverTime: event.obj.receiverTime,
+            goodsStatus:1,
+            receiver_gender: event.obj.receiver_gender,
+            receiver_avatarUrl: event.obj.receiver_avatarUrl,
+            receiver_nickname: event.obj.receiver_nickname,
+         },
+         success(res) {
+            console.log(res)
+         },
+         fail(res) {
+            console.log(res, "更新失败！")
+         }
+      })
+   } catch (e) {
+      console.error(e)
+   }
+}
+
+function cancelOrder(event) {
+   try { // data 传入需要局部更新的数据
+      return db.collection('sendOrders').doc(event.obj._id).update({
+         data: {
+            _openid: event.obj.sender_openid,
+            receiverTime: event.obj.receiverTime,
+            goodsStatus: 0,
+            receive_openid: event.obj.receive_openid,
+            receiver_gender: event.obj.receiver_gender,
+            receiver_avatarUrl: event.obj.receiver_avatarUrl,
+            receiver_nickname: event.obj.receiver_nickname,
+         },
+         success(res) {
+            console.log(res)
+         },
+         fail(res) {
+            console.log(res, "更新失败！")
+         }
+      })
+   } catch (e) {
+      console.error(e)
+   }
+}
+
+function finishOrder(event) {
+   try { // data 传入需要局部更新的数据
+      return db.collection('sendOrders').doc(event.obj._id).update({
+         data: {
+            _openid: event.obj.sender_openid,
+            finishTime: event.obj.finishTime,
+            goodsStatus: 2,
+         },
+         success(res) {
+            console.log(res)
+         },
+         fail(res) {
+            console.log(res, "更新失败！")
+         }
+      })
+   } catch (e) {
+      console.error(e)
+   }
+}
+
+function deleteOrder(event) {
+
+   try { // data 传入需要局部更新的数据
+      return db.collection('sendOrders').doc(event.obj._id).remove({
+         success(res) {
+            console.log(res);
+            const fileIDs = event.obj.goodsImage
+            const result = await cloud.deleteFile({
+               fileList: fileIDs,
+            })
+            console.log(result);
+         },
+         fail(res) {
+            console.log(res, "删除失败！")
          }
       })
    } catch (e) {
@@ -66,8 +145,17 @@ exports.main = async (event, context) => {
       case 'update_appUserInfo': {
          return await update_appUserInfo(event)
       }
-      case 'update_sendOrders': {
-         return await update_order(event)
+      case 'bingoOrder': {
+         return await bingoOrder(event)
+      }
+      case 'finishOrder': {
+         return await finishOrder(event)
+      }
+      case 'cancelOrder': {
+         return await cancelOrder(event)
+      }
+      case 'deleteOrder': {
+         return await deleteOrder(event)
       }
       default: {
          return ;

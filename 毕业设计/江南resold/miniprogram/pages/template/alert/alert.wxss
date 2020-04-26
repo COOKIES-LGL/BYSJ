@@ -13,7 +13,7 @@
   font-size: 28rpx;
   position: absolute;
   left: 25rpx;
-  top: 400rpx;
+  top: 500rpx;
   border-top-left-radius:5%; 
   border-top-right-radius:5%; 
   z-index: 2000;

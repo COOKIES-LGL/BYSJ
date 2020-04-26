@@ -34,10 +34,40 @@
             <view class='text'>物品类目</view>
       <input value='{{text}}' maxlength='10' class='input' placeholder='点击标签填入，其它请自行输入'  placeholder-class='place' bindblur='bindInput'></input> 
       </view>
-      <view class='inputView'>
+      <view id="goodsName" class='inputView'>
             <view class='text'>物品名称</view>
-            <input value="{{goodsName}}" class='input' bindblur='bind_title' type='number' placeholder='请详细填写'  placeholder-class='place'></input>
+            <input value="{{goodsName}}" class='input' bindinput="bindinput" bindblur='bind_title' type='number' placeholder='请详细填写'  placeholder-class='place'></input>
+            <view class="list_box" wx:if='{{if_search_list}}'>
+            <block wx:for="{{searchList}}" wx:key='id'>
+            <view class='item_search_list' bindtap='item_search_click' data-Id='{{item}}'>{{item}}</view>
+            </block>
+            </view>
       </view>
+
+<view class="pickerBox" wx:if="{{showPicker}}">
+   <view class="{{section1}}">
+         <picker name="collegeValue" class="innerPicker"  mode="multiSelector" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}">
+            <view class="inner_text" wx:if="{{changed1 == true}}">
+               {{multiArray[1][multiIndex[1]]}}
+            </view>
+            <view  wx:else>
+         <view class="inner_text" >{{college_text}}
+         <image hidden="{{defaultValue}}" src='../../images/Shape@2x.png'></image>
+         </view> 
+            </view>
+         </picker>
+   </view>
+   <view class="{{section2}}">
+         <picker name="majorValue" class="innerPicker" bindchange="bindPickerType1" value="{{collegeArr[collegeIndex]}}" range="{{collegeArr}}">
+         <view class="inner_text" wx:if="{{changed2 == true}}">
+            {{collegeArr[collegeIndex]}}
+         </view>
+         <view wx:else>
+      <view class="inner_text"  >{{major_text}}<image  hidden="{{defaultValue}}" src='../../images/Shape@2x.png'></image></view> 
+         </view>
+         </picker>
+   </view>
+</view>
       <view class='inputView' wx:if="{{!show}}">
           <view class='input_price'>
             <view class='text1'>{{change_text}}最高价</view>
@@ -56,7 +86,7 @@
                <view class='text2'>数量</view>
                <picker-view class="picker_box" mask-class="numsmask" indicator-class="indicator" value="{{numValue}}" bindchange="bindNumchange">
                   <picker-view-column >
-                     <view wx:for="{{nums}}" style="line-height: 50rpx;">{{item}}</view>
+                     <view wx:for="{{nums}}" wx:key='id' style="line-height: 50rpx;">{{item}}</view>
                   </picker-view-column>
                </picker-view>
          </view>

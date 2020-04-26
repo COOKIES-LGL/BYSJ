@@ -1,3 +1,5 @@
 {
-  "usingComponents": {}
+   "navigationBarTitleText": "考研资料",
+   "enablePullDownRefresh": true,
+   "enableReachBottom": true
 }

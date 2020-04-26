@@ -94,7 +94,7 @@ Page({
          }
          var that = this;
          setTimeout(function () { that.setData({ addheart: "" })},1000);
-         cloudApi.updateHeartNum(that.data.heartNum);
+         cloudApi.updateHeartNum(that.data.heartNum,wx.getStorageSync('appUserInfo')[0]._id);
    },
    navTo: function (e) {//页面跳转
       var that = this;
@@ -171,7 +171,7 @@ Page({
          }
          }
       })
-      if (!wx.getStorageSync("appUserInfo")) {
+      if (wx.getStorageSync("appUserInfo").length==0) {
          this.setData({
             showUserInfoDialog: true
          })
@@ -208,9 +208,32 @@ Page({
       } else if (!formData.radio_group && !this.data.updataTag) {
          this.verify(true, "请选择您的年级!", "确认");
       }else{//提交表单
-         cloudApi.saveAppUserInfo(formData, that.verify);
+         var _id = wx.getStorageSync('appUserInfo')[0]._id
+         cloudApi.saveAppUserInfo(formData,_id,that.verify,that.getAppUserinfo);
          this.closeDialog();
       }      
+   },
+   getAppUserinfo:function(){
+      var that = this
+      cloudApi.queryAppUserInfo(that.reflushHeartNum);//获取平台用户数据
+      if (wx.getStorageSync('appUserInfo').length > 0) {
+         var userInfoData = wx.getStorageSync('appUserInfo')[0];
+         that.setData({
+            formValue: {
+               phone: userInfoData.phone,
+               weChat: userInfoData.wechat,
+               college_text: userInfoData.college,
+               major_text: userInfoData.major,
+               grade: [
+                  { value: '大一', checked: userInfoData.grade == "大一" },
+                  { value: '大二', checked: userInfoData.grade == "大二" },
+                  { value: '大三', checked: userInfoData.grade == "大三" },
+                  { value: '大四', checked: userInfoData.grade == "大四" },
+               ]
+            },
+            updataTag: true
+         })
+      }    
    },
    bind_confirm:function(){
       this.verify(false, "请选择您的年级!", "确认");
@@ -246,26 +269,7 @@ Page({
    },
    onShow: function () {
       var that = this
-      cloudApi.queryAppUserInfo(that.reflushHeartNum);//获取平台用户数据
-      if (wx.getStorageSync('appUserInfo').length>0){
-         var userInfoData = wx.getStorageSync('appUserInfo')[0];
-        
-         this.setData({
-            formValue: {
-               phone: userInfoData.phone,
-               weChat: userInfoData.wechat,
-               college_text: userInfoData.college,
-               major_text:userInfoData.major,
-               grade: [
-                  { value: '大一', checked: userInfoData.grade=="大一"},
-                  { value: '大二', checked: userInfoData.grade == "大二" },
-                  { value: '大三', checked: userInfoData.grade == "大三" },
-                  { value: '大四', checked: userInfoData.grade == "大四" },
-               ]
-            },
-            updataTag:true
-         })
-      }    
+      this.getAppUserinfo();
    },
 
    to_order_list:function(order_Type){

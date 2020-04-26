@@ -8,7 +8,7 @@
         <view class='bottom'>
            <view class='temp_title'>{{goodsName}}</view>
            <view class='remark'>{{goodsremark}}</view>
-           <view class='price'>报价{{goodsMinprice}}元-----{{goodsMaxprice}}元</view>
+           <view class='price'>报价:（{{goodsMinprice}}---{{goodsMaxprice}}）元</view>
            <view class='time'>{{releaseTime}}</view>
         </view>
    </view>

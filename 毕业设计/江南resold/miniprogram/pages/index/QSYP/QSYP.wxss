@@ -1,1 +1,263 @@
-/* pages/index/QSYP/QSYP.wxss */
+/**index.wxss**/
+@import "../../template/order_item/order_item.wxss";/**模板样式**/
+page {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  background-color: rgb(245, 245, 245);
+}
+.list_box{
+   position: absolute;
+   left: 0rpx;
+   top:90rpx;
+   float: left;
+   background: rgb(255, 255, 255);
+   width: 90%;
+   margin-left: 5%;
+   padding: 30rpx 0rpx;
+   z-index:100;
+}
+.item_search_list{
+   color:#9b9fa0;
+   font-size: 28rpx;
+   width:90%;
+   margin-left: 5%;
+   height: 60rpx;
+   line-height:60rpx; 
+   border-bottom:1rpx solid #e2e3e4;
+}
+ .nodata{
+    width:360rpx;
+    height: 360rpx;
+    float: left;
+    position:absolute;
+    left: 195rpx;
+    top:400rpx;
+    color:#9b9fa0;
+    font-size: 28rpx;
+    z-index: 100;
+    text-align: center;
+ }
+.nodata image{
+   margin: 0 auto;
+   width: 80%;
+   height: 90%;
+}
+.top_search{
+  position: fixed;
+  top:25rpx;
+  width:650rpx;
+  margin-left: 50rpx;
+  line-height: 60rpx;
+  height:60rpx;
+  z-index: 10;
+  display: flex;
+  flex-direction: row;
+}
+.noData{
+   font-size: 28rpx;
+   color:#ccc;
+   text-align: center;
+   margin-bottom: 20rpx;
+   z-index: 100;
+}
+.input_box{
+   margin-top: 20rpx;
+  display: flex;
+  flex-direction: row;
+  border-radius: 30rpx;
+  width:600rpx;
+  margin-left: 50rpx;
+  padding-left: 50rpx;
+  height: 56rpx;
+  line-height: 56rpx;
+  border: 2rpx solid #1fbef8;
+  box-shadow: 5rpx 5rpx 10rpx #34c1f5;
+}
+.input_box input{
+  width:90%;
+  font-size: 28rpx;
+}
+.input_box image{
+  width:40rpx;
+  height:40rpx;
+  margin-top:10rpx;
+}
+.img{
+  width: 70%;
+  height:70%;
+  border-radius: 50%;
+  box-shadow: 2rpx 2rpx 5rpx #1fbef8;
+  margin-left:25rpx; 
+}
+.item_name{
+  margin-top: 10rpx;
+  font-size: 24rpx;
+  text-align: center;
+}
+
+.typeCheck{
+  width:650rpx;
+  margin-left: 50rpx;
+  margin-top: 20rpx;
+  font-size: 22rpx;
+  height:60rpx;
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  justify-content:space-between;
+  background: #fff;
+  border-radius:15rpx;
+  overflow: hidden
+}
+.btn{
+  width:50%;
+  height: 100%;
+  font-size: 28rpx;
+  background: #fff;
+  line-height: 60rpx;
+  color:rgb(27, 124, 252);
+}
+.onchoiced{
+  width:50%;
+  height: 100%;
+  font-size: 28rpx;
+  line-height: 60rpx;
+  border:1rpx solid #1fbef8;
+  color:#fff;
+  background:linear-gradient(#34c1f5,rgb(27, 124, 252));
+}
+.bot{
+overflow: hidden;
+width: 750rpx;
+position: relative;
+height:100%;
+overflow-y:auto;
+}
+.scroll-view_H {
+  overflow: hidden;
+  zoom: 1;
+  height:auto;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  white-space: nowrap;
+}
+
+.scroll-view_H:after{
+   content: "";
+   display: block;
+   clear: both;
+}
+#demo1{
+  height: auto;
+  overflow: hidden;
+  width: 100%;
+  /* position: relative;
+  display: inline-block; */
+}
+#demo2{
+  height: auto;
+  overflow: hidden;
+  width: 100%;
+  /* position: relative;
+  display: inline-block; */
+}
+.type{
+  width: 90%;
+  margin-left: 5%;
+  height: 60rpx;
+}
+picker image{
+ margin-right: 20rpx;
+ height: 20rpx;
+ width: 35rpx;
+}
+.fix{
+  position: fixed;
+  right: 0rpx;
+  bottom: 200rpx;
+  width: 120rpx;
+    height: 145rpx;
+  animation: run 2s linear infinite; 
+}
+#demo1 .demoBox{
+   display: flex;
+   flex-flow:row wrap; 
+   height: auto;
+}
+#demo2 .demoBox{
+   display: flex;  
+   flex-flow:row wrap;
+   height: auto;
+}
+.Unsection{
+    display: flex;
+   flex-direction: row;
+   line-height:60rpx;
+   height: 60rpx;
+   width:310rpx;
+   margin-top:10px;
+   background:#fff;
+   text-overflow:ellipsis;
+   border-radius:10rpx; 
+   color:rgb(27, 124, 252);
+   overflow: hidden;
+}
+.section{
+   display: flex;
+   flex-direction: row;
+   line-height:60rpx;
+   height: 60rpx;
+   text-overflow:ellipsis;
+     overflow: hidden;
+   width:310rpx;
+   margin-top:10px;
+  background:linear-gradient(#34c1f5,rgb(27, 124, 252));
+   border-radius:10rpx; 
+   color:#fff;
+}
+.section image{
+   width:30px;
+   height:40rpx;
+   margin-top:36rpx;
+   margin-left:20px;
+}
+.Unsection image{
+   width:30px;
+   height:40rpx;
+   margin-top:36rpx;
+   margin-left:20px;
+}
+.inner_text{
+   width:100%;
+   text-align: center;
+   height: 60rpx;  
+   line-height:60rpx;
+   position: relative;
+}
+.innerPicker{
+   line-height:60rpx;
+   height: 60rpx; 
+  width:100%;
+  font-size: 28rpx;
+  text-align: center;
+}
+.inner_text image{
+   width:26rpx;
+   height:15rpx;
+   position: absolute;
+   top:-12rpx;
+   opacity: 0.8;
+   right: -5rpx;
+}
+.pickerBox{
+   width:690rpx;
+   margin-left: 30rpx;
+   margin-bottom: 30rpx;
+   height: 60rpx;
+   display: flex;
+   flex-direction: row;
+   justify-content: space-around
+}

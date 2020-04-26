@@ -4,7 +4,7 @@
   <swiper autoplay="true" interval="5000" duration="1000" indicator-dots="true" indicator-active-color='#F00a'>
           <block wx:for="{{good.goodsImage}}" wx:key="loop" >
           <swiper-item >
-            <image class="navImage" src="{{item}}" mode='aspectFit' class="slide-image" />
+            <image class="navImage" bindtap="previewImage" src="{{item}}" mode='aspectFit' class="slide-image" />
           </swiper-item>
           </block>
   </swiper>
@@ -18,28 +18,31 @@
 </view>
 <view class='yuan_box'>
   <view class='yuan' bindtap='to_same' >
-    <image src='../../../../images/center1 (1).png'></image>
-    <view class='text'>物品名称：{{good.goodsName}}  <span class="goodsNum">(数量{{good.goodsNum}})</span></view>
+    <image src='../../../../images/center11.png'></image>
+    <view class='text'><span class="itemTitle">物品名称：{{good.goodsName}}</span><span class="goodsNum">(数量{{good.goodsNum}})</span></view>
   </view>
   <view class='yuan'>
-    <image src='../../../../images/center1 (4).png'></image>
-    <view class='text'>发布时间：{{good.releaseTime}}</view>
+    <image src='../../../../images/center14.png'></image>
+    <view class='text'><span class="itemTitle">发布时间：</span>{{good.releaseTime}}</view>
   </view>
   <view class='yuan'>
-    <image src='../../../../images/center1 (2).png'></image>
-    <view class='text'>接受价位：{{good.goodsMinprice}}￥→{{good.goodsMaxprice}}￥</view>
+    <image src='../../../../images/center12.png'></image>
+    <view class='text'><span class="itemTitle">接受价位：</span>{{good.goodsMinprice}}￥→{{good.goodsMaxprice}}￥</view>
   </view>
   <view class='yuan'>
-    <image src='../../../../images/center1 (3).png'></image>
-    <view class='text'>备注：{{good.goodsremark}}</view>
+    <image src='../../../../images/center14.png'></image>
+    <view class='text'><span class="itemTitle">联系方式：</span>{{good.goodsphone}}</view>
+  </view>
+  <view class='yuanRemark'>
+    <image src='../../../../images/center13.png'></image>
+    <view class='text'><span class="itemTitle">备注：</span>
+       <textarea disabled value="{{good.goodsremark}}"></textarea>
+    </view>
   </view>
   <view class='yuan'>
-    <image src='../../../../images/center1 (4).png'></image>
-    <view class='text'>联系方式：{{good.goodsphone}}</view>
-  </view>
-  <view class='yuan'>
-    <button class='bingo' bindtap='bingo'>取消订单</button>
-    <button class='bingo' bindtap='bingo' hidden="{{good.goodsStatus=='0'}}" >完结订单</button>
+    <button class='bingocancel' bindtap='deleteOrder' hidden="{{good.goodsStatus==1}}">取消订单</button>
+    <button class='bingocancel' bindtap='cancalOrder' hidden="{{good.goodsStatus==0}}" >取消预约</button>
+    <button class='bingo' bindtap='finishOrder' hidden="{{good.goodsStatus==0}}" >完结订单</button>
   </view>
 </view>
 </view>

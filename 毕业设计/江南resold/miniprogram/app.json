@@ -13,6 +13,7 @@
     "pages/center/mineMesg/mineMesg",
     "pages/center/mineLabel/mineLabel",
     "pages/center/mineReceive/mineReceive",
+    "pages/center/payPage/payPage",
     "pages/send/send",
     "pages/order/order",
     "pages/detail/detail",

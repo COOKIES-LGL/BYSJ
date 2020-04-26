@@ -11,7 +11,7 @@
     <view class='reac'></view>
     <view class='apply'>
       <image src='../../images/wode/web_heart.jpg'  class="{{addheart}}" catchtap="addHeart" ></image>
-      <view class="likeCount">{{heartNum}}</view>
+      <view catchtap="addHeart"class="likeCount">打卡：<span style="color:#1fbef8">{{heartNum}}</span></view>
     </view>
   </view>
 
@@ -24,23 +24,23 @@
   <view class="line"></view>
   <view class='yuan_box'>
     <view class='yuan' bindtap='to_my_receive'>
-      <image src='../../images/center1 (3).png'></image>
+      <image src='../../images/center13.png'></image>
       <view class='text'>我的接单</view>
     </view>
     <view class='yuan' bindtap='to_my_sender'>
-      <image src='../../images/center1 (2).png'></image>
+      <image src='../../images/center12.png'></image>
       <view class='text'>当前卖出发布</view>
     </view>
     <view class='yuan' bindtap='to_my_order'>
-      <image src='../../images/center1 (1).png'></image>
+      <image src='../../images/center11.png'></image>
       <view class='text'>当前买入预约</view>
     </view>
     <view class='yuan' bindtap='to_my_history_sender'>
-      <image src='../../images/center1 (4).png'></image>
+      <image src='../../images/center14.png'></image>
       <view class='text'>历史发单</view>
     </view>
     <view class='yuan' bindtap='to_my_history_order'>
-      <image src='../../images/center1 (3).png'></image>
+      <image src='../../images/center13.png'></image>
       <view class='text'>历史接单</view>
     </view>
   </view>

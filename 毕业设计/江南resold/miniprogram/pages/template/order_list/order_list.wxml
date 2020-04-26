@@ -4,16 +4,16 @@
            <view class='temp_img'>
             <image mode='aspectFit' src='{{goodsImage[0]}}'></image>
            </view>
-           <view class='temp_title'>{{goodsName}}</view>
+           <view class='temp_title'><span class="itemTitle">{{goodsName}}</span></view>
         </view>
         <view class='right'>
-           <view class='remark' wx:if="{{goodsStatus==0}}">状态：未被预约</view>
-           <view class='remark' wx:if="{{goodsStatus==1}}">状态：已被预约</view>
-           <view class='remark' wx:if="{{goodsStatus==2}}">状态：已完成</view>
-           <view class='remark'>备注：{{goodsremark}}</view>
-           <view class='price'>报价：{{goodsMinprice}}元--{{goodsMaxprice}}元</view>
-           <view class='time' hidden="{{goodsStatus==2}}">发布时间：{{releaseTime}}</view>
-           <view class='time' wx:if="{{goodsStatus==2}}">完成时间：{{releaseTime}}</view>
+           <view class='remark' wx:if="{{goodsStatus==0}}"><span class="itemTitle">状态：</span>未被预约</view>
+           <view class='remark' wx:if="{{goodsStatus==1}}"><span class="itemTitle">状态：</span>已被预约</view>
+           <view class='remark' wx:if="{{goodsStatus==2}}"><span class="itemTitle">状态：</span>已完成</view>
+           <view class='remark'><span class="itemTitle">备注：</span>{{goodsremark}}</view>
+           <view class='price'><span class="itemTitle">报价：</span>{{goodsMinprice}}元--{{goodsMaxprice}}元</view>
+           <view class='time' hidden="{{goodsStatus==2}}"><span class="itemTitle">发布时间：</span>{{releaseTime}}</view>
+           <view class='time' wx:if="{{goodsStatus==2}}"><span class="itemTitle">完成时间：</span>{{releaseTime}}</view>
         </view>
    </view>
 </template>

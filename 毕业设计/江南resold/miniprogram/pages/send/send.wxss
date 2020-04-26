@@ -27,7 +27,7 @@
   width: 40%;
   float: left;
   margin-left:45rpx; 
-  background-color:rgb(45, 173, 251);
+   background:linear-gradient(rgb(44, 203 ,250),rgb(45 ,169 ,251));
   color: rgb(255,255,255);
   text-align: center;
   line-height: 60rpx; 
@@ -255,6 +255,103 @@ border-radius:15rpx;
  width: 280rpx;
  border: 2rpx solid rgb(199, 197, 197);
 }
+
+.Unsection{
+    display: flex;
+   flex-direction: row;
+   line-height:60rpx;
+   height: 60rpx;
+   width:310rpx;
+   margin-top:10px;
+   margin-bottom:10px;
+   background:#fff;
+   text-overflow:ellipsis;
+   border-radius:10rpx; 
+    color: rgb(155,155,155);
+   overflow: hidden;
+}
+.list_box{
+   position: absolute;
+   left: 140rpx;
+   top:80rpx;
+   float: left;
+   background: rgb(255, 255, 255);
+   width: 75%;
+   height: 300rpx;
+   overflow: scroll;
+   margin-left: 5%;
+   padding: 20rpx 0rpx;
+   z-index:100;
+}
+.item_search_list{
+   color:#9b9fa0;
+   font-size: 28rpx;
+   width:90%;
+   margin-left: 5%;
+   height: 60rpx;
+   line-height:60rpx; 
+   border-bottom:1rpx solid #e2e3e4;
+}
+#goodsName{
+   position: relative;
+}
+.section{
+   display: flex;
+   flex-direction: row;
+   line-height:60rpx;
+   height: 60rpx;
+   text-overflow:ellipsis;
+   margin-bottom:10px;
+   overflow: hidden;
+   width:310rpx;
+   margin-top:10px;
+  background:linear-gradient(#34c1f5,rgb(27, 124, 252));
+   border-radius:10rpx; 
+   color:#fff;
+}
+.section image{
+   width:30px;
+   height:40rpx;
+   margin-top:36rpx;
+   margin-left:20px;
+}
+.Unsection image{
+   width:30px;
+   height:40rpx;
+   margin-top:36rpx;
+   margin-left:20px;
+}
+.inner_text{
+   width:100%;
+   text-align: center;
+   height: 60rpx;  
+   line-height:60rpx;
+   position: relative;
+}
+.innerPicker{
+   line-height:60rpx;
+   height: 60rpx; 
+  width:100%;
+  font-size: 28rpx;
+  text-align: center;
+}
+.inner_text image{
+   width:26rpx;
+   height:15rpx;
+   position: absolute;
+   top:-12rpx;
+   opacity: 0.8;
+   right: 15rpx;
+}
+.pickerBox{
+   width:100%;
+   margin-bottom: 30rpx;
+   height: 60rpx;
+   display: flex;
+   flex-direction: row;
+   justify-content: space-around
+}
+
 .fix{
   position: fixed;
   right: 0rpx;
@@ -266,6 +363,9 @@ border-radius:15rpx;
   height: 145rpx;
   width: 120rpx;
 }
+
+
+
 @keyframes run {
   0%{
       bottom: 200rpx;

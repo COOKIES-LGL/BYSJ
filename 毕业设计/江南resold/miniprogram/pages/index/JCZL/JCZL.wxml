@@ -20,7 +20,7 @@
             </view>
             <view  wx:else>
          <view class="inner_text" >{{college_text}}
-         <image src='../../../images/Shape@2x.png'></image>
+         <image hidden="{{defaultValue}}" src='../../../images/Shape@2x.png'></image>
          </view> 
             </view>
          </picker>
@@ -31,7 +31,8 @@
             {{collegeArr[collegeIndex]}}
          </view>
          <view wx:else>
-      <view class="inner_text"  >{{major_text}}<image src='../../../images/Shape@2x.png'></image></view> 
+      <view class="inner_text"  >{{major_text}}
+      <image hidden="{{defaultValue}}" src='../../../images/Shape@2x.png'></image></view> 
          </view>
          </picker>
    </view>
@@ -52,7 +53,7 @@
                </block>
             </view>
           </view>
-      <view class="noData" hidden="{{noData}}">我是有底线的！</view>
-      <view class="nodata" hidden="{{noListData}}">
-      <image src="../../../images/nodata.png"></image><view>暂无数据</view></view>
 </view>
+<view class="noData" hidden="{{noData||noListData==false}}">我是有底线的！</view>
+<view class="nodata" hidden="{{noListData}}">
+<image src="../../../images/nodata.png"></image><view>暂无数据</view></view>

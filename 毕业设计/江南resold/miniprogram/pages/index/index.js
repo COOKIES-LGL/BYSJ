@@ -29,15 +29,15 @@ Page({
     options:[
       {
        img:'../../images/icon8.png',
-       name:'教材资料'
+       name:'教材课本'
       },
       {
         img: '../../images/icon4.png',
-        name: '寝室用品'
+        name: '考研资料'
       },
       {
         img: '../../images/icon6.png',
-        name: '三方服务'
+         name: '寝室用品'
       },
       {
         img: '../../images/icon5.png',
@@ -128,6 +128,7 @@ Page({
         wx.setStorageSync("searchtipArr", searchtipArr);
      }
   },
+
    onPageScroll: function (e) {
       var that =this;
       clearTimeout(this.data.s_timer)
@@ -326,15 +327,16 @@ Page({
   },
   navTo:function(e){
      var Index = e.currentTarget.dataset.index;
+     console.log(Index);
      switch(Index){
        case 0: wx.navigateTo({
          url: '../index/JCZL/JCZL',
        });break;
        case 1: wx.navigateTo({
-         url: '../index/QSYP/QSYP',
+           url: '../index/SFFW/SFFW',
        }); break;
        case 2: wx.navigateTo({
-         url: '../index/SFFW/SFFW',
+           url: '../index/QSYP/QSYP',
        }); break;
        case 3: wx.navigateTo({
          url: '../index/QT/QT',

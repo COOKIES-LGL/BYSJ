@@ -1,0 +1,23 @@
+/* pages/center/payPage/payPage.wxss */
+.Image{
+   width:60%;
+   height:400rpx;
+   margin-left:20%;
+   margin-top:300rpx;
+}
+image{
+width: 100%;
+height: 430rpx;
+}
+.mesg{
+   color:rgb(140, 138, 252);
+   font-size: 28rpx;
+   text-align: center;
+   line-height: 50rpx;
+}
+.tips{
+   margin-top: 80rpx;
+  font-size: 26rpx;
+  color:#666;
+  text-align: center;
+}
