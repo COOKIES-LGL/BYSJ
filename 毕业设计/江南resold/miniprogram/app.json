@@ -18,13 +18,14 @@
     "pages/order/order",
     "pages/detail/detail",
     "pages/rankList/rankList",
+    "pages/webView/webViewIndex/webViewIndex",
     "pages/innerManager/ManagerHome/ManagerHome",
-    "pages/webView/webViewIndex/webViewIndex"
+    "pages/innerManager/managerLogin/managerLogin"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#F6F6F6",
+    "navigationBarBackgroundColor": "#FfFfFf",
     "navigationBarTitleText": "江南resold",
     "navigationBarTextStyle": "black"
   },

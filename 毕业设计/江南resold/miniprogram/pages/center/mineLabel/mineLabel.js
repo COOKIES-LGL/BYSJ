@@ -5,14 +5,41 @@ Page({
     * 页面的初始数据
     */
    data: {
+     userinfo:'',
+     appUserInfo:{
+        eyeing:10,
+        fans:24,
+     },
+     application:[
+        {
+          img:'',
+          name:'',
+        }
+     ],
+     job:[
+        {
+           
+        }
+     ]
+   },
+   toEyeing:function(){
 
    },
+   toFans:function(){
 
+   },
    /**
     * 生命周期函数--监听页面加载
     */
+   init :function(){
+     this.setData({
+        userinfo:wx.getStorageSync("userInfo"),
+      //   appUserInfo: wx.getStorageSync("appUserInfo")
+     })
+     
+   },
    onLoad: function (options) {
-
+  
    },
 
    /**
@@ -26,7 +53,7 @@ Page({
     * 生命周期函数--监听页面显示
     */
    onShow: function () {
-
+     this.init();
    },
 
    /**

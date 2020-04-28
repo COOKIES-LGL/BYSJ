@@ -59,6 +59,18 @@ class cloudapi {
             console.error('[云函数] [login] 调用失败', err)
          }
       })
+      wx.cloud.callFunction({
+         name:"cloudStore",
+         data: {
+            obj: param.goodsImage,
+         },
+         success: res => {
+            console.log('[云函数] [cloudStore] 调用成功', res);
+         },
+         fail: err => {
+            console.error('[云函数] [cloudStore] 调用失败', err)
+         }
+      })
    }
    finishOrder(param, callback) {
       wx.cloud.callFunction({

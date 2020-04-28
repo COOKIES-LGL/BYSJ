@@ -26,10 +26,10 @@
     <image src='../../images/center12.png'></image>
     <view class='text'><span class="itemTitle">接受价位：</span>{{good.goodsMinprice}}￥→{{good.goodsMaxprice}}￥</view>
   </view>
-  <view class='yuan'>
+  <!-- <view class='yuan'>
     <image src='../../images/center14.png'></image>
     <view class='text'><span class="itemTitle">联系方式：</span>{{good.goodsphone}}</view>
-  </view>
+  </view> -->
   <view class='yuanRemark'>
     <image src='../../images/center13.png'></image>
     <view class='text'><span class="itemTitle">备注：</span>

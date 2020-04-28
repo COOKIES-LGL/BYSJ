@@ -1,0 +1,76 @@
+page{
+  background-color: #fff;
+  height: 700rpx;
+  font-family: '微软雅黑'
+
+}/* pages/login/login.wxss */
+.box{
+ display: flex;
+ flex-direction: column;
+ justify-content: space-between;
+ height: 260rpx;
+ position: relative;
+ width: 650rpx;
+ margin-left: 50rpx;
+ color:#fff;
+ margin-top: 420rpx;
+}
+.number{
+  height:100rpx;
+  width:100%; 
+  line-height: 100rpx;
+  display: flex;
+  flex-direction: row;
+}
+input{
+  border-radius: 10rpx;
+  padding-left: 40rpx;
+  background-color:#fff;
+  border: 2rpx solid rgb(45, 141, 251);
+  display: inline-block;
+  margin-left: 35rpx;
+  width: 450rpx;
+  height: 70rpx;
+  margin-top: 15rpx;
+  box-sizing:border-box; 
+  box-shadow: 5rpx 5rpx 15rpx rgb(45, 141, 251);
+  color: #000;
+}
+.inner{
+  display: inline-block;
+  height: 100rpx;
+  line-height: 100rpx;
+  color:#000;
+}
+
+.inner_text{
+    border: 2rpx solid rgb(45, 141, 251);
+  width: 450rpx;
+  height: 70rpx;
+  text-align: center;
+  line-height: 70rpx;
+  display: inline-block;
+  background-color: #fff;
+  box-shadow: 5rpx 5rpx 15rpx  rgb(45, 141, 251);
+  margin-left: 35rpx;
+  border-radius: 10rpx;
+  color: #888;
+
+}
+.submit{
+  position: absolute;
+  top: 340rpx;
+  text-align: center;
+  border-radius: 10rpx;
+  left: 108rpx;
+  width: 450rpx;
+  height:80rpx;
+  line-height: 80rpx;
+  background: radial-gradient(rgb(45, 141, 251),rgb(55, 176, 252));
+  animation: myfirst 2s linear infinite; 
+}
+@keyframes myfirst
+{
+from { background: radial-gradient(rgb(36, 138, 255),rgb(55, 176, 252))}
+to { background: radial-gradient(rgb(55, 176, 252),rgb(19, 123, 243))}
+}

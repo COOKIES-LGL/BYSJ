@@ -31,7 +31,13 @@
   </view>
   <view class='yuan'>
     <image src='../../../../images/center14.png'></image>
-    <view class='text'><span class="itemTitle">联系方式：</span>{{good.goodsphone}}</view>
+    <view class='text'>
+           <span class="itemTitle">联系方式：</span>
+           <span class="phone"   bindtap="freeTell">电话：
+           <span class=".blueClass">{{good.goodsphone}}</span></span>
+           <span class="wechat"  bindtap="freeCopy" >微信：
+           <span class=".blueClass">{{good.goodswechat}}</span></span>
+    </view>
   </view>
   <view class='yuanRemark'>
     <image src='../../../../images/center13.png'></image>

@@ -1,1 +1,75 @@
 /* pages/center/mineLabel/mineLabel.wxss */
+page{
+   background: #FfFfFf;
+}
+.senderBox{
+   padding-top:20rpx; 
+  width: 700rpx;
+  margin-left:15rpx; 
+  height: 120rpx;
+  display: flex;
+  flex-direction: row;
+  line-height: 100rpx;
+  font-size: 26rpx;
+  padding-bottom:20rpx; 
+}
+.weight{
+   font-weight:bold; 
+}
+.senderBox .text{
+   margin-left: 250rpx;
+}
+.senderBox .botText{
+   margin-top: 40rpx;
+   color:rgb(36, 146, 248);
+   margin-left: 20rpx;
+}
+.senderBox image{
+   border-radius: 50%;
+   height: 120rpx;
+   width:120rpx;
+   margin-left:30rpx; 
+}
+.reac{
+  position: absolute;
+  top: 350rpx;
+  left: 0rpx;
+  width:0;
+  height:0;
+  }
+.senderName{
+  position: absolute;
+  width:750rpx;
+  font-size: 30rpx;
+  height: 150rpx;
+  left:200rpx;
+}
+.line{background-color: #f5f5f5;width:100%;height:15rpx;}
+.lookMore{
+   font-size: 26rpx;
+   color: rgb(36, 146, 248);
+   margin-right: 20rpx;
+}
+.title{
+   font-weight: bold;
+}
+.application{
+   height: 400rpx;
+   width:100%;
+   display: flex;
+   flex-direction: column;
+}
+.application .top{
+   height: 80rpx;
+   font-size: 28rpx;
+   line-height: 80rpx;
+   text-indent:2em; 
+   width:100%;
+   display: flex;
+   flex-direction:row;
+   justify-content: space-between;  
+}
+.application .bottom{
+   height: 320rpx;
+   width:100%; 
+}

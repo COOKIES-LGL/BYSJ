@@ -1,19 +1,28 @@
+import * as echarts from '../../../ec-canvas/echarts';
+import { pieOption, initChart } from './func.js';
 // pages/innerManager/ManagerHome/ManagerHome.js
 Page({
-
-  /**
-   * 页面的初始数据
-   */
-  data: {
-
-  },
-
+   data: {
+      ec: {
+         onInit: initChart(pieOption)
+      }
+   },
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+   initOptions: function () {
+      pieOption.series[0].data = [
+         { value: 55, name: '北京' },
+         { value: 20, name: '武汉' },
+         { value: 10, name: '杭州' },
+         { value: 20, name: '广州' },
+         { value: 38, name: '上海' }
+      ];
+   },
 
-  },
+   onLoad: function (options) {
+      this.initOptions();
+   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -26,7 +35,6 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
   },
 
   /**

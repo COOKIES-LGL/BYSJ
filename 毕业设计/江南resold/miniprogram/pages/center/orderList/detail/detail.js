@@ -116,7 +116,30 @@ Page({
             })
          }, 500);
       }
-      cloudApi.deleteOrderOrder(param, callback);
+      cloudApi.deleteOrder(param, callback);
+   },
+   freeTell: function () {//拨打电话
+
+      wx.makePhoneCall({
+
+         phoneNumber: this.data.good.goodsphone,
+
+      })
+
+   },
+   freeCopy: function (e) {
+      wx.setClipboardData({
+         data: this.data.good.goodswechat,
+         success: function (res) {
+            wx.getClipboardData({
+               success: function (res) {
+                  wx.showToast({
+                     title: '微信号已复制'
+                  })
+               }
+            })
+         }
+      })
    },
    /**
     * 页面相关事件处理函数--监听用户下拉动作

@@ -1,1 +1,8 @@
 /* pages/innerManager/ManagerHome/ManagerHome.wxss */
+.container{
+    padding: 15rpx;
+    margin: 15rpx 0rpx;
+    width: 100%;
+    height: 50%;
+    box-sizing: border-box;
+}

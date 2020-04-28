@@ -97,9 +97,35 @@ margin-left: 50rpx;
 }
 .yuan .text{
   text-indent: 2ex;
+  position: relative
+}
+.phone{
+position: absolute;
+top:50rpx;
+height: 50rpx;
+line-height: 50rpx;
+left: 200rpx;
+width:300rpx;
+display: inline-block;
+
+}
+.blueClass{
+color: rgb(36, 146, 248);
+text-decoration: underline;
+}
+.wechat{
+height: 50rpx;  
+line-height: 50rpx; 
+position: absolute;
+width:300rpx;
+top:0rpx;
+left: 200rpx;
+display: inline-block;
 }
 textarea{
   height: 120rpx;
+  width: 300rpx;
+  padding-left:40rpx; 
 }
 .StatusBox{
    color:red;

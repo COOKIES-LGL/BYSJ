@@ -187,9 +187,9 @@ Page({
    },
    bindInput: function (e) {
       var value = e.detail.value;
-      if (value === "jndx") {
+      if (value === "manager") {
          wx.navigateTo({
-            url: '../innerManager/ManagerHome/ManagerHome',
+            url: '../innerManager/managerLogin/managerLogin',
          })
       } else {
          this.seachAction(value);

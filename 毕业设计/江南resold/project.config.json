@@ -69,6 +69,27 @@
 					"id": -1,
 					"name": "pages/index/JCZL/JCZL",
 					"pathName": "pages/index/JCZL/JCZL",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/innerManager/managerLogin/managerLogin",
+					"pathName": "pages/innerManager/managerLogin/managerLogin",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/innerManager/ManagerHome/ManagerHome",
+					"pathName": "pages/innerManager/ManagerHome/ManagerHome",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/center/mineLabel/mineLabel",
+					"pathName": "pages/center/mineLabel/mineLabel",
 					"scene": null
 				}
 			]

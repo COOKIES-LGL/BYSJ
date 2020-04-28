@@ -1,2 +1,39 @@
-<!--pages/center/mineLabel/mineLabel.wxml-->
-<text>pages/center/mineLabel/mineLabel.wxml</text>
+<view class='senderBox'>
+   <image src="{{userinfo.avatarUrl}}"></image>
+   <view class="senderName">{{userinfo.nickName}}</view>
+   <view class='text'>{{userinfo.gender=="1"?"♂":"♀"}}</view>
+   <view class='botText' bindtap="toEyeing">关注:<span class="weight">{{appUserInfo.eyeing}}</span></view>
+   <view class='botText' bindtap="toFans">粉丝:<span class="weight">{{appUserInfo.fans}}</span></view>
+</view>
+<view class="line"></view>
+<view class="application">
+   <view class="top">
+      <view class="title">求职考研神器</view>
+      <view class="lookMore">查看更多</view>
+   </view>
+   <view class="bottom">
+   </view>
+</view>
+<view class="line"></view>
+<view class="application">
+   <view class="top">
+      <view class="title">职业养成计划</view>
+      <view class="lookMore">查看更多</view>
+   </view>
+   <view class="bottom">
+   </view>
+</view>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

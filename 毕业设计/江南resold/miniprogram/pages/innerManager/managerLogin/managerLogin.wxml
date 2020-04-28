@@ -1,0 +1,20 @@
+
+<view class="box" >
+<view class="number"><span class='inner'>学校:</span>
+   <view class='sub'>
+      <picker bindchange="bindMultiPickerChange2" bindcolumnchange="bindMultiPickerColumnChange2" value="{{multiIndex2}}" range="{{multiArray2}}">
+          <view class="inner_text" wx:if="{{changed2 == true}}">
+              {{multiArray2[multiIndex2]}}
+          </view>
+           <view class="inner_text" wx:else>
+              选择学校
+          </view>
+      </picker>
+  </view>
+</view>
+<!-- <view class='number'><span class='inner'>学号:</span><input maxlength='8' bindchange='check_number' type='number'></input></view> -->
+<view class='number'><span class='inner'>密码:</span><input maxlength='6'  bindblur='check_psd' type='password'></input></view>
+
+
+<view class='submit' bindtap='login' >登录</view>
+</view>

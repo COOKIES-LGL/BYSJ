@@ -120,12 +120,7 @@ function deleteOrder(event) {
    try { // data 传入需要局部更新的数据
       return db.collection('sendOrders').doc(event.obj._id).remove({
          success(res) {
-            console.log(res);
-            const fileIDs = event.obj.goodsImage
-            const result = await cloud.deleteFile({
-               fileList: fileIDs,
-            })
-            console.log(result);
+            console.log(res)
          },
          fail(res) {
             console.log(res, "删除失败！")

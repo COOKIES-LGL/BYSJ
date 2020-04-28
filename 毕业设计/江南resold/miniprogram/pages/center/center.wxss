@@ -1,5 +1,8 @@
 /* pages/center/center.wxss */
 @import "../template/alert/alert.wxss";
+page{
+   font-family: "微软雅黑"
+}
 .box{
   width: 750rpx;
   height: 1200rpx;
