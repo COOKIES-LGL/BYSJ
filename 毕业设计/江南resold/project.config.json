@@ -90,6 +90,13 @@
 					"id": -1,
 					"name": "pages/center/mineLabel/mineLabel",
 					"pathName": "pages/center/mineLabel/mineLabel",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/userAgreement/userAgreement",
+					"pathName": "pages/userAgreement/userAgreement",
 					"scene": null
 				}
 			]

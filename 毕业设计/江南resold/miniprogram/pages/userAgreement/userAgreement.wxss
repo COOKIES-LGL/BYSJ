@@ -1,0 +1,9 @@
+p {
+        display:inline-block;
+
+}
+
+view {
+    margin: 20rpx;
+}
+

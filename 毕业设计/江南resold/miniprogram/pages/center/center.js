@@ -113,6 +113,11 @@ Page({
          default: break;
       }
    },
+   nav_sort:function(){
+     wx:wx.navigateTo({
+        url: '../userAgreement/userAgreement',
+     }) 
+   },
    turndown: function (a, b, c, d, e) {//授权弹窗
       this.setData({
          alert: {

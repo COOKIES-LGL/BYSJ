@@ -3,7 +3,7 @@ page{
    background: #FfFfFf;
 }
 .senderBox{
-   padding-top:20rpx; 
+  padding-top:20rpx; 
   width: 700rpx;
   margin-left:15rpx; 
   height: 120rpx;
@@ -30,13 +30,52 @@ page{
    width:120rpx;
    margin-left:30rpx; 
 }
-.reac{
-  position: absolute;
-  top: 350rpx;
-  left: 0rpx;
-  width:0;
-  height:0;
-  }
+.xinzuoImage{
+   padding: 0rpx 40rpx; 
+   width:100%; 
+}
+.xinzuoImage image{
+   width:100%;
+   box-shadow: 6rpx 8rpx 15rpx #3e778de3;
+   border-radius: 10rpx; 
+}
+.intitemBox{
+   height: 60rpx;
+   width:160rpx;
+   display: flex;
+   box-shadow: 2rpx 2rpx 4rpx rgb(36, 146, 248);
+   border-radius: 10rpx;
+   flex-direction:column; 
+}
+.intitemBox .intname{
+   width:100%;
+   height: 60rpx;
+   line-height: 60rpx;
+   text-align: center;
+   font-size: 26rpx;
+   color:#888;
+}
+.itemBox{
+   height: 160rpx;
+   width:180rpx;
+   display: flex;
+   flex-direction:column; 
+}
+.itemChoiced{
+   width:100%;
+   height: 60rpx;
+   line-height: 60rpx;
+   text-align: center;
+   font-size: 26rpx;
+   color:#fff;
+   background: rgb(36, 146, 248);
+}
+.bottom{
+   display: flex;
+   flex-direction: row;
+   justify-content: space-around;
+   flex-wrap: wrap; 
+}
 .senderName{
   position: absolute;
   width:750rpx;
@@ -48,7 +87,7 @@ page{
 .lookMore{
    font-size: 26rpx;
    color: rgb(36, 146, 248);
-   margin-right: 20rpx;
+   margin-right: 40rpx;
 }
 .title{
    font-weight: bold;
@@ -63,7 +102,7 @@ page{
    height: 80rpx;
    font-size: 28rpx;
    line-height: 80rpx;
-   text-indent:2em; 
+   text-indent:1.5em; 
    width:100%;
    display: flex;
    flex-direction:row;
@@ -72,4 +111,65 @@ page{
 .application .bottom{
    height: 320rpx;
    width:100%; 
+}
+.applicationTop{
+   height: 550rpx;
+   width:100%;
+   display: flex;
+   flex-direction: column;
+}
+.applicationTop .top{
+   height: 80rpx;
+   font-size: 28rpx;
+   line-height: 80rpx;
+   text-indent:1.5em; 
+   width:100%;
+   display: flex;
+   flex-direction:row;
+   justify-content: space-between;  
+}
+.applicationTop .bottom{
+   height: 470rpx;
+   width:100%; 
+}
+.musicInput{
+   height: 80rpx;
+   width:450rpx;
+   font-size: 28rpx;
+   line-height: 80rpx;
+}
+.applicationMusic{
+   height: 80rpx;
+   width:100%;
+   display: flex;
+   flex-direction: column;
+}
+.applicationMusic .top{
+   height: 80rpx;
+   font-size: 28rpx;
+   line-height: 80rpx;
+   text-indent:1.5em; 
+   width:100%;
+   display: flex;
+   flex-direction:row;
+   justify-content: space-between;  
+}
+.img{
+  width: 100%;
+  padding:0 60rpx;
+  height: 80rpx;
+}
+.img image{
+   width:60rpx;
+   height:60rpx;
+}
+.name{
+   width:100%;
+   height: 80rpx;
+   text-align: center;
+   font-size: 26rpx;
+}
+.url{
+   width:50rpx;
+   height:50rpx;
 }

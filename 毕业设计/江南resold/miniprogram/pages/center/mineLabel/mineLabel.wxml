@@ -6,23 +6,60 @@
    <view class='botText' bindtap="toFans">粉丝:<span class="weight">{{appUserInfo.fans}}</span></view>
 </view>
 <view class="line"></view>
+<view class="applicationTop">
+   <view class="top">
+      <view class="title">我的标签</view>
+      <view class="lookMore" > 
+        <view class="section">  
+         <picker mode="date" value="{{dates}}" start="1995-06-06" end="2020-06-06" bindchange="bindDate"> 
+          <view class="picker">  
+           出生日期: {{dates}}  
+          </view>  
+         </picker>  
+        </view>
+      </view>
+   </view>
+   <view class="bottom">
+      <view class="xinzuoImage"><image src="{{xinzuoImage}}"></image></view>
+      <!-- <view class="interest">
+
+      </view>  -->
+   </view>
+</view>
+<view class="line"></view>
+<view class="applicationMusic">
+   <view class="top">
+      <view class="title" style="color:#888">最近常听🎵</view>
+      <view class="lookMore"><input placeholder="请输入您最近常听的音乐" class="musicInput" bindblur="musicInput" value="{{musicList}}"></input></view>
+   </view>
+</view>
+<view class="line"></view>
+<view class="application">
+   <view class="top">
+      <view class="title" style="color:#888">兴趣爱好</view>
+   </view>
+   <view class="bottom">
+    <view class="intitemBox" wx:for="{{interest}}" wx:key='id'>
+       <view class="{{item.status==0?'intname':'itemChoiced'}}" bindtap="choiceItem" data-Id="{{item.value}}" >{{item.value}}</view>
+    </view>
+   </view>
+</view>
+<view class="line"></view>
 <view class="application">
    <view class="top">
       <view class="title">求职考研神器</view>
       <view class="lookMore">查看更多</view>
    </view>
    <view class="bottom">
+    <view class="itemBox" wx:for="{{application}}" wx:key='id'>
+       <view class="img"><image src="{{item.img}}"></image></view>
+       <view class="name">{{item.name}}</view>
+       <view class="url" hidden="{{!item.url}}">{{item.url}}</view>
+    </view>
    </view>
 </view>
-<view class="line"></view>
-<view class="application">
-   <view class="top">
-      <view class="title">职业养成计划</view>
-      <view class="lookMore">查看更多</view>
-   </view>
-   <view class="bottom">
-   </view>
-</view>
+
+
 
 
 

@@ -1,0 +1,330 @@
+<view>
+    <ol type="1" style="margin:0pt; padding-left:0pt">
+        <li style="font-family:等线; font-size:10.5pt; margin:0pt 0pt 0pt 12.88pt; orphans:0; padding-left:5.12pt; text-align:justify; text-indent:0pt; widows:0">
+        </li>
+    </ol>
+    <p style=" orphans:0; text-align:justify; text-indent:1.5em; widows:0">
+        <span style="font-family:等线; font-size:12pt;font-weight:bold">欢迎您使用江南resold校园二手交易平台及服务</span>
+        <span style="font-family:等线; font-size:10.5pt">。</span>
+    </p>
+    <p style=" orphans:0; text-align:justify; text-indent:1.5em; widows:0">
+        <span style="font-family:等线; font-size:10.5pt;">为使用江南resold校园二手交易服务平台（以下统称“本平台”）及服务，您应当阅读并遵守《江南resold校园二手交易平台软件许可及服务协议》（以下简称“本协议”）。请您务必审慎阅读、充分理解各条款内容，特别是免除或者限制责任的条款，以及开通或使用某项服务的单独协议，并选择接受或不接受。限制、免责条款可能以加粗形式提示您注意。</span>
+    </p>
+    <p style=" orphans:0; text-align:justify; text-indent:21pt; widows:0">
+        <span style="font-family:等线; font-size:10.5pt; font-weight:bold">除非您以阅读并接受本协议所有条款，否则您无权下载、安装或使用本平台及相关服务。您的下载、安装、使用、注册、登陆等行为即视为您已阅读并统一本协议的约束。</span>
+    </p>
+    <p style=" orphans:0; text-align:justify; text-indent:21pt; widows:0">
+        <span style="font-family:等线; font-size:10.5pt">如您未满18岁，请在法定监护人的陪同下阅读本协议，并特别注意未成年人使用条款。</span>
+    </p>
+    <p style=" orphans:0; text-align:justify; widows:0">
+        <span style="font-family:等线; font-size:10.5pt"></span>
+    </p>
+    <p style=" orphans:0; text-align:justify; widows:0">
+        <span style="font-family:等线; font-size:10.5pt"></span>
+    </p>
+    <p style=" orphans:0; text-align:justify; text-indent:3pt; widows:0">
+        <span style="font-family:等线; font-size:10.5pt; font-weight:bold">一、【用户个人信息保护】</span>
+    </p>
+    <p style=" orphans:0; text-align:justify; text-indent:18pt; widows:0">
+        <span style="font-family:等线; font-size:10.5pt">1.1保护用户个人信息是江南resold的一项基本原则。江南resold将按照本协议即《隐私政策》的规定收集、使用、储存和分享您的个人信息。本协议对个人信息保护规定的内容与上述《隐私政策》有相冲突的，即本协议对个人信息保护相关内容未作明确规定的，均应以《隐私政策》的内容为准。</span>
+    </p>
+    <p style=" orphans:0; text-align:justify; text-indent:18pt; widows:0">
+        <span style="font-family:等线; font-size:10.5pt">1.2您在注册账号或使用本服务的过程中，可能需要填写一些必要的信息。若国家法律法规有特殊规定的，您需要填写真实的身</span>
+        <span style="font-family:等线; font-size:10.5pt">份信息。若您填写的信息不完整，则无法使用本服务或在使用的过程中受</span>
+        <span style="font-family:等线; font-size:10.5pt">到限制。</span>
+    </p>
+    <p style=" orphans:0; text-align:justify; text-indent:18pt; widows:0">
+        <span style="font-family:等线; font-size:10.5pt">1.3江南resold为了保障用户的可信度以及用户的人身及财产安全，部分功能仅对通过了学生身份验证的用户开放，学生身份验证需要提交用户个人真实姓名以及学号，学校等相关信息，并上传学生证以及校园卡照片以证明学生身份，一经认证除特殊情况外不允许修改。所有用于学生身份验证的个人信息仅用于学生身份验证，不用于其他用途。</span>
+    </p>
+    <p style=" orphans:0; text-align:justify; text-indent:18pt; widows:0">
+        <span style="font-family:等线; font-size:10.5pt">1</span>
+        <span style="font-family:等线; font-size:10.5pt">.4一般情况下，您可以随时浏览、</span>
+        <span style="font-family:等线; font-size:10.5pt">修</span>
+        <span style="font-family:等线; font-size:10.5pt">改自己提交的部分信息</span>
+        <span style="font-family:等线; font-size:10.5pt">，但是出于安全性和身份</span>
+        <span style="font-family:等线; font-size:10.5pt">识别的考虑，您可能无法修改注册时提供的初始注册信息及其他验证信息。</span>
+    </p>
+    <p style=" orphans:0; text-align:justify; text-indent:18pt; widows:0">
+        <span style="font-family:等线; font-size:10.5pt">1.5江南resold将运用各种安全技术和程序建立完善的管理制度来保护您的个人信息，以免遭受未经授权的访问，使用或披露。</span>
+    </p>
+    <p style=" orphans:0; text-align:justify; text-indent:18pt; widows:0">
+        <span style="font-family:等线; font-size:10.5pt">1.6</span>
+        <span style="font-family:等线; font-size:10.5pt">江南resold</span>
+        <span style="font-family:等线; font-size:10.5pt">不会将您的个人信息转移或披露给任何非关联的第三方，除非：</span>
+    </p>
+    <p style=" orphans:0; text-align:justify; widows:0">
+        <span style="width:3pt; text-indent:0pt; display:inline-block"></span>
+        <span style="font-family:等线; font-size:10.5pt"> </span>
+        <span style="width:18.38pt; text-indent:0pt; display:inline-block"></span>
+        <span style="font-family:等线; font-size:10.5pt">（1）相关法律法规或法院、政府机关要求；</span>
+    </p>
+    <p style=" orphans:0; text-align:justify; widows:0">
+        <span style="font-family:等线; font-size:10.5pt"> </span>
+        <span style="width:18.38pt; text-indent:0pt; display:inline-block"></span>
+        <span style="font-family:等线; font-size:10.5pt">（2）</span>
+        <span style="font-family:等线; font-size:10.5pt">未完成合并、分立、收购或资产转让而转移；</span>
+    </p>
+    <p style="margin:0pt; orphans:0; text-align:justify; widows:0">
+        <span style="font-family:等线; font-size:10.5pt"> </span>
+        <span style="width:18.38pt; text-indent:0pt; display:inline-block"></span>
+        <span style="font-family:等线; font-size:10.5pt">（3）为提供您要求的服务所必需。</span>
+    </p>
+    <p style="margin:0pt; orphans:0; text-align:justify; widows:0">
+        <span style="font-family:等线; font-size:10.5pt"></span>
+    </p>
+    <p style=" orphans:0; text-align:justify; text-indent:21pt; widows:0">
+        <span style="font-family:等线; font-size:10.5pt; font-weight:bold">二、【</span>
+        <span style="font-family:等线; font-size:10.5pt; font-weight:bold">关于服务的提供与使用设备</span>
+        <span style="font-family:等线; font-size:10.5pt; font-weight:bold">】</span>
+    </p>
+    <p style=" orphans:0; text-align:justify; text-indent:21pt; widows:0">
+        <span style="font-family:等线; font-size:10.5pt; font-weight:bold">2.1您应当理解，您使用</span>
+        <span style="font-family:等线; font-size:10.5pt; font-weight:bold">江南resold</span>
+        <span style="font-family:等线; font-size:10.5pt; font-weight:bold">的服务需自行准备与相关服务有关的终端设备（如</span>
+        <span style="font-family:等线; font-size:10.5pt; font-weight:bold">电脑，智能手机等设备</span>
+        <span style="font-family:等线; font-size:10.5pt; font-weight:bold">），并承担所需的费用（如电话费、上网费等费用）。</span>
+    </p>
+    <p style=" orphans:0; text-align:justify; text-indent:21pt; widows:0">
+        <span style="font-family:等线; font-size:10.5pt; font-weight:bold">2.2您理解并同意，您使用本服务时会耗用您的终端设备和带宽等资源。</span>
+    </p>
+    <p style=" orphans:0; text-align:justify; text-indent:21pt; widows:0">
+        <span style="font-family:等线; font-size:10.5pt; font-weight:normal">2.3</span>
+        <span style="font-family:等线; font-size:10.5pt; font-weight:normal">您理解并同意，江南resold的服务是按照现有技术和条件所能达到的现状提供的。江南resold会</span>
+        <span style="font-family:等线; font-size:10.5pt; font-weight:normal">尽最大努力向您提供服务，确保服务的连贯性和安全性；</span>
+        <span style="font-family:等线; font-size:10.5pt; ">但江南resold不能随时预见和防范法律、技术以及其他风险，包括但不限于不可抗力、病毒、木马、黑客攻击、系统不稳定、第</span>
+        <span style="font-family:等线; font-size:10.5pt; ">三方服务瑕疵、政府行为等原因可能导致的服务中断、数据丢失</span>
+        <span style="font-family:等线; font-size:10.5pt;">以及其他的损失和风险。</span>
+    </p>
+    <p style=" orphans:0; text-align:justify; text-indent:21pt; widows:0">
+        <span style="font-family:等线; font-size:10.5pt"></span>
+    </p>
+    <p style=" orphans:0; text-align:justify; widows:0">
+        <span style="font-family:等线; font-size:10.5pt"></span>
+    </p>
+    <p style=" orphans:0; text-align:justify; text-indent:21pt; widows:0">
+        <span style="font-family:等线; font-size:10.5pt; font-weight:bold">三、【广告】</span>
+    </p>
+    <p style=" orphans:0; text-align:justify; text-indent:21pt; widows:0">
+        <span style="font-family:等线; font-size:10.5pt">3.1您同意</span>
+        <span style="font-family:等线; font-size:10.5pt">江南resold</span>
+        <span style="font-family:等线; font-size:10.5pt">可以在提供服务的过程中自行或由第三方广告商向您发送广告、推广或宣传信息（包括商业与非商业信息），其方式和范围可不经向您特别通知而变更。</span>
+    </p>
+    <p style=" orphans:0; text-align:justify; text-indent:21pt; widows:0">
+        <span style="font-family:等线; font-size:10.5pt">3.2</span>
+        <span style="font-family:等线; font-size:10.5pt">江南resold</span>
+        <span style="font-family:等线; font-size:10.5pt">可能为您提供选择关闭广告信息的功能，但任何时候您都不得以本协议未明确约定或</span>
+        <span style="font-family:等线; font-size:10.5pt">江南resold</span>
+        <span style="font-family:等线; font-size:10.5pt">未书面许可的方式屏蔽、过滤广告信息。</span>
+    </p>
+    <p style=" orphans:0; text-align:justify; text-indent:21pt; widows:0">
+        <span style="font-family:等线; font-size:10.5pt">3.3</span>
+        <span style="font-family:等线; font-size:10.5pt">江南resold</span>
+        <span style="font-family:等线; font-size:10.5pt">依照法律的规定对广告商履行相关义务，您应当自行判断广告信息的真实性并为自己的判断行为负责，</span>
+        <span style="font-family:等线; font-size:10.5pt; font-weight:bold">除法律明确规定外，您因依该广告信息进行的交易或前述广告商提供的内容而遭受的损失或损害，</span>
+        <span style="font-family:等线; font-size:10.5pt; font-weight:bold">江南resold</span>
+        <span style="font-family:等线; font-size:10.5pt; font-weight:bold">不承担责任。</span>
+    </p>
+    <p style=" orphans:0; text-align:justify; text-indent:21pt; widows:0">
+        <span style="font-family:等线; font-size:10.5pt">3.4您同意，对</span>
+        <span style="font-family:等线; font-size:10.5pt">江南resold</span>
+        <span style="font-family:等线; font-size:10.5pt">服务中出现的广告信息，您应审慎判断其真实性和可靠性，除法律明确规定外，您应对依该广告信息进行的交易负责。</span>
+    </p>
+    <p style=" orphans:0; text-align:justify; widows:0">
+        <span style="font-family:等线; font-size:10.5pt"></span>
+    </p>
+    <p style=" orphans:0; text-align:justify; text-indent:3pt; widows:0">
+        <span style="font-family:等线; font-size:10.5pt; font-weight:bold">四、【知识产权声明】</span>
+    </p>
+    <p style=" orphans:0; text-align:justify; text-indent:15pt; widows:0">
+        <span style="font-family:等线; font-size:10.5pt">4.1</span>
+        <span style="font-family:等线; font-size:10.5pt">江南resold</span>
+        <span style="font-family:等线; font-size:10.5pt">在本服务中提供的内容（包括但不限于网页、文字、图片、音频、视频、图表等）的知识产权归</span>
+        <span style="font-family:等线; font-size:10.5pt">江南resold</span>
+        <span style="font-family:等线; font-size:10.5pt">所有，用户在使用本服务中所产生的内容的知识产权归用户或相关权利人所有。</span>
+    </p>
+    <p style=" orphans:0; text-align:justify; text-indent:15pt; widows:0">
+        <span style="font-family:等线; font-size:10.5pt">4.2除另有特别声明外，</span>
+        <span style="font-family:等线; font-size:10.5pt">江南resold</span>
+        <span style="font-family:等线; font-size:10.5pt">提供本服务时所依托软件的著作权、专利权及其他知识产权均归</span>
+        <span style="font-family:等线; font-size:10.5pt">江南resold</span>
+        <span style="font-family:等线; font-size:10.5pt">所有。</span>
+    </p>
+    <p style=" orphans:0; text-align:justify; text-indent:15pt; widows:0">
+        <span style="font-family:等线; font-size:10.5pt">4.3</span>
+        <span style="font-family:等线; font-size:10.5pt">江南resold</span>
+        <span style="font-family:等线; font-size:10.5pt">在本服务中所使用的“</span>
+        <span style="font-family:等线; font-size:10.5pt">江南resold</span>
+        <span style="font-family:等线; font-size:10.5pt">”、及</span>
+        <span style="font-family:等线; font-size:10.5pt">江南resold标志</span>
+        <span style="font-family:等线; font-size:10.5pt">等商业标识，其著作权或商标权归</span>
+        <span style="font-family:等线; font-size:10.5pt">江南resold</span>
+        <span style="font-family:等线; font-size:10.5pt">所有。</span>
+    </p>
+    <p style=" orphans:0; text-align:justify; text-indent:15pt; widows:0">
+        <span style="font-family:等线; font-size:10.5pt">4.4上述及其他任何本服务包含的内容的知识产权均受到法律保护，未经</span>
+        <span style="font-family:等线; font-size:10.5pt">江南resold</span>
+        <span style="font-family:等线; font-size:10.5pt">、用户或相关权利人书面许可，任何人不得以任何形式进行使用或创造相关衍生作品。</span>
+    </p>
+    <p style=" orphans:0; text-align:justify; widows:0">
+        <span style="font-family:等线; font-size:10.5pt"></span>
+    </p>
+    <p style=" orphans:0; text-align:justify; text-indent:3pt; widows:0">
+        <span style="font-family:等线; font-size:10.5pt; font-weight:bold">五、【用户违法行为】</span>
+    </p>
+    <p style=" orphans:0; text-align:justify; text-indent:15pt; widows:0">
+        <span style="font-family:等线; font-size:10.5pt">5.1您在使用本服务时须遵守法律法规，不得利用本服务从事违法违规行为，包括但不限于：</span>
+    </p>
+    <p style=" orphans:0; text-align:justify; widows:0">
+        <span style="font-family:等线; font-size:10.5pt">（1）发布、传送、传播、储存危害国家安全统一、破坏社会稳定、违反公序良俗、侮辱、诽谤、淫秽、暴力以及任何违反国家法律法规的内容；</span>
+    </p>
+    <p style=" orphans:0; text-align:justify; widows:0">
+        <span style="font-family:等线; font-size:10.5pt">（2）发布、传送、传播、储存侵害他人知识产权、商业秘密等合法权利的内容；</span>
+    </p>
+    <p style=" orphans:0; text-align:justify; widows:0">
+        <span style="font-family:等线; font-size:10.5pt">（3）恶意虚构事实、隐瞒真相以误导、欺骗他人；</span>
+    </p>
+    <p style=" orphans:0; text-align:justify; widows:0">
+        <span style="font-family:等线; font-size:10.5pt">（4）发布、传送、传播广告信息及垃圾信息；</span>
+    </p>
+    <p style=" orphans:0; text-align:justify; widows:0">
+      <span style="font-family:等线; font-size:10.5pt">（5）其他法律法规禁止的行为。</span>
+    </p>
+    <p style=" orphans:0; text-align:justify; text-indent:21pt; widows:0">
+        <span style="font-family:等线; font-size:10.5pt">5.2如果您违反了本条约定，相关国家机关或机构可能会对您提起诉讼、罚款或采取其他制裁措施，并要求</span>
+        <span style="font-family:等线; font-size:10.5pt">江南resold</span>
+        <span style="font-family:等线; font-size:10.5pt">给予协助。</span>
+        <span style="font-family:等线; font-size:10.5pt; font-weight:bold">造成损害的，您应依法予以赔偿，</span>
+        <span style="font-family:等线; font-size:10.5pt; font-weight:bold">江南resold</span>
+        <span style="font-family:等线; font-size:10.5pt; font-weight:bold">不承担任何责任。</span>
+    </p>
+    <p style=" orphans:0; text-align:justify; text-indent:21pt; widows:0">
+        <span style="font-family:等线; font-size:10.5pt">5.3如果</span>
+        <span style="font-family:等线; font-size:10.5pt">江南resold</span>
+        <span style="font-family:等线; font-size:10.5pt">发现或收到他人举报您发布的信息违反本条约定，</span>
+        <span style="font-family:等线; font-size:10.5pt">江南resold</span>
+        <span style="font-family:等线; font-size:10.5pt">有权进行独立判断并采取技术手段予以删除、屏蔽或断开链接。同时，</span>
+        <span style="font-family:等线; font-size:10.5pt">江南resold</span>
+        <span style="font-family:等线; font-size:10.5pt">有权视用户的行为性质，采取包括但不限于暂停或终止服务，限制、冻结或终止</span>
+        <span style="font-family:等线; font-size:10.5pt">用户账号</span>
+        <span style="font-family:等线; font-size:10.5pt">使用，追究法律责任等措施。</span>
+    </p>
+    <p style=" orphans:0; text-align:justify; text-indent:21pt; widows:0">
+        <span style="font-family:等线; font-size:10.5pt; font-weight:bold">5.4您违反本条约定，导致任何第三方损害的，您应当独立承担责任；</span>
+        <span style="font-family:等线; font-size:10.5pt; font-weight:bold">江南resold</span>
+        <span style="font-family:等线; font-size:10.5pt; font-weight:bold">因此遭受损失的，您也应当一并赔偿。</span>
+        <span style="font-family:等线; font-size:10.5pt"> </span>
+    </p>
+    <p style=" orphans:0; text-align:justify; widows:0">
+        <span style="font-family:等线; font-size:10.5pt"></span>
+    </p>
+    <p style=" orphans:0; text-align:justify; text-indent:3pt; widows:0">
+        <span style="font-family:等线; font-size:10.5pt; font-weight:bold">六、【遵守当地法律监管】</span>
+    </p>
+    <p style=" orphans:0; text-align:justify; text-indent:21pt; widows:0">
+        <span style="font-family:等线; font-size:10.5pt">6.1您在使用本服务过程中应当遵守当地相关的法律法规，并尊重当地的道德和风俗习惯。</span>
+        <span style="font-family:等线; font-size:10.5pt; font-weight:bold">如果您的行为违反了当地法律法规或道德风俗，您应当为此独立承担责任。</span>
+    </p>
+    <p style=" orphans:0; text-align:justify; text-indent:21pt; widows:0">
+        <span style="font-family:等线; font-size:10.5pt">6.2您应避免因使用本服务而使</span>
+        <span style="font-family:等线; font-size:10.5pt">江南resold</span>
+        <span style="font-family:等线; font-size:10.5pt">卷入政治和公共事件，否则</span>
+        <span style="font-family:等线; font-size:10.5pt">江南resold</span>
+        <span style="font-family:等线; font-size:10.5pt">有权暂停或终止对您的服务。</span>
+    </p>
+    <p style=" orphans:0; text-align:justify; widows:0">
+        <span style="font-family:等线; font-size:10.5pt"></span>
+    </p>
+    <p style=" orphans:0; text-align:justify; text-indent:3pt; widows:0">
+        <span style="font-family:等线; font-size:10.5pt; font-weight:bold">七、【用户发送、传播的内容与第三方投诉处理】</span>
+    </p>
+    <p style=" orphans:0; text-align:justify; text-indent:21pt; widows:0">
+        <span style="font-family:等线; font-size:10.5pt; font-weight:bold">7.1您通过本服务发送或传播的内容（包括但不限于网页、文字、图片、音频、视频、图表等）均由您自行承担责任。</span>
+    </p>
+    <p style=" orphans:0; text-align:justify; text-indent:21pt; widows:0">
+        <span style="font-family:等线; font-size:10.5pt; font-weight:bold">7.2您发</span>
+        <span style="font-family:等线; font-size:10.5pt; font-weight:bold">送或传播的内容应有合法来源，相关内容为您所有或您已获得权利人的</span>
+        <span style="font-family:等线; font-size:10.5pt; font-weight:bold">授</span>
+        <span style="font-family:等线; font-size:10.5pt; font-weight:bold">权。</span>
+    </p>
+    <p style=" orphans:0; text-align:justify; text-indent:21pt; widows:0">
+        <span style="font-family:等线; font-size:10.5pt; font-weight:bold">7.3您同意江南resold可为履行本协议或提供本服务的目的而使用您发送或传播的内容。</span>
+    </p>
+    <p style=" orphans:0; text-align:justify; text-indent:21pt; widows:0">
+        <span style="font-family:等线; font-size:10.5pt; font-weight:bold">7.4如果</span>
+        <span style="font-family:等线; font-size:10.5pt; font-weight:bold">江南resold</span>
+        <span style="font-family:等线; font-size:10.5pt; font-weight:bold">收到权利人通知，主张您发送或传播的内容侵犯其相关权利的，您同意</span>
+        <span style="font-family:等线; font-size:10.5pt; font-weight:bold">江南resold</span>
+        <span style="font-family:等线; font-size:10.5pt; font-weight:bold">有权进行独立判断并采取删除、屏蔽或断开链接等措施。</span>
+        <span style="font-family:等线; font-size:10.5pt; font-weight:normal"> </span>
+    </p>
+    <p style=" orphans:0; text-align:justify; text-indent:21pt; widows:0">
+        <span style="font-family:等线; font-size:10.5pt; font-weight:bold">7.5您使用本服务时不得违反国家法律法规、侵害他人合法权益。您理解并同意，如您被他人投诉侵权或您投诉他人侵权，江南resold有权将争议中相关方的主体、联系方式、投诉相关内容等必要信息提供给其他争议方或相关部门，以便及时解决投诉纠纷，保护他人合法权益。</span>
+    </p>
+    <p style=" orphans:0; text-align:justify; widows:0">
+        <span style="font-family:等线; font-size:10.5pt"></span>
+    </p>
+    <p style=" orphans:0; text-align:justify; text-indent:3pt; widows:0">
+        <span style="font-family:等线; font-size:10.5pt; font-weight:bold">八、【协议的生效与变更】</span>
+    </p>
+    <p style=" orphans:0; text-align:justify; widows:0">
+        <span style="font-family:等线; font-size:10.5pt; font-weight:bold">8.1您使用</span>
+        <span style="font-family:等线; font-size:10.5pt; font-weight:bold">江南resold</span>
+        <span style="font-family:等线; font-size:10.5pt; font-weight:bold">的服务即视为您已阅读本协议并接受本协议的约束。</span>
+    </p>
+    <p style=" orphans:0; text-align:justify; widows:0">
+        <span style="font-family:等线; font-size:10.5pt">8.2</span>
+        <span style="font-family:等线; font-size:10.5pt">江南resold</span>
+        <span style="font-family:等线; font-size:10.5pt">有权在必要时修改本协议条款。您可以在相关服务页面查阅最新版本的协议条款。</span>
+    </p>
+    <p style=" orphans:0; text-align:justify; widows:0">
+        <span style="font-family:等线; font-size:10.5pt">8.3本协议条款变更后，如果您继续使用</span>
+        <span style="font-family:等线; font-size:10.5pt">江南resold</span>
+        <span style="font-family:等线; font-size:10.5pt">提供的软件或服务，即视为您已接受</span>
+        <span style="font-family:等线; font-size:10.5pt">修改后的协议。如果您不接受修改后的协议，应当停止使用</span>
+        <span style="font-family:等线; font-size:10.5pt">江南resold</span>
+        <span style="font-family:等线; font-size:10.5pt">提供的软件或服务。</span>
+    </p>
+    <p style=" orphans:0; text-align:justify; text-indent:21pt; widows:0">
+        <span style="font-family:等线; font-size:10.5pt"></span>
+    </p>
+    <p style=" orphans:0; text-align:justify; text-indent:18pt; widows:0">
+        <span style="font-family:等线; font-size:10.5pt; font-weight:bold">九、【管辖与法律适用】</span>
+        <br />
+        <span style="font-family:等线; font-size:10.5pt; font-weight:bold">9.1本协议的成立、生效、履行、解释及纠纷解决，适用中华人民共和国大陆地区法律（不包括冲突法）。</span>
+        <br />
+        <span style="font-family:等线; font-size:10.5pt; font-weight:bold">　　</span>
+        <span style="font-family:等线; font-size:10.5pt; font-weight:bold; text-decoration:underline">9.2本协议签订地为中华人民共和国</span>
+        <span style="font-family:等线; font-size:10.5pt; font-weight:bold; text-decoration:underline">江苏省无锡市滨湖区</span>
+        <span style="font-family:等线; font-size:10.5pt; font-weight:bold; text-decoration:underline">。</span>
+        <br />
+        <span style="font-family:等线; font-size:10.5pt; font-weight:bold; text-decoration:underline">9.3</span>
+        <span style="font-family:等线; font-size:10.5pt; font-weight:bold; text-decoration:underline">若您和</span>
+        <span style="font-family:等线; font-size:10.5pt; font-weight:bold; text-decoration:underline">江南resold</span>
+        <span style="font-family:等线; font-size:10.5pt; font-weight:bold; text-decoration:underline">之间发生任何纠纷或争议，首先应友好协商解决；协商不成的，您同意将纠纷或争议提交本协议签订地（即中国</span>
+        <span style="font-family:等线; font-size:10.5pt; font-weight:bold; text-decoration:underline">江苏省无锡市滨湖区</span>
+        <span style="font-family:等线; font-size:10.5pt; font-weight:bold; text-decoration:underline">）有管辖权的人民法院管辖。</span>
+        <br />
+        <span style="font-family:等线; font-size:10.5pt">9.4本协议所有条款的标题仅为阅读方便，本身并无实际涵义，不能作为本协议涵义解释的依据。</span>
+        <br />
+        <span style="font-family:等线; font-size:10.5pt">9.5本协议条款无论因何种原因部分无效或不可执行，其余条款仍有效，对双方具有约束力。</span>
+    </p>
+    <p style=" orphans:0; text-align:justify; text-indent:18pt; widows:0">
+        <span style="font-family:等线; font-size:10.5pt"></span>
+    </p>
+    <p style=" orphans:0; text-align:justify; widows:0">
+        <span style="font-family:等线; font-size:10.5pt; font-weight:bold">十</span>
+        <span style="font-family:等线; font-size:10.5pt; font-weight:bold">、【其他】</span>
+    </p>
+    <p style=" orphans:0; text-align:justify; text-indent:21pt; widows:0">
+        <span style="font-family:等线; font-size:10.5pt">如果您对本协议或本服务有意见或建议，可与</span>
+        <span style="font-family:等线; font-size:10.5pt">江南resold</span>
+        <span style="font-family:等线; font-size:10.5pt">提交反馈给我们</span>
+        <span style="font-family:等线; font-size:10.5pt">，我们会给予您必要的帮助。（完）</span>
+    </p>
+    <view></view>
+    <p style=" orphans:0; text-align:justify; widows:0">
+        <span style="font-family:等线; font-size:10.5pt">江南resold校园二手交易互助平台</span>
+    </p>
+    <view></view>
+
+</view>
