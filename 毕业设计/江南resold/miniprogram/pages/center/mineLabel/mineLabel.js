@@ -1,4 +1,6 @@
 // pages/center/mineLabel/mineLabel.js
+import { cloudapi } from "../../cloud_api/api_center.js"
+const cloudApi = new cloudapi
 Page({
 
    /**
@@ -10,6 +12,9 @@ Page({
         eyeing:10,
         fans:24,
      },
+      likeTag: "like",
+     applicationClass:"application",
+     lookMore:"查看更多",
      application:[
         {
            img:'../../../images/wode/js.png',
@@ -24,11 +29,6 @@ Page({
         {
            img: '../../../images/wode/SF.png',
            name: '思否',
-           url: '',
-        },
-        {
-           img: '../../../images/wode/js.png',
-           name: '简书',
            url: '',
         },
         {
@@ -47,8 +47,33 @@ Page({
            url: '',
         },
         {
+           img: '../../../images/wode/douban.png',
+           name: '豆瓣',
+           url: '',
+        },
+        {
            img: '../../../images/wode/github.png',
            name: 'github',
+           url: '',
+        },
+        {
+           img: '../../../images/wode/leetcode.png',
+           name: 'offershow',
+           url: '',
+        },
+        {
+           img: '../../../images/wode/leetcode.png',
+           name: '看准',
+           url: '',
+        },
+        {
+           img: '../../../images/wode/leetcode.png',
+           name: '企查查',
+           url: '',
+        },
+        {
+           img: '../../../images/wode/leetcode.png',
+           name: '网易云',
            url: '',
         }
      ],
@@ -64,7 +89,75 @@ Page({
      dates: '点击选择',
      xinzuoImage:"",
      musicList:'',
-     userInterestList:[]
+     userInterestList:[],
+     showXinzuo:true,
+     label:{
+        heartNum:0,
+        birstday:'点击选择',
+        interest:[],
+        music:'',
+        application:[],
+     }
+   },
+   // addHeart: function () {
+   //    this.setData({ addheart: "addheart" })
+   //    if (this.data.likeTag === 'like') {
+   //       this.setData(
+   //          {
+   //             heartNum: this.data.heartNum + 1,
+   //             likeTag: "dislick"
+   //          }
+   //       )
+   //    } else {
+   //       this.setData(
+   //          {
+   //             heartNum: this.data.heartNum - 1,
+   //             likeTag: "like"
+   //          }
+   //       )
+   //    }
+   //    var that = this;
+   //    setTimeout(function () { that.setData({ addheart: "" }) }, 1000);
+   //    cloudApi.updateHeartNum(that.data.heartNum, wx.getStorageSync('appUserInfo')[0]._id);
+   // },
+   formSubmit: function () {//表单提交
+      var that = this;
+      var formData = this.data.label;
+      console.log(formData);
+      if (wx.getStorageSync('customizeLabel')[0]){
+        var  _id = wx.getStorageSync('customizeLabel')[0]._id;
+        var  _openid = wx.getStorageSync('customizeLabel')[0]._openid;
+         cloudApi.savecustomizeLabel(formData,that.getcustomizeLabel,_openid,_id);
+      }else{
+        var  _openid = wx.getStorageSync("appUserInfo")[0]._openid;
+         cloudApi.savecustomizeLabel(formData,that.getcustomizeLabel, _openid);
+      }
+   },
+   renderData:function(){
+       
+   },
+   getcustomizeLabel: function () {
+      var that = this
+      cloudApi.querycustomizeLabel(wx.getStorageSync("appUserInfo")[0]._openid);
+      if (wx.getStorageSync('customizeLabel').length > 0) {
+         that.setData({
+            label: wx.getStorageSync('customizeLabel')[0],     
+         })
+      }
+   },
+
+   lookMore:function(){
+      if(this.data.lookMore=="收起"){
+         this.setData({
+            applicationClass: "application",
+            lookMore: "查看更多",
+         })
+      }else{
+         this.setData({
+            applicationClass: "applicationClass",
+            lookMore: "收起",
+         })
+      }
    },
    musicInput:function(e){
       this.setData({
@@ -138,9 +231,7 @@ Page({
    init :function(){
      this.setData({
         userinfo:wx.getStorageSync("userInfo"),
-      //   appUserInfo: wx.getStorageSync("appUserInfo")
      })
-     
    },
    getXingzuo:function(month, day){
       const s = '魔羯水瓶双鱼白羊金牛双子巨蟹狮子处女天秤天蝎射手摩羯';
@@ -148,24 +239,26 @@ Page({
       return s.substr(month * 2 - (day < arr[month - 1] ? 2 : 0), 2);
    },
    bindDate: function (e) {
+      var value = "label.birstday"
       this.setData({
-         dates: e.detail.value
+         [value]: e.detail.value
       })
-      console.log(this.data.dates);
       var arr = this.data.dates.split('-');
       var month = this.removeZero(arr[1]);
       var day = this.removeZero(arr[2]);
       var image = this.getXingzuo(month,day);
-      console.log(image);
       this.setData({
-         xinzuoImage: '../../../images/wode/'+image+"座.jpg"
+         xinzuoImage: 'cloud://resold-822f1b.7265-resold-822f1b-1258157186/xinzuo/'+image+"座.jpg",
+         showXinzuo:false,
       })
+      this.formSubmit();
    },
    removeZero:function(res){
       return parseInt(res);
    },
    onLoad: function (options) {
-  
+      this.getcustomizeLabel();
+      this.formSubmit();
    },
 
    /**

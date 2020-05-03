@@ -9,7 +9,8 @@
   height: 500rpx;
 }
 swiper{
-   padding:60rpx 0px; 
+   height: 460rpx;
+   padding:30rpx 0px; 
 }
 swiper-item{
    display: flex;
@@ -31,7 +32,7 @@ image{
   display: flex;
   flex-direction: row;
   line-height: 100rpx;
-  font-size: 26rpx;
+  font-size: 30rpx;
   padding-bottom:20rpx; 
 }
 .senderBox image{
@@ -68,7 +69,7 @@ image{
   display: flex;
   flex-direction: row;
   line-height: 90rpx;
-  font-size: 26rpx;
+  font-size: 30rpx;
 }
 .yuan image{
  margin-left: 50rpx;
@@ -87,7 +88,7 @@ image{
   padding-top:20rpx;
   flex-direction: row;
   min-height: 100rpx;
-  font-size: 26rpx; 
+  font-size: 30rpx; 
 }
 .itemTitle{
    font-weight: bold;
@@ -106,6 +107,8 @@ margin-left: 50rpx;
 }
 textarea{
   height: 120rpx;
+  width: 300rpx;
+  padding-left:60rpx; 
 }
 .bingo{
 width: 100%;

@@ -8,8 +8,9 @@ Page({
    * 页面的初始数据
    */
   data: {
-    good: {
-    }
+    good: {},
+    id:'',
+    type:''
   },
 
   /**
@@ -26,7 +27,9 @@ Page({
        if (goods[i]._id == id) {
           good = goods[i];
           that.setData({
-             good:good
+             good:good,
+             id: id,
+             type: type
           })
           break;
        }
@@ -38,7 +41,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-     
+     wx.showShareMenu();
   },
    previewImage: function (e) {//预览图片
       var current = this.data.good.goodsImage[0];
@@ -92,7 +95,4 @@ Page({
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
-
-  }
 })

@@ -9,7 +9,8 @@
   height: 500rpx;
 }
 swiper{
-   padding:50rpx 0px; 
+   height: 460rpx;
+   padding:30rpx 0px; 
 }
 swiper-item{
    display: flex;
@@ -31,7 +32,7 @@ image{
   display: flex;
   flex-direction: row;
   line-height: 100rpx;
-  font-size: 26rpx;
+  font-size: 30rpx;
   padding-bottom:20rpx; 
 }
 .senderBox image{
@@ -68,7 +69,7 @@ image{
   display: flex;
   flex-direction: row;
   line-height: 100rpx;
-  font-size: 26rpx;
+  font-size: 30rpx;
 }
 .yuanRemark{
   width: 700rpx;
@@ -78,7 +79,7 @@ image{
   flex-direction: row;
   min-height: 100rpx;
    padding-top:20rpx;
-  font-size: 26rpx; 
+  font-size: 30rpx; 
 }
 .yuanRemark image{
 margin-left: 50rpx;
@@ -125,7 +126,7 @@ display: inline-block;
 textarea{
   height: 120rpx;
   width: 300rpx;
-  padding-left:40rpx; 
+  padding-left:60rpx; 
 }
 .StatusBox{
    color:red;

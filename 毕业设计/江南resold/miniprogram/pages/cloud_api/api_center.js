@@ -324,6 +324,67 @@ class cloudapi{
          }
       })
    }
+   
+   querycustomizeLabel(openId,callback) {//查询用户平台信息
+      this._db.collection('customizeLabel').where({
+         _openid: openId
+      }).get({
+         success: res => {
+            wx.setStorageSync("customizeLabel", res.data);
+            console.log('[数据库] [查询记录] 成功: ', res.data);
+            callback();
+         },
+         fail: err => {
+            console.error('[数据库] [查询记录] 失败：', err)
+         }
+      })
+   }
+
+   savecustomizeLabel(obj, callback2,_openid,_id) {//保存用户标签
+      this._db.collection('customizeLabel').where({
+         _openid: _openid
+      }).get().then(res => {
+         if (res.data.length > 0) {//已填写过的表单用户
+            wx.cloud.callFunction({
+               name: 'updateData',
+               data: {
+                  action: 'update_customizeLabel',
+                  formData: obj,
+                  _id: _id,
+                  _openid:_openid,
+               },
+               success: res => {
+                  wx.hideLoading();
+                  callback2();
+                  wx:wx.showToast({
+                     title: '编辑成功',
+                     duration: 400,
+                     mask: true,
+                  })
+               },
+               fail: err => {
+                  wx.hideLoading();
+                  console.error('[云函数] [login] 调用失败', err)
+               }
+            })
+         } else {
+            this._db.collection('customizeLabel').add({//新用户 新建表单
+               data: {
+                  heartNum: obj.heartNum,
+                  birstday: obj.birstday,
+                  interest: obj.interest,
+                  music: obj.interest,
+                  application: obj.interest,
+               },
+               success(res) {
+                  callback2();
+               }
+            })
+         }
+      }).catch(res => {
+         console.log(res);
+      })
+   }
 }
   
 export { cloudapi }

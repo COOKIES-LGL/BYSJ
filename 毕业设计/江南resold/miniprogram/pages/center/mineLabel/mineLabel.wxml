@@ -4,6 +4,7 @@
    <view class='text'>{{userinfo.gender=="1"?"♂":"♀"}}</view>
    <view class='botText' bindtap="toEyeing">关注:<span class="weight">{{appUserInfo.eyeing}}</span></view>
    <view class='botText' bindtap="toFans">粉丝:<span class="weight">{{appUserInfo.fans}}</span></view>
+   <view catchtap="addHeart"class="likeCount">喜欢：<span style="color:#1fbef8">{{label.heartNum}}</span></view>
 </view>
 <view class="line"></view>
 <view class="applicationTop">
@@ -11,18 +12,17 @@
       <view class="title">我的标签</view>
       <view class="lookMore" > 
         <view class="section">  
-         <picker mode="date" value="{{dates}}" start="1995-06-06" end="2020-06-06" bindchange="bindDate"> 
+         <picker mode="date" value="{{label.birstday}}" start="1995-06-06" end="2020-06-06" bindchange="bindDate"> 
           <view class="picker">  
-           出生日期: {{dates}}  
+           出生日期: {{label.birstday}}  
           </view>  
          </picker>  
         </view>
       </view>
    </view>
-   <view class="bottom">
+   <view class="bottom" hidden="{{showXinzuo}}">
       <view class="xinzuoImage"><image src="{{xinzuoImage}}"></image></view>
       <!-- <view class="interest">
-
       </view>  -->
    </view>
 </view>
@@ -45,10 +45,10 @@
    </view>
 </view>
 <view class="line"></view>
-<view class="application">
+<view class="{{applicationClass}}">
    <view class="top">
       <view class="title">求职考研神器</view>
-      <view class="lookMore">查看更多</view>
+      <view class="lookMore" bindtap="lookMore">{{lookMore}}</view>
    </view>
    <view class="bottom">
     <view class="itemBox" wx:for="{{application}}" wx:key='id'>
@@ -58,6 +58,8 @@
     </view>
    </view>
 </view>
+<view class="line"></view>
+<view class="line"></view>
 
 
 

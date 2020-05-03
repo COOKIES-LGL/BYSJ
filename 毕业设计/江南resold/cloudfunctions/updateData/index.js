@@ -46,6 +46,26 @@ function update_appUserInfo(event){
       console.error(e)
    }
 }
+function update_customizeLabel(event) {
+   var formData = event.formData;
+   try { // data 传入需要局部更新的数据
+      return db.collection('customizeLabel').doc(event._id).update({
+         data: {
+            _openid: event._openid,
+            heartNum: formData.heartNum,
+            birsday: formData, birsday,
+            interest: formData.interest,
+            music: formData.interest,
+            application: formData.interest,
+         },
+         success(res) {
+            console.log(res)
+         }
+      })
+   } catch (e) {
+      console.error(e)
+   }
+}
 
 function bingoOrder(event){
    try { // data 传入需要局部更新的数据
@@ -152,6 +172,9 @@ exports.main = async (event, context) => {
       case 'deleteOrder': {
          return await deleteOrder(event)
       }
+      case 'update_customizeLabel': {
+         return await update_customizeLabel(event)
+      } 
       default: {
          return ;
       }

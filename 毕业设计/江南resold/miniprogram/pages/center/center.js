@@ -213,7 +213,10 @@ Page({
       } else if (!formData.radio_group && !this.data.updataTag) {
          this.verify(true, "请选择您的年级!", "确认");
       }else{//提交表单
-         var _id = wx.getStorageSync('appUserInfo')[0]._id
+         var _id; 
+         if (wx.getStorageSync('appUserInfo')[0]){
+           _id = wx.getStorageSync('appUserInfo')[0]._id;
+         }
          cloudApi.saveAppUserInfo(formData,_id,that.verify,that.getAppUserinfo);
          this.closeDialog();
       }      
