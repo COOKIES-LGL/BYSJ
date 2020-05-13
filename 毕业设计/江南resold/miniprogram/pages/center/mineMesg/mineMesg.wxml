@@ -1,2 +1,28 @@
-<!--pages/center/mineMesg/mineMesg.wxml-->
-<text>pages/center/mineMesg/mineMesg.wxml</text>
+<view class="box">
+<view class="top">好友私信</view>
+<view class="mesgList">
+   <view wx:for="{{receivemesgList}}" wx:key="id">
+      <view class="mesgBox" bindtap="navTo"  data-id="{{item._id}}">
+         <view class="left"><image src="{{item.sender_avatarUrl}}"></image></view>
+         <view class="mid">
+               <view class="nickName">{{item.sender_nickName}}</view>
+               <view class="mesg">{{item.messageList[item.messageList.length-1].mesg}}</view>
+         </view>
+         <view class="right">{{item.messageList[item.messageList.length-1].sendTime}}</view>
+      </view>
+   </view>
+</view>
+<view class="top">我的留言</view>
+<view class="mesgList">
+   <view  wx:for="{{sendmesgList}}" wx:key="id">
+      <view class="mesgBox" bindtap="navTo" data-id="{{item._id}}">
+         <view class="left"><image src="{{item.receiver_avatarUrl}}"></image></view>
+         <view class="mid">
+               <view class="nickName">{{item.receiver_nickName}}</view>
+               <view class="mesg">{{item.messageList[item.messageList.length-1].mesg}}</view>
+         </view>
+         <view class="right">{{item.messageList[item.messageList.length-1].sendTime}}</view>
+      </view>
+   </view>
+</view>
+</view>

@@ -10,6 +10,7 @@
       <block wx:for="{{searchList}}" wx:key='id'>
          <view class='item_search_list' bindtap='item_search_click' data-Id='{{item}}'>{{item}}</view>
       </block>
+      <view style="clear:both"></view>
     </view>
   </view>
   <swiper autoplay="true" interval="5000" duration="1000" indicator-dots="true" indicator-active-color='#F00a'>

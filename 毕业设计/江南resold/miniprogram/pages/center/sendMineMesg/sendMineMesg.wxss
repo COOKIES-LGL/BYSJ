@@ -1,0 +1,130 @@
+page{
+   background-color:rgb(245,245,245);
+}
+.topbox{
+   height: auto;
+   margin-top: 40rpx;
+   width:100%;
+   font-size: 30rpx;
+}
+.sendTime{
+   font-size: 24rpx;
+   color:#888;
+}
+.mesgItem{
+   height: auto;
+   width: 96%;
+   margin-left: 2%;
+   margin-top: 20rpx;
+   overflow: auto;
+}
+.avatarRight{
+   height: 100rpx;
+   width:100rpx;
+   padding: 10rpx;
+   float: right;
+}
+
+.mesgBoxRight{
+   width:450rpx;
+   height: auto;
+   padding: 15rpx;
+   border-radius: 20rpx;
+   border:2rpx solid rgb(36, 146, 248);
+   float: right;
+   text-align: right;
+   color:#666;
+   background-color: #fff;
+}
+.avatarLeft{
+   height: 100rpx;
+   width:100rpx;
+   padding: 10rpx;
+   float: left;
+}
+.mesgBoxLeft{
+   width:450rpx;
+   height: auto;
+   padding: 15rpx;
+   border-radius: 20rpx;
+   border:2rpx solid rgb(36, 146, 248);
+   float: left;
+   text-align: left;
+   color:#666;
+   background-color: #fff;
+}
+.mesgRight{
+   width: 100%;
+   height: auto;
+  display: flex;
+  flex-direction: row;
+  float: right;
+}
+.mesgLeft{
+  display: flex;
+  flex-direction: row;
+  float: left;
+}
+.avatarRight image{
+   box-shadow: 5rpx 6rpx 10rpx rgb(36, 146, 248);
+   height: 100rpx;
+   width:100rpx;
+   border-radius: 50%;
+   line-height: 100rpx;
+   text-align: center;
+   background: rgb(36, 146, 248);
+   color:#fff;
+   margin:0 auto; 
+}
+.avatarLeft image{
+   box-shadow: 5rpx 6rpx 10rpx rgb(36, 146, 248);
+   height: 100rpx;
+   width:100rpx;
+   border-radius: 50%;
+   line-height: 100rpx;
+   text-align: center;
+   background: rgb(36, 146, 248);
+   color:#fff; 
+   margin:0 auto; 
+}
+
+.botbox{
+position: fixed;
+bottom: 0rpx;
+left: 0rpx;
+width: 100%;
+height:120rpx;
+font-size: 30rpx;
+background-color:#fff;
+display: flex;
+flex-direction: row;
+}
+.botbox .left{
+width:85%;
+height: 100%;
+padding-top: 15rpx;
+padding-left: 40rpx;
+}
+.botbox .left textarea{
+   border-radius: 10rpx;
+   height: 90rpx;
+   line-height: 40rpx;
+   padding-left:40rpx;
+   width: 90%; 
+   background: rgb(245,245,245);
+}
+.botbox .right{
+width:15%;
+height: 120rpx;
+padding:10rpx 40rpx;
+}
+.rightbtn{
+   box-shadow: 5rpx 6rpx 10rpx rgb(36, 146, 248);
+   height: 100rpx;
+   width:100rpx;
+   border-radius: 50%;
+   line-height: 100rpx;
+   text-align: center;
+   background: rgb(36, 146, 248);
+   color:#fff;
+}

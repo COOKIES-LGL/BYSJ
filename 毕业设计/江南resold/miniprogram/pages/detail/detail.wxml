@@ -8,7 +8,7 @@
           </swiper-item>
           </block>
   </swiper>
-<view class='senderBox'>
+<view class='senderBox' bindtap="navshowLabel">
    <image src="{{good.send_avatarUrl}}"></image>
    <view class="senderName">{{good.send_nickname}}</view>
    <view class='text'>{{good.sender_gender=="男"?"♂":"♀"}}</view>

@@ -33,7 +33,6 @@ class Base{
     const db = wx.cloud.database({
       env: 'resold-822f1b'
     })
-    console.log(db)
     return db  
   }
 }

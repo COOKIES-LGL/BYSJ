@@ -1,0 +1,14 @@
+<import src='../../template/focus_list/focus_list.wxml' />
+<view class='order-list'>
+      <block wx:for="{{dataList}}" wx:key="loop">
+         <view class='BOX' wx:if="{{type=='focused'}}">
+            <template is="focus_list" data="{{...item}}" />
+         </view>
+         <view class='BOX' wx:if="{{type=='focus'}}">
+            <template is="focused_list" data="{{...item}}" />
+         </view>
+      </block>
+      <view hidden="{{noData}}" style='width:100%;margin-top:20rpx;'>
+            <text class='Text' >没有更多订单信息啦</text>
+      </view>
+</view>

@@ -1,0 +1,18 @@
+<view class="box">
+<view class="topbox">
+   <view class="mesgItem" wx:for="{{message.messageList}}" wx:key='id'>
+      <view class="{{item.mesgType=='send'?'mesgRight':'mesgLeft'}}"></view>
+      <view class="{{item.mesgType=='send'?'avatarRight':'avatarLeft'}}"><image src="{{message.sender_avatarUrl}}"></image></view>
+      <view class="{{item.mesgType=='send'?'mesgBoxRight':'mesgBoxLeft'}}">
+      <view>{{item.mesg}}</view>
+      <view class="sendTime">{{item.sendTime}}</view>
+      </view>
+   </view> 
+</view>
+<view class="botbox">
+   <view class="left"><textarea bindinput="bindInput" placeholder="输入您要发送的内容" value='{{text}}'></textarea></view>
+   <view class="right" bindtap="onSubmit">
+      <view class="rightbtn">留言</view>  
+   </view>
+</view>
+</view>

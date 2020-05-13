@@ -42,7 +42,9 @@
 }
 
 .time{
-  color:#aaa 
+  color:#aaa;
+     overflow: hidden;
+   text-overflow: ellipsis; 
 }
 .right .remark{
    width: 100%;

@@ -1,2 +1,1 @@
-<!--pages/rankList/rankList.wxml-->
-<text></text>
+<web-view src="https://www.nowcoder.com/discuss" />

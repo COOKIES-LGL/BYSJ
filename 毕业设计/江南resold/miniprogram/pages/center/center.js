@@ -25,7 +25,7 @@ Page({
         options: [
           {
             img: '../../images/shezhi.png',
-            name: '设置'
+            name: '我的关注'
           },
           {
             img: '../../images/gexin.png',
@@ -100,7 +100,10 @@ Page({
       var that = this;
       var Index = e.currentTarget.dataset.index;
       switch (Index) {
-         case 0: that.to_order_list("selfReceive"); break;
+         case 0: wx.navigateTo({
+            url: './FocusList/FocusList?type=focus',
+         })  
+         break;
          case 1: wx.navigateTo({
          url: '../center/mineLabel/mineLabel',
          }); break;

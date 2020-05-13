@@ -8,7 +8,7 @@
           </swiper-item>
           </block>
   </swiper>
-<view class='senderBox' wx:if="{{good.goodsStatus=='1'}}">
+<view bindtap="navshowLabel" class='senderBox' wx:if="{{good.goodsStatus=='1'}}">
    <image src="{{good.send_avatarUrl}}"></image>
    <view class="senderName">{{good.send_nickname}}</view>
    <view class='text'>{{good.sender_gender=="男"?"♂":"♀"}}</view>

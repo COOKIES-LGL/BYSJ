@@ -53,10 +53,10 @@ function update_customizeLabel(event) {
          data: {
             _openid: event._openid,
             heartNum: formData.heartNum,
-            birsday: formData, birsday,
+            birstday: formData.birstday,
             interest: formData.interest,
-            music: formData.interest,
-            application: formData.interest,
+            music: formData.music,
+            application: formData.application,
          },
          success(res) {
             console.log(res)

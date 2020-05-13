@@ -35,6 +35,9 @@ image{
   font-size: 30rpx;
   padding-bottom:20rpx; 
 }
+.senderName{
+color:rgb(36, 146, 248)
+}
 .senderBox image{
    border-radius: 50%;
    height: 100rpx;
@@ -79,6 +82,8 @@ image{
 }
 .text{
   text-indent: 2ex;
+     overflow: hidden;
+   text-overflow: ellipsis;
 }
 .yuanRemark{
   width: 700rpx;

@@ -10,7 +10,8 @@ Page({
   data: {
     good: {},
     id:'',
-    type:''
+    type:'',
+    forbidden:false
   },
 
   /**
@@ -20,8 +21,16 @@ Page({
     var that =this; 
     var id = options.id;
     var type = options.type;
-    var type = type =="买物"?"bookOrderList":"sellOrderList";
-    var goods = wx.getStorageSync(type);
+    var orderType;
+    if (type =="orderList"){
+      orderType = "hisOrderList",
+      this.setData({
+         forbidden:true
+      })
+    }else{
+      orderType= type == "买物" ? "bookOrderList" : "sellOrderList";
+    }
+    var goods = wx.getStorageSync(orderType);
     var good;
     for(var i=0;i<goods.length;i++){
        if (goods[i]._id == id) {
@@ -50,7 +59,16 @@ Page({
          urls: this.data.good.goodsImage // 需要预览的图片http链接列表
       })
    },
-  bingo:function(){
+   navshowLabel:function(){
+      if(this.data.forbidden){
+         return;
+      }else{
+         wx.navigateTo({
+            url: '../center/showLabel/showLabel?openid=' + this.data.good.sender_openid,
+         })
+      }
+   },
+   bingo:function(){
      wx.showLoading({
         title: '预约中',
      })

@@ -43,6 +43,11 @@ Page({
          urls: this.data.good.goodsImage // 需要预览的图片http链接列表
       })
    },
+   navshowLabel: function () {
+      wx.navigateTo({
+         url: '../../showLabel/showLabel?openid=' + this.data.good.sender_openid,
+      })
+   },
    cancalOrder:function(){
       wx.showLoading({
          title: '取消预约中',

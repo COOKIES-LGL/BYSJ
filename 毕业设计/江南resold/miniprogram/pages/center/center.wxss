@@ -133,7 +133,7 @@ page{
   line-height: 60rpx;
   width:150rpx;
   font-size: 28rpx;
-  color: #ccc;
+  color: rgb(36, 146, 248);
 }
 .InfoDialog{
    height:100%;

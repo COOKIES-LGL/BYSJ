@@ -1,4 +1,71 @@
-
-<view class="container">
-   <ec-canvas ec="{{ ec }}"></ec-canvas>
+<view class="line"></view>
+<view class="title">首页轮播图配置<span class="tips">(建议大小375px × 150px)</span>
 </view>
+<view class="top">
+      <view class="images_box">
+            <block wx:key="imgbox" wx:for="{{imgbox}}">
+               <view class='img-box'>
+               <image mode="aspectFit" class='itemImg' src='{{item}}'></image>
+               <view class='img-delect' data-deindex='{{index}}' bindtap='imgDelete1'>
+               <image class='del_img' src='../../../images/tuichu.png'></image>  
+               </view>
+               </view>
+            </block>
+            <view class='img-box' bindtap='add_image' wx:if="{{imgbox.length<6}}">
+               <image class='Img add_img' src='../../../images/invite@2x.png'></image>
+            </view>
+      </view>
+</view>
+<!-- <view class="line"></view> -->
+<view class='top_nav'>
+      <view class="{{current0}}" data-index="0" catchtap='navTo'>平台信息</view>
+      <view class="{{current1}}" data-index="1" catchtap='navTo'>用户信息</view>
+      <view class="{{current2}}" data-index="2" catchtap='navTo'>订单信息</view>
+      <view class="{{current3}}" data-index="3" catchtap='navTo'>用户反馈</view>
+</view>
+
+<view class="AppInfo botBox" wx:if="{{current0=='currentClass'}}">
+  <view class="title">平台交易统计</view>
+
+</view>
+
+<view class="userInfo botBox" wx:if="{{current1=='currentClass'}}">
+  <view class="title">用户信息统计</view>
+</view>
+
+<view class="orderInfo botBox" wx:if="{{current2=='currentClass'}}">
+    <view class="title">订单信息统计</view>
+    <view><span class="tips">物品发布/物品预约</span></view>
+    <view class="showNum">
+        <view class="showNumItem">物品发布:<view style="{{fabu}}">{{fabuNum}}</view></view>
+        <view class="showNumItem">物品预约:<view style="{{yuyue}}">{{yuyueNum}}</view></view>
+    </view>
+    <view class="line"></view>
+        <view><span class="tips">订单状态(已发布/已预约/已完结)</span></view>
+    <view class="showNumOrder">
+        <view class="showNumOrderItem">已发布:<view style="{{orderType1}}">{{orderType1Num}}</view></view>
+        <view class="showNumOrderItem">已预约:<view style="{{orderType2}}">{{orderType2Num}}</view></view>
+        <view class="showNumOrderItem">已完结:<view style="{{orderType3}}">{{orderType3Num}}</view></view>
+    </view>
+    <view class="line"></view>
+</view>
+
+<view class="feedBack botBox" wx:if="{{current3=='currentClass'}}">
+  <view class="title">用户反馈统计</view>
+  <view class="feedBackList">
+      <view class="item" wx:for="{{feedBackList}}" wx:key="id">
+         <view class="mesgBox">
+         <view class="left"><image src="{{item.senderimageUrl}}"></image></view>
+         <view class="mid">
+               <view class="nickName">{{item.senderNickname}}</view>
+               <view class="mesg">{{item.detail}}</view>
+         </view>
+         <view class="right">
+         <!-- <view class="del_mesg" bindtap="delFeedback" data-id="{{item._id}}">已读</view> -->
+         <view class="time">{{item.sendTime}}</view>
+         </view>
+      </view>
+      </view>
+  </view>
+</view>
+

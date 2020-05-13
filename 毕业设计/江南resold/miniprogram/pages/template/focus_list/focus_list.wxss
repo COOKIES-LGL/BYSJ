@@ -1,0 +1,41 @@
+.temp_box{
+  display: flex;
+  flex-direction: row;
+  height: 100rpx;
+  width: 720rpx;
+  font-size: 28rpx;
+  margin-top:20rpx; 
+  border-radius:10rpx 20rpx; 
+  margin-left: 15rpx;
+  background: #fff;
+  justify-content: space-between;
+  box-shadow: 5rpx 6rpx #ddd;
+}
+.itemTitle{
+   font-weight: bold;
+}
+.rightBox{
+   width: 500rpx;
+   height: 90%;
+   padding-top:10rpx;
+   display: flex;
+   flex-direction: column;
+   justify-content: space-between;
+}
+.temp_img{
+ width:150rpx;
+ height: 100%;
+}
+.temp_img image{
+  height: 100rpx;
+  width:100rpx;
+}
+.time{
+   display: inline-block;
+  font-size: 26rpx;
+  color:#aaa;
+  height: 40rpx;
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis; 
+}

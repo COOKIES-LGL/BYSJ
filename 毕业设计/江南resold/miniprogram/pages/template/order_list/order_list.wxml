@@ -11,7 +11,7 @@
            <view class='remark' wx:if="{{goodsStatus==1}}"><span class="itemTitle">状态：</span>已被预约</view>
            <view class='remark' wx:if="{{goodsStatus==2}}"><span class="itemTitle">状态：</span>已完成</view>
            <view class='remark'><span class="itemTitle">备注：</span>{{goodsremark}}</view>
-           <view class='price'><span class="itemTitle">报价：</span>{{goodsMinprice}}元--{{goodsMaxprice}}元</view>
+           <view class='price'><span class="itemTitle">报价：</span>{{goodsMinprice}}--{{goodsMaxprice}}元</view>
            <view class='time' hidden="{{goodsStatus==2}}"><span class="itemTitle">发布时间：</span>{{releaseTime}}</view>
            <view class='time' wx:if="{{goodsStatus==2}}"><span class="itemTitle">完成时间：</span>{{releaseTime}}</view>
         </view>

@@ -189,7 +189,8 @@ Page({
       } else {
          this.setData({
             goodsName_status: true,
-            goodsName: value
+            goodsName: value,
+            if_search_list:false
          });
       }
    },
@@ -326,8 +327,13 @@ Page({
    onAddInfo: function (e) {
       var that = this;
       let id = e.currentTarget.dataset.id;
-      console.log(this.data.subLists[id])
-      var bool= id==0?true:false;
+      console.log(this.data.subLists[id]);
+      var bool = false;
+      if(id==0||id==3){
+         bool = true;
+      }else{
+         bool = false;
+      }
       this.setData({
          showPicker:bool,
          goodsName: '',

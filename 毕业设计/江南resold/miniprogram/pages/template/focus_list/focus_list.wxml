@@ -1,0 +1,22 @@
+<template name='focused_list'>
+   <view class='temp_box'  wx:key="{{_id}}" bindtap='toDetail' data-goodsid='{{focused_openid}}' >
+      <view class='temp_img'>
+         <image mode='aspectFit' src='{{focused_avatarUrl}}'></image>
+      </view>
+      <view class="rightBox">
+         <view class='temp_title'><span class="itemTitle">guanzhu{{focused_nickname}}</span></view>
+         <view class='temp_title'><span class="time">关注时间：{{focusTime}}</span></view>
+      </view>
+   </view>
+</template>
+<template name='focus_list'>
+   <view class='temp_box'  wx:key="{{_id}}" bindtap='toDetail' data-goodsid='{{focus_openid}}' >
+      <view class='temp_img'>
+         <image mode='aspectFit' src='{{focus_avatarUrl}}'></image>
+      </view>
+      <view class="rightBox">
+         <view class='temp_title'><span class="itemTitle">fensi{{focus_nickname}}</span></view>
+         <view class='temp_title'><span class="time">关注时间：{{focusTime}}</span></view>
+      </view>
+   </view>
+</template>

@@ -17,7 +17,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    banner:['../../images/nav1.png','../../images/nav2.png'],
+    banner:[],
     index:'',
     searchInput:'',
     hideSearch:false,
@@ -84,6 +84,7 @@ Page({
         [up2]: 0,
      });
      this.getsearchTips();
+     
   },
   renderData:function(tag){
       if(tag){
@@ -324,6 +325,10 @@ Page({
    */
   onLoad: function (options) {
      this._notice();
+     var imageList = wx.getStorageSync("navImagesList");
+     this.setData({//初始化轮播图
+        banner:  imageList.length>0?imageList:['../../images/nav1.png', '../../images/nav2.png']
+     })
   },
   navTo:function(e){
      var Index = e.currentTarget.dataset.index;

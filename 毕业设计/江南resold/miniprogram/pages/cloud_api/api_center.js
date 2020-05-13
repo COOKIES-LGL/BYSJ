@@ -9,10 +9,22 @@ class cloudapi{
       "use strict"
       this._db = base.setdb();
    }
-  
+   getUserDate(param,callback){
+      this._db.collection('user').where({
+         _openid: param
+      }).get().then(res => {
+         if (res.data.length > 0) {//已注册过的用户
+            callback(res.data);
+         } else {
+            return
+         }
+      }).catch(res => {
+         console.log(res);
+      })    
+   }
    saveUserData(param) {//添加用户数据
      var that = this;
-     var DATE = base.formatDate(new Date());
+     var date = new Date();
      this._db.collection('user').where({
         _openid: wx.getStorageSync("OPENID")
      }).get().then(res => {
@@ -22,7 +34,7 @@ class cloudapi{
            this._db.collection('user').add({//新用户
               data: {
                  userinfo: param,
-                 registTime: DATE,
+                 registTime: date.toLocaleString,
               },
               success(res) {
                  console.log(res)
@@ -35,7 +47,7 @@ class cloudapi{
    }
    sendFeedback(param,callback){//意见反馈
       var that = this;
-      var DATE = base.formatDate(new Date());
+      var datetime = (new Date()).toLocaleString();
       this._db.collection('recommendList').where({
          _openid: wx.getStorageSync("OPENID")
       }).get().then(res => {
@@ -46,7 +58,7 @@ class cloudapi{
                senderGender: param.senderGender,
                senderimageUrl: param.senderimageUrl,
                senderPhone: param.senderPhone,
-               sendTime: DATE,
+               sendTime: datetime,
             },
             success(res) {
                console.log(res);
@@ -58,6 +70,84 @@ class cloudapi{
          callback();
       })    
    }
+
+   queryFeedback(callback) {//意见反馈
+      var that = this;
+      this._db.collection('recommendList').orderBy('sendTime', 'desc').get().then(res => {
+         callback(res.data);
+      }).catch(res => {
+         console.log(res);
+      })
+   }
+   
+   querySendMessage(callback) {//查看我的留言列表
+      var that = this;
+      this._db.collection('messageList').where({
+         sender_openid: wx.getStorageSync("OPENID"),
+      }).get().then(res => {
+         callback(res);
+      })
+   }
+
+   queryRecceiveMessage(callback) {//查看我的私信列表
+      var that = this;
+      this._db.collection('messageList').where({
+         sender_openid: wx.getStorageSync("OPENID"),
+      }).get().then(res => {
+         callback(res);
+      })
+   }
+
+   queryMessageList(param,callback){//查看信息列表
+      var that = this;
+      this._db.collection('messageList').where({
+         sender_openid: param.sender_openid,
+         receiver_openid: param.receiver_openid,
+      }).get().then(res => {
+         callback(res);
+      })
+   }
+   sendMessageList(param,callback,_id) {//意见反馈
+      var that = this;
+      this._db.collection('messageList').where({
+         sender_openid: param.sender_openid,
+         receiver_openid: param.receiver_openid,   
+      }).get().then(res => {
+         if(res.data.length>0){//更新
+            this._db.collection('messageList').doc(_id).update({
+               data: {
+                  messageList: param.messageList,
+               },
+               success(res) {
+                  callback();
+               },
+               fail(res) {
+                  console.log(res, "更新失败！")
+               }
+            })
+         }else{
+            this._db.collection('messageList').add({//新增
+               data: {
+                  sender_openid:param.sender_openid,
+                  sender_avatarUrl:param.sender_avatarUrl,
+                  sender_nickName: param.sender_nickName,
+                  receiver_openid:param.receiver_openid,
+                  receiver_avatarUrl:param.receiver_avatarUrl,
+                  receiver_nickName: param.receiver_nickName,
+                  messageList:param.messageList,
+               },
+               success(res) {
+                  console.log(res);
+                  callback(res);
+               }
+            })
+         }
+      }).catch(res => {
+         console.log(res);
+         callback();
+      })
+   }
+
    saveAppUserInfo(obj,_id,callback,callback2){//保存用户平台信息
       this._db.collection('appUserInfo').where({
          _openid: wx.getStorageSync("OPENID")
@@ -181,7 +271,52 @@ class cloudapi{
          }
       })
    }
-
+   getHisOrder(obj, callback) {//获取进行中订单
+      var that = this;
+      this._db.collection('sendOrders').where(
+         {
+            _openid: obj.openId,
+            goodsStatus: 0
+         }
+      ).count({
+         success: function (res) {
+            const batchTimes = Math.ceil(res.total / obj.pageSize)
+            //可取的次数
+            if (obj.pageNum < batchTimes) {
+               that._db.collection('sendOrders').where({
+                  _openid: obj.openId,
+                  goodsStatus: 0
+               })
+                  .skip(obj.pageNum * obj.pageSize)
+                  .limit(obj.pageSize)
+                  .orderBy('releaseTime', 'desc')
+                  .get().then(res => {
+                     if (res.data.length > 0) {//更新订单表单
+                        var oldData = wx.getStorageSync("hisOrderList");
+                        var newData = [];
+                        if (oldData.length > 0) {
+                           newData = oldData.concat(res.data);
+                        } else {
+                           newData = res.data;
+                        }
+                        wx.setStorageSync("hisOrderList", newData);
+                        wx.hideLoading();
+                        callback(++obj.pageNum, newData);
+                     } else {
+                        callback(0);
+                     }
+                  }).catch(res => {
+                     console.log(res);
+                     callback(0);
+                     wx.hideLoading();
+                  })
+            } else {
+               callback(0);
+               wx.hideLoading();
+            }
+         }
+      })
+   }
    getSelfOrderList(obj, callback) {//获取本人订单
       var that = this;
       this._db.collection('sendOrders').where(
@@ -356,11 +491,11 @@ class cloudapi{
                success: res => {
                   wx.hideLoading();
                   callback2();
-                  wx:wx.showToast({
-                     title: '编辑成功',
-                     duration: 400,
-                     mask: true,
-                  })
+                  // wx:wx.showToast({
+                  //    title: '已保存',
+                  //    duration: 800,
+                  //    mask: true,
+                  // })
                },
                fail: err => {
                   wx.hideLoading();
@@ -373,8 +508,8 @@ class cloudapi{
                   heartNum: obj.heartNum,
                   birstday: obj.birstday,
                   interest: obj.interest,
-                  music: obj.interest,
-                  application: obj.interest,
+                  music: obj.music,
+                  application: obj.application,
                },
                success(res) {
                   callback2();

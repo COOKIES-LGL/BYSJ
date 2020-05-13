@@ -61,10 +61,10 @@ page {
    position: absolute;
    left: 0rpx;
    top:70rpx;
-   float: left;
    background: rgb(255, 255, 255);
    width: 100%;
    padding: 40rpx 0rpx;
+   z-index:1000;
 }
 .item_search_list{
 color:#9b9fa0;
@@ -74,6 +74,7 @@ margin-left: 10%;
 height: 60rpx;
 line-height:60rpx; 
 border-bottom:1rpx solid #e2e3e4;
+z-index:1000;
 }
 .noData{
    font-size: 28rpx;
@@ -149,17 +150,17 @@ border-bottom:1rpx solid #e2e3e4;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-around;
-  z-index: 1000;
+  z-index: -100;
 }
 .top_item{
   height: 150rpx;
   width: 160rpx;
-   display: flex;
+  display: flex;
   flex-direction: column;
   justify-content: center;
   border-radius:20rpx; 
   padding-top:5rpx; 
-  z-index: 1000;
+  z-index: 1;
 }
 .img{
   width: 70%;

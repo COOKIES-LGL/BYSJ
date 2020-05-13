@@ -22,7 +22,6 @@
                <image class='img add_img' src='../../images/shangchuan@2x.png'></image>
                 <view class="addImage" :hidden="{{add}}">点击添加图片</view>  
             </view>
-           
       </view>
       <view class='imgText2'></view>
       <view class='sub-btns'>
@@ -36,7 +35,7 @@
       </view>
       <view id="goodsName" class='inputView'>
             <view class='text'>物品名称</view>
-            <input value="{{goodsName}}" class='input' bindinput="bindinput" bindblur='bind_title' type='number' placeholder='请详细填写'  placeholder-class='place'></input>
+            <input value="{{goodsName}}" class='input' bindinput="bindinput" bindblur='bind_title'  placeholder='请详细填写'  placeholder-class='place'></input>
             <view class="list_box" wx:if='{{if_search_list}}'>
             <block wx:for="{{searchList}}" wx:key='id'>
             <view class='item_search_list' bindtap='item_search_click' data-Id='{{item}}'>{{item}}</view>

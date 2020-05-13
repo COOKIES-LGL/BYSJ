@@ -97,6 +97,27 @@
 					"id": -1,
 					"name": "pages/userAgreement/userAgreement",
 					"pathName": "pages/userAgreement/userAgreement",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/center/center",
+					"pathName": "pages/center/center",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/center/sendMineMesg/sendMineMesg",
+					"pathName": "pages/center/sendMineMesg/sendMineMesg",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/center/mineMesg/mineMesg",
+					"pathName": "pages/center/mineMesg/mineMesg",
 					"scene": null
 				}
 			]

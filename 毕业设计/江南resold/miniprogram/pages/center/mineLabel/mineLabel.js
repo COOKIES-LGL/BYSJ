@@ -1,6 +1,8 @@
 // pages/center/mineLabel/mineLabel.js
 import { cloudapi } from "../../cloud_api/api_center.js"
 const cloudApi = new cloudapi
+import { cloudFocusapi } from "../../cloud_api/api_focus.js"
+const cloudFocusApi = new cloudFocusapi
 Page({
 
    /**
@@ -8,11 +10,8 @@ Page({
     */
    data: {
      userinfo:'',
-     appUserInfo:{
-        eyeing:10,
-        fans:24,
-     },
-      likeTag: "like",
+     focusList:[],
+     likeTag: "like",
      applicationClass:"application",
      lookMore:"查看更多",
      application:[
@@ -88,7 +87,6 @@ Page({
      ],
      dates: '点击选择',
      xinzuoImage:"",
-     musicList:'',
      userInterestList:[],
      showXinzuo:true,
      label:{
@@ -99,31 +97,9 @@ Page({
         application:[],
      }
    },
-   // addHeart: function () {
-   //    this.setData({ addheart: "addheart" })
-   //    if (this.data.likeTag === 'like') {
-   //       this.setData(
-   //          {
-   //             heartNum: this.data.heartNum + 1,
-   //             likeTag: "dislick"
-   //          }
-   //       )
-   //    } else {
-   //       this.setData(
-   //          {
-   //             heartNum: this.data.heartNum - 1,
-   //             likeTag: "like"
-   //          }
-   //       )
-   //    }
-   //    var that = this;
-   //    setTimeout(function () { that.setData({ addheart: "" }) }, 1000);
-   //    cloudApi.updateHeartNum(that.data.heartNum, wx.getStorageSync('appUserInfo')[0]._id);
-   // },
    formSubmit: function () {//表单提交
       var that = this;
       var formData = this.data.label;
-      console.log(formData);
       if (wx.getStorageSync('customizeLabel')[0]){
         var  _id = wx.getStorageSync('customizeLabel')[0]._id;
         var  _openid = wx.getStorageSync('customizeLabel')[0]._openid;
@@ -133,8 +109,23 @@ Page({
          cloudApi.savecustomizeLabel(formData,that.getcustomizeLabel, _openid);
       }
    },
-   renderData:function(){
-       
+   getFocusMesg:function(){
+      var that =this;
+      var callback1 = function(data){
+         that.setData({
+            focsuNum:data.length
+         })
+         wx.setStorageSync("focusList",data);
+      }
+      var callback2 = function (data) {
+         that.setData({
+            fansNum: data.length
+         })
+         wx.setStorageSync("focusedList", data);
+         wx.hideLoading();
+      }
+      cloudFocusApi.getFocusList(callback1);
+      cloudFocusApi.getFocusedList(callback2);
    },
    getcustomizeLabel: function () {
       var that = this
@@ -143,6 +134,10 @@ Page({
          that.setData({
             label: wx.getStorageSync('customizeLabel')[0],     
          })
+      }
+      that.getImage(that.data.label.birstday);
+      for(var i=0;i<that.data.label.interest.length;i++){
+         that.choiceshow(that.data.label.interest[i],true);
       }
    },
 
@@ -159,12 +154,14 @@ Page({
          })
       }
    },
-   musicInput:function(e){
+   musicInput:function(e){//音乐输入
+      var up = "label.music";
       this.setData({
-         musicList: e.detail.value
+         [up]:e.detail.value,
       })
+      this.formSubmit();
    },
-   showToast:function(arr){
+   showToast:function(arr){//展示提示
       if (arr.length >= 6) {
          wx.showToast({
             title: '最多添加六个标签！',
@@ -176,59 +173,77 @@ Page({
          return false;
       }
    },
-   choiceItem:function(e){
-      var value = e.target.dataset.id;
-      console.log(e);
-      var arr = this.data.userInterestList;
+   choiceshow:function(value,tag){
+      var arr = this.data.label.interest;
       var interest = this.data.interest;
       var valueIndex;
-      function check(item,itemIndex) {
-         if(value == item){
+      var _index;
+      function check(item, itemIndex) {
+         if (value == item) {
             valueIndex = itemIndex;
             return value;
          }
       }
-      var _index;
       function findfunc(item, itemIndex) {
          if (value == item.value) {
             _index = itemIndex
             return itemIndex;
          }
       }
-      if (arr.find(check)){
-         interest.find(findfunc);
-         interest[_index].status = 0;
-         this.setData({
-            interest: interest
-         })
-         arr.splice(valueIndex,1);
-         this.setData({
-            userInterestList: arr
-         })  
-      }else{
-         if(this.showToast(arr)){return};
+      if(tag){
+         if (this.showToast(arr)) { return };
          interest.find(findfunc);
          interest[_index].status = 1;
          this.setData({
             interest: interest
          });
-         arr.push(value);
-         this.setData({
-            userInterestList: arr
-         })
+      }else{
+         if (arr.find(check)) {//已在列表中
+            interest.find(findfunc);
+            interest[_index].status = 0;
+            this.setData({
+               interest: interest
+            })
+            arr.splice(valueIndex, 1);
+         } else {
+            if (this.showToast(arr)) { return };
+            interest.find(findfunc);
+            interest[_index].status = 1;
+            this.setData({
+               interest: interest
+            });
+            arr.push(value);
+         }
       }
-      console.log(this.data.userInterestList)
+      var up = "label.interest";
+      this.setData({
+         [up]: arr
+      })
    },
-   toEyeing:function(){
+   choiceItem:function(e){
+      var value = e.target.dataset.id;
+      this.choiceshow(value);
+   },
 
+   toEyeing:function(){
+      wx.navigateTo({
+         url: '../FocusList/FocusList?type=focus',
+      }) 
    },
    toFans:function(){
-
+      wx.navigateTo({
+         url: '../FocusList/FocusList?type=focused',
+      }) 
    },
    /**
     * 生命周期函数--监听页面加载
     */
    init :function(){
+     wx.showLoading({
+        title: '加载中',
+        mask:true
+     })
+     this.getFocusMesg();
      this.setData({
         userinfo:wx.getStorageSync("userInfo"),
      })
@@ -238,19 +253,23 @@ Page({
       const arr = [20, 19, 21, 21, 21, 22, 23, 23, 23, 23, 22, 22];
       return s.substr(month * 2 - (day < arr[month - 1] ? 2 : 0), 2);
    },
-   bindDate: function (e) {
-      var value = "label.birstday"
+   getImage:function(eValue){
+      var value = "label.birstday";
       this.setData({
-         [value]: e.detail.value
+         [value]: eValue
       })
-      var arr = this.data.dates.split('-');
+      var arr = eValue.split('-');
       var month = this.removeZero(arr[1]);
       var day = this.removeZero(arr[2]);
-      var image = this.getXingzuo(month,day);
+      var image = this.getXingzuo(month, day);
       this.setData({
-         xinzuoImage: 'cloud://resold-822f1b.7265-resold-822f1b-1258157186/xinzuo/'+image+"座.jpg",
-         showXinzuo:false,
+         xinzuoImage: 'cloud://resold-822f1b.7265-resold-822f1b-1258157186/xinzuo/' + image + "座.jpg",
+         showXinzuo: false,
       })
+   },
+   bindDate: function (e) {
+      var eValue = e.detail.value;
+      this.getImage(eValue);
       this.formSubmit();
    },
    removeZero:function(res){
@@ -258,7 +277,9 @@ Page({
    },
    onLoad: function (options) {
       this.getcustomizeLabel();
-      this.formSubmit();
+      if (wx.getStorageSync("customizeLabel").length <= 0){
+         this.formSubmit();
+      }
    },
 
    /**
@@ -279,34 +300,13 @@ Page({
     * 生命周期函数--监听页面隐藏
     */
    onHide: function () {
-
+     this.formSubmit();
    },
 
    /**
     * 生命周期函数--监听页面卸载
     */
    onUnload: function () {
-
+      this.formSubmit();
    },
-
-   /**
-    * 页面相关事件处理函数--监听用户下拉动作
-    */
-   onPullDownRefresh: function () {
-
-   },
-
-   /**
-    * 页面上拉触底事件的处理函数
-    */
-   onReachBottom: function () {
-
-   },
-
-   /**
-    * 用户点击右上角分享
-    */
-   onShareAppMessage: function () {
-
-   }
 })

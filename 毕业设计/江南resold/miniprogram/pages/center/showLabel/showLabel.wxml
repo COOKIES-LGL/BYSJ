@@ -1,0 +1,87 @@
+<view class='senderBox'>
+   <image src="{{userinfo.avatarUrl}}"></image>
+   <view class="senderName">{{userinfo.nickName}}<span>{{userinfo.gender=="1"?"♂":"♀"}}</span></view>
+   <view  catchtap="tofocus" class='botText'><span class="weight">{{focuse}}</span></view>
+   <view catchtap="addHeart" class="likeCount">
+    <image src='../../../images/wode/web_heart.jpg'  class="{{addheart}}" catchtap="addHeart" ></image>
+   <span style="color:#1fbef8;margin-left:20rpx">{{label.heartNum}}</span></view>
+</view>
+<view  class="relaBox" wx:if="{{type=='List'}}" bindtap="sendMesg">
+   <image src="../../../images/center12.png"></image>
+   <view class="rela">私信</view>
+</view>
+<view class="line"></view>
+<view class="applicationBox" bindtap="lookOrder">
+<image src="../../../images/bgblue.png"></image>
+<view class="relative">查看<span>{{userinfo.gender=="1"?"他的":"她的"}}</span>最新发单</view>
+</view>
+<view class="line"></view>
+<view class="applicationTop">
+   <view class="top">
+      <view class="title">星座</view>
+      <view class="lookMore" > 
+        <view class="section">  
+         <picker disabled="true" mode="date" value="{{label.birstday}}" start="1995-06-06" end="2020-06-06" bindchange="bindDate"> 
+          <view class="picker">  
+           出生日期: {{label.birstday}}  
+          </view>  
+         </picker>  
+        </view>
+      </view>
+   </view>
+   <view class="bottom" hidden="{{showXinzuo}}">
+      <view class="xinzuoImage"><image src="{{xinzuoImage}}"></image></view>
+      <!-- <view class="interest">
+      </view>  -->
+   </view>
+</view>
+<view class="line"></view>
+<view class="applicationMusic">
+   <view class="top">
+      <view class="title" style="color:#888">最近常听🎵</view>
+      <view class="lookMore"><input disabled="true" placeholder="请输入您最近常听的音乐" class="musicInput" bindblur="musicInput" value="{{label.music}}"></input></view>
+   </view>
+</view>
+<view class="line"></view>
+<view class="application">
+   <view class="top">
+      <view class="title" style="color:#888">个性标签</view>
+   </view>
+   <view class="bottom">
+    <view class="intitemBox" wx:for="{{label.interest}}" wx:key='id'>
+       <view class="itemChoiced'" data-Id="{{item}}" >{{item}}</view>
+    </view>
+   </view>
+</view>
+<view class="line"></view>
+<!-- <view class="{{applicationClass}}">
+   <view class="top">
+      <view class="title">求职考研神器</view>
+      <view class="lookMore" bindtap="lookMore">{{lookMore}}</view>
+   </view>
+   <view class="bottom">
+    <view class="itemBox" wx:for="{{application}}" wx:key='id'>
+       <view class="img"><image src="{{item.img}}"></image></view>
+       <view class="name">{{item.name}}</view>
+       <view class="url" hidden="{{!item.url}}">{{item.url}}</view>
+    </view>
+   </view>
+</view> -->
+<view class="line"></view>
+<view class="line"></view>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

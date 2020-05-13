@@ -2,8 +2,8 @@
    <image src="{{userinfo.avatarUrl}}"></image>
    <view class="senderName">{{userinfo.nickName}}</view>
    <view class='text'>{{userinfo.gender=="1"?"♂":"♀"}}</view>
-   <view class='botText' bindtap="toEyeing">关注:<span class="weight">{{appUserInfo.eyeing}}</span></view>
-   <view class='botText' bindtap="toFans">粉丝:<span class="weight">{{appUserInfo.fans}}</span></view>
+   <view class='botText' bindtap="toEyeing">关注:<span class="weight">{{focsuNum}}</span></view>
+   <view class='botText' style="margin-left:30rpx;" bindtap="toFans">粉丝:<span class="weight">{{fansNum}}</span></view>
    <view catchtap="addHeart"class="likeCount">喜欢：<span style="color:#1fbef8">{{label.heartNum}}</span></view>
 </view>
 <view class="line"></view>
@@ -30,7 +30,7 @@
 <view class="applicationMusic">
    <view class="top">
       <view class="title" style="color:#888">最近常听🎵</view>
-      <view class="lookMore"><input placeholder="请输入您最近常听的音乐" class="musicInput" bindblur="musicInput" value="{{musicList}}"></input></view>
+      <view class="lookMore"><input placeholder="请输入您最近常听的音乐" class="musicInput" bindblur="musicInput" value="{{label.music}}"></input></view>
    </view>
 </view>
 <view class="line"></view>
@@ -44,7 +44,7 @@
     </view>
    </view>
 </view>
-<view class="line"></view>
+<!-- <view class="line"></view>
 <view class="{{applicationClass}}">
    <view class="top">
       <view class="title">求职考研神器</view>
@@ -57,7 +57,7 @@
        <view class="url" hidden="{{!item.url}}">{{item.url}}</view>
     </view>
    </view>
-</view>
+</view> -->
 <view class="line"></view>
 <view class="line"></view>
 

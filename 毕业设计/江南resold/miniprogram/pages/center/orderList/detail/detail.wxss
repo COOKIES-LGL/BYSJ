@@ -35,6 +35,9 @@ image{
   font-size: 30rpx;
   padding-bottom:20rpx; 
 }
+.senderName{
+   color:rgb(36, 146, 248);
+}
 .senderBox image{
    border-radius: 50%;
    height: 100rpx;
@@ -106,19 +109,19 @@ top:50rpx;
 height: 50rpx;
 line-height: 50rpx;
 left: 200rpx;
-width:300rpx;
+width:350rpx;
 display: inline-block;
-
 }
 .blueClass{
 color: rgb(36, 146, 248);
 text-decoration: underline;
+font-size: 28rpx;
 }
 .wechat{
 height: 50rpx;  
 line-height: 50rpx; 
 position: absolute;
-width:300rpx;
+width:350rpx;
 top:0rpx;
 left: 200rpx;
 display: inline-block;

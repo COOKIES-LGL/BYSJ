@@ -14,16 +14,25 @@ Page({
       },
       noData:true,
       funcName:'',
+      openid:'',
       type:'',
    },
    toDetail: function (event) {
+
       var order_id = base.getDataSet(event, "goodsid");
       var type = base.getDataSet(event, "type");
-      wx.navigateTo({
-         url: './detail/detail?id=' + order_id + "&&type=" + type,
-      })
+      console.log(type);
+      if (this.data.openid) {
+         wx.navigateTo({
+            url: '../../detail/detail?id=' + order_id + "&&type=orderList",
+         })
+      }else{
+         wx.navigateTo({
+            url: './detail/detail?id=' + order_id + "&&type=" + type,
+         })
+      }
    },
-   loadData: function (res,tag) {
+   loadData: function (tag) {
       var that = this;
       var callback1 = function (num, newData) {
          if (num == '0') {
@@ -66,43 +75,70 @@ Page({
    initData:function(param){
       var that = this;
       var tag = "firstLoad"
-      console.log(param);
-      switch (param) {
-         case "my_order": that.data.funcName = "getSelfOrderList"; that.setTitle("当前买入预约");
-            that.data.param.searchMesg = "买物"; this.loadData(param, tag); break;
-         case "my_sender": that.data.funcName = "getSelfOrderList"; that.setTitle("当前卖出发布");
-            that.data.param.searchMesg = "卖物"; this.loadData(param, tag); break;
-         case "my_history_order": that.setData({
+      
+      if(param){
+         switch (param) {
+            case "my_order": that.data.funcName = "getSelfOrderList"; that.setTitle("当前买入预约");
+               that.data.param.searchMesg = "买物"; this.loadData(param, tag); break;
+            case "my_sender": that.data.funcName = "getSelfOrderList"; that.setTitle("当前卖出发布");
+               that.data.param.searchMesg = "卖物"; this.loadData(param, tag); break;
+            case "my_history_order": that.setData({
+               param: {
+                  goodsStatus: 2,
+                  pageSize: 6,
+                  pageNum: 0
+               }
+            }); that.setTitle("历史发单");
+               that.data.funcName = "getHistoryOrderList1";
+               this.loadData(tag); break;
+            case "my_history_sender": that.setData({
+               param: {
+                  goodsStatus: 2,
+                  pageSize: 6,
+                  pageNum: 0
+               }
+            }); that.setTitle("历史接单");
+               that.data.funcName = "getHistoryOrderList1";
+               this.loadData(tag); break;
+            case 'selfReceive': that.data.funcName = "getOrderIng"; that.setTitle("我的接单");
+               this.loadData(tag); break;
+            default: break;
+         } 
+      }
+      if(this.data.openid){
+         that.setData({
             param: {
                goodsStatus: 2,
                pageSize: 6,
-               pageNum: 0
-            }
-         }); that.setTitle("历史发单");
-            that.data.funcName = "getHistoryOrderList1";
-            this.loadData(param, tag); break;
-         case "my_history_sender": that.setData({
-            param: {
-               goodsStatus: 2,
-               pageSize: 6,
-               pageNum: 0
-            }
-         }); that.setTitle("历史接单");
-            that.data.funcName = "getHistoryOrderList1";
-            this.loadData(param, tag); break;
-         case 'selfReceive': that.data.funcName = "getOrderIng"; that.setTitle("我的接单");
-            this.loadData(param, tag); break;
-         default: break;
-      } 
+               pageNum: 0,
+               openId:that.data.openid
+            },
+            funcName:"getHisOrder"
+         });
+         that.setTitle("最新发单");
+         this.loadData(tag);
+      }
+      
+   },
+   init:function(){
+      wx.setStorageSync("hisOrderList", []);
+      wx.setStorageSync("selfOrderList", []);
    },
    onLoad: function (options) {
       wx.showLoading({
          title: '加载中',
       })
-      var param = options.type;
-      this.setData({
-         type: param,
-      })
+      if (options.type){
+         var param = options.type;
+         this.setData({
+            type: param,
+         })
+      }
+      if(options.openid){
+         this.setData({
+            openid:options.openid
+         })
+      }
    },
 
    /**
@@ -116,6 +152,7 @@ Page({
     * 生命周期函数--监听页面显示
     */
    onShow: function () {
+      this.init();
       this.initData(this.data.type);
    },
 

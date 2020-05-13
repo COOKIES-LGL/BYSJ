@@ -43,7 +43,21 @@ class cloudapi {
          }
       })
    }
-   deleteOrder(param, callback) {//更新点赞数据
+   delImage(param){
+      wx.cloud.callFunction({
+         name: "cloudStore",
+         data: {
+            obj: param,
+         },
+         success: res => {
+            console.log('[云函数] [cloudStore] 调用成功', res);
+         },
+         fail: err => {
+            console.error('[云函数] [cloudStore] 调用失败', err)
+         }
+      })
+   }
+   deleteOrder(param, callback) {//删除订单
       wx.cloud.callFunction({
          name: 'updateData',
          data: {
@@ -59,18 +73,7 @@ class cloudapi {
             console.error('[云函数] [login] 调用失败', err)
          }
       })
-      wx.cloud.callFunction({
-         name:"cloudStore",
-         data: {
-            obj: param.goodsImage,
-         },
-         success: res => {
-            console.log('[云函数] [cloudStore] 调用成功', res);
-         },
-         fail: err => {
-            console.error('[云函数] [cloudStore] 调用失败', err)
-         }
-      })
+      delImage(param.goodsImage);
    }
    finishOrder(param, callback) {
       wx.cloud.callFunction({
