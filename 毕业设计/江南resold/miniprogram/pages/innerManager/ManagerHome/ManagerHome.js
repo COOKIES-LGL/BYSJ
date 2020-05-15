@@ -158,9 +158,28 @@ Page({
       wx.showLoading({
          title: '载入中',
       })
-      console.log(this.data.fabu)
       callback();
       // centerApi.queryOrder(callback);
+      
+      var callback2 = function (data) {
+         var data1 = 54;
+         var data2 = 25;
+         var data3 = 80;
+         that.setData({
+            orderType1: "text-align:center;color:#fff;background:rgb(45,177,251);height:" + data1 * 10 + "rpx;width:100rpx;line-height:50rpx;",
+            orderType2: "text-align:center;color:#fff;background:rgb(45,177,251);height:" + data2 * 10 + "rpx;width:100rpx;line-height:50rpx;",
+            orderType3: "text-align:center;color:#fff;background:rgb(45,177,251);height:" + data3 * 10 + "rpx;width:100rpx;line-height:50rpx;",
+            orderType1Num: data1,
+            orderType2Num: data2,
+            orderType3Num: data3,
+         })
+         wx.hideLoading();
+      };
+      wx.showLoading({
+         title: '载入中',
+      })
+      callback2()
+      // centerApi.queryOrder(callback2);
    },
    initFour: function () {
       var that =this;

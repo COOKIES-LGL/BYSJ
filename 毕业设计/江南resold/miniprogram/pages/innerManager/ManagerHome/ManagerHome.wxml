@@ -43,9 +43,9 @@
     <view class="line"></view>
         <view><span class="tips">订单状态(已发布/已预约/已完结)</span></view>
     <view class="showNumOrder">
-        <view class="showNumOrderItem">已发布:<view style="{{orderType1}}">{{orderType1Num}}</view></view>
-        <view class="showNumOrderItem">已预约:<view style="{{orderType2}}">{{orderType2Num}}</view></view>
-        <view class="showNumOrderItem">已完结:<view style="{{orderType3}}">{{orderType3Num}}</view></view>
+        <view class="showNumOrderItem"><view style="{{orderType1}}">{{orderType1Num}}</view><view>已发布:</view></view>
+        <view class="showNumOrderItem"><view style="{{orderType2}}">{{orderType2Num}}</view><view>已预约:</view></view>
+        <view class="showNumOrderItem"><view style="{{orderType3}}">{{orderType3Num}}</view><view>已完结:</view></view>
     </view>
     <view class="line"></view>
 </view>
