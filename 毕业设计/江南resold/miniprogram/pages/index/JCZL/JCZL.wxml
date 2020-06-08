@@ -56,4 +56,5 @@
 </view>
 <view class="noData" hidden="{{noData||noListData==false}}">我是有底线的！</view>
 <view class="nodata" hidden="{{noListData}}">
-<image src="../../../images/nodata.png"></image><view>暂无数据</view></view>
+<image src="../../../images/nodata.png"></image><view>暂无数据</view>
+</view>

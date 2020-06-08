@@ -53,7 +53,7 @@ Page({
       section2: "Unsection",
       college_text:"您要筛选的学院",
       major_text:"您要筛选的专业",
-      collegeArr: ["物联网工程（卓越工程师）", "自动化（卓越工程师）", "自动化", "电气工程及其自动化", "计算机科学与技术", "通信工程", "微电子科学与工程"],
+      collegeArr: ["物联网工程（卓越工程师）", "自动化（卓越工程师）", "自动化", "电气工程及其自动化", "通信工程", "微电子科学与工程"],
       collegeIndex: 0,
       book_order_items: [],
       sell_order_items: [],
@@ -91,6 +91,8 @@ Page({
       this.setData({
          [up1]: 0,
          [up2]: 0,
+         hasesellData: true,
+         hasebookData: true,
          couldFuncName: "getOrderTopList",
       });
       if (wx.getStorageSync("appUserInfo")[0].major){
@@ -177,7 +179,7 @@ Page({
             data.collegeArr = configData[0].waiguoyu; break;
          case "生物工程学院":
             data.collegeArr = configData[0].shengwugongcheng; break;
-         case "数字媒体学院":
+         case "人工智能与计算机学院":
             data.collegeArr = configData[0].shuzimeiti; break;
          default: break;
       }
@@ -200,19 +202,34 @@ Page({
       this.reload(2,this.data.collegeArr[this.data.collegeIndex]);
    },
    reload: function (tag, value) {
+      console.log(tag,value);
       var college1 = "param1.college";
       var college2 = "param2.college";
       var major1 = "param1.major";
       var major2 = "param2.major";
+      var up1 = "param1.pageNum";
+      var up2 = "param2.pageNum";
       if (tag==1) {
          this.setData({
             [college1]: value,
             [college2]: value,
+            [up1]: 0,
+            [up2]: 0,
+            nosellListData: true,
+            nobookListData: true,
+            sell_order_items: [],
+            book_order_items: [],
          });
       }else{
          this.setData({
             [major1]: value,
             [major2]: value,
+            [up1]:0,
+            [up2]: 0,
+            nosellListData:true,
+            nobookListData:true,
+            sell_order_items:[],
+            book_order_items: [],
          });
       }
       this.loadData("firstLoad");
@@ -222,7 +239,8 @@ Page({
          if (wx.getStorageSync("TopsellOrderList").length > 0) {
             this.setData({
                sell_order_items: wx.getStorageSync("TopsellOrderList"),
-               nosellListData: true
+               nosellListData: true,
+               noListData: true,
             })
          } else {
             this.setData({
@@ -238,12 +256,10 @@ Page({
             })
          } else {
             this.setData({
-               nobookListData: false
+               nobookListData: false,
             })
          }
       }
-      console.log(this.data.noListData)
-
    },
 
    getsearchTips: function () {//获取搜索数据
@@ -379,30 +395,36 @@ Page({
    loadData: function (res) {//数据加载
       var that = this;
       var callback1 = function (num, newData) {
+         console.log(num,newData);
          if (num == 0) {
             that.data.noData = false;
             that.data.hasesellData = false;
+         }else{
+            var up = "param1.pageNum";
+            that.setData({
+               [up]: num,
+               sell_order_items: newData || that.data.sell_order_items
+            });
          }
-         var up = "param1.pageNum";
-         that.setData({
-            [up]: num,
-            sell_order_items: newData || that.data.sell_order_items
-         });
          base.setTimeout(that.renderData, true);
       }
       var callback2 = function (num, newData) {
+         console.log(num,newData);
          if (num == 0) {
             that.data.noData = false;
             that.data.hasebookData = false;
+         }else{
+            var up = "param2.pageNum";
+            that.setData({
+               [up]: num,
+               book_order_items: newData || that.data.book_order_items
+            });
          }
-         var up = "param2.pageNum";
-         that.setData({
-            [up]: num,
-            book_order_items: newData || that.data.book_order_items
-         });
+
          base.setTimeout(that.renderData, false);
       }
       if (res == "firstLoad") {
+         console.log(this.data.nosellListData, this.data.nobookListData)
          wx.setStorageSync("TopsellOrderList", []);
          wx.setStorageSync("TopbookOrderList", []);
          if (this.data.nosellListData) {

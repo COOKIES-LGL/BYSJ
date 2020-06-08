@@ -3,6 +3,8 @@ const app = getApp()
 import { Base } from '../base/common.js';
 import { configData } from "../config/configData.js/"
 import { cloudapi } from "../cloud_api/api_index.js"
+import { cloudapi as managerapi } from "../cloud_api/api_manager.js"
+const managerApi = new managerapi();
 const cloudApi = new cloudapi
 const base = new Base();
 
@@ -82,6 +84,8 @@ Page({
      this.setData({
         [up1]: 0,
         [up2]: 0,
+        hasesellData:true,
+        hasebookData:true,
      });
      this.getsearchTips();
      
@@ -268,6 +272,7 @@ Page({
   loadData:function(res){
       var that = this;
       var callback1 = function(num,newData){
+         console.log(newData);
          if(num==0){
             that.data.noData = false;
             that.data.hasesellData = false;
@@ -280,6 +285,7 @@ Page({
          base.setTimeout(that.renderData,true);
       }
       var callback2 = function (num,newData) {
+         console.log(newData);
          if (num == 0) {
             that.data.noData = false;
             that.data.hasebookData = false; 
@@ -324,11 +330,15 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+     var that =this;
      this._notice();
-     var imageList = wx.getStorageSync("navImagesList");
-     this.setData({//初始化轮播图
-        banner:  imageList.length>0?imageList:['../../images/nav1.png', '../../images/nav2.png']
-     })
+     var callback = function(res){
+        var imageList = res[0].imageUrl;
+        that.setData({//初始化轮播图
+           banner: imageList.length > 0 ? imageList : ['../../images/nav1.png', '../../images/nav2.png']
+        })
+     }
+     managerApi.queryNavImages(callback);
   },
   navTo:function(e){
      var Index = e.currentTarget.dataset.index;
@@ -376,11 +386,9 @@ Page({
      wx.stopPullDownRefresh();
   },
   onReachBottom: function () {
-    wx.showToast({
-      title: '获取更多订单中',
-      icon: 'loading',
-      duration: 500
-    });
+    wx.showLoading({
+       title: '载入更多',
+    })
     this._loadMoreData()
   },
   _loadMoreData: function () {

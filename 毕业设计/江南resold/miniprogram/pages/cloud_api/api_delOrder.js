@@ -73,7 +73,7 @@ class cloudapi {
             console.error('[云函数] [login] 调用失败', err)
          }
       })
-      delImage(param.goodsImage);
+      this.delImage(param.goodsImage);
    }
    finishOrder(param, callback) {
       wx.cloud.callFunction({

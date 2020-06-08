@@ -53,7 +53,7 @@ Page({
       section2: "Unsection",
       college_text: "您要筛选的学院",
       major_text: "您要筛选的专业",
-      collegeArr: ["物联网工程（卓越工程师）", "自动化（卓越工程师）", "自动化", "电气工程及其自动化", "计算机科学与技术", "通信工程", "微电子科学与工程"],
+      collegeArr: ["物联网工程（卓越工程师）", "自动化（卓越工程师）", "自动化", "电气工程及其自动化","通信工程", "微电子科学与工程"],
       collegeIndex: 0,
       book_order_items: [],
       sell_order_items: [],
@@ -92,6 +92,8 @@ Page({
          [up1]: 0,
          [up2]: 0,
          couldFuncName: "getOrderTopList",
+         hasesellData: true,
+         hasebookData: true,
       });
       if (wx.getStorageSync("appUserInfo")[0].major) {
          var college = wx.getStorageSync("appUserInfo")[0].college
@@ -177,7 +179,7 @@ Page({
             data.collegeArr = configData[0].waiguoyu; break;
          case "生物工程学院":
             data.collegeArr = configData[0].shengwugongcheng; break;
-         case "数字媒体学院":
+         case "人工智能与计算机学院":
             data.collegeArr = configData[0].shuzimeiti; break;
          default: break;
       }
@@ -204,15 +206,29 @@ Page({
       var college2 = "param2.college";
       var major1 = "param1.major";
       var major2 = "param2.major";
+      var up1 = "param1.pageNum";
+      var up2 = "param2.pageNum";
       if (tag == 1) {
          this.setData({
             [college1]: value,
             [college2]: value,
+            [up1]: 0,
+            [up2]: 0,
+            nosellListData: true,
+            nobookListData: true,
+            sell_order_items: [],
+            book_order_items: [],
          });
       } else {
          this.setData({
             [major1]: value,
             [major2]: value,
+            [up1]: 0,
+            [up2]: 0,
+            nosellListData: true,
+            nobookListData: true,
+            sell_order_items: [],
+            book_order_items: [],
          });
       }
       this.loadData("firstLoad");

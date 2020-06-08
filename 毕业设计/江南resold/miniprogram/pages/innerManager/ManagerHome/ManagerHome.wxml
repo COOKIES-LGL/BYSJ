@@ -18,19 +18,199 @@
 </view>
 <!-- <view class="line"></view> -->
 <view class='top_nav'>
-      <view class="{{current0}}" data-index="0" catchtap='navTo'>平台信息</view>
+      <view class="{{current0}}" data-index="0" catchtap='navTo'>订单信息</view>
       <view class="{{current1}}" data-index="1" catchtap='navTo'>用户信息</view>
-      <view class="{{current2}}" data-index="2" catchtap='navTo'>订单信息</view>
+      <view class="{{current2}}" data-index="2" catchtap='navTo'>平台信息</view>
       <view class="{{current3}}" data-index="3" catchtap='navTo'>用户反馈</view>
 </view>
 
 <view class="AppInfo botBox" wx:if="{{current0=='currentClass'}}">
-  <view class="title">平台交易统计</view>
-
+   <view class="title">当前交易统计</view>
+      <view><span class="tips">未预约订单列表</span></view>
+      <scroll-view scroll-x="true">
+         <view class="scrollView2">
+            <view  class="th2">
+               <view class="tr22">卖方</view>
+               <view class="tr2">发布类别</view>
+               <view class="tr2">物品名称</view>
+               <view class="tr2">物品类别</view>
+               <view class="tr2">物品数量</view>
+               <view class="tr2">物品价位</view>
+               <view class="tr2">物品所属学院</view>
+               <view class="tr2">物品所属专业</view>
+               <view class="tr2">发布人电话</view>
+               <view class="tr2">发布人微信</view>
+               <view class="tr2">订单备注</view>
+               <view class="tr2">发布时间</view>
+               <view class="tr2">操作</view>                       
+            </view>
+            <view class="tb2" wx:for="{{allOrderList1}}" wx:key="id">
+                  <view class="td22">
+                      <image src="{{item.send_avatarUrl}}"></image>
+                      <span class="nickname">{{item.send_nickname}}{{item.sender_gender=='男'?"♂":"♀"}}</span>
+                  </view>
+                  <view class="td2">{{item.goodsType}}</view> 
+                  <view class="td2">{{item.goodsName}}</view>
+                  <view class="td2">{{item.goodsTitle}}</view>      
+                  <view class="td2">{{item.goodsNum}}</view>
+                  <view class="td2">{{item.goodsMinprice||''}}~{{item.goodsMaxprice}}￥</view>    
+                  <view class="td2">{{item.goodscollege}}</view>   
+                  <view class="td2">{{item.goodsmajor}}</view>
+                  <view class="td2">{{item.goodsphone}}</view>  
+                  <view class="td2">{{item.goodswechat}}</view>  
+                  <view class="td2">{{item.goodsremark}}</view>
+                  <view class="td2">{{item.releaseTime}}</view>
+                  <checkbox-group bindchange="checkchange" data-images="{{item.goodsImage}}"  data-id="{{item._id}}"  class="td2">
+                    <checkbox>删除</checkbox>
+                  </checkbox-group>                    
+            </view>
+         </view>
+      </scroll-view>
+    <view class="line"></view>
+    <view class="line"></view>
+      <view><span class="tips">已预约订单列表</span></view>
+      <scroll-view scroll-x="true">
+         <view class="scrollView3">
+            <view  class="th2">
+               <view class="tr22">卖方</view>
+               <view class="tr22">买方</view>
+               <view class="tr2">发布类别</view>
+               <view class="tr2">物品名称</view>
+               <view class="tr2">物品类别</view>
+               <view class="tr2">物品数量</view>
+               <view class="tr2">物品价位</view>
+               <view class="tr2">物品所属学院</view>
+               <view class="tr2">物品所属专业</view>
+               <view class="tr2">发布人电话</view>
+               <view class="tr2">发布人微信</view>
+               <view class="tr2">订单备注</view>
+               <view class="tr2">发布时间</view>
+               <view class="tr2">预约时间</view>
+                <view class="tr2">操作</view>                       
+            </view>
+            <view class="tb2" wx:for="{{allOrderList2}}" wx:key="id">
+                  <view class="td22">
+                  <image src="{{item.send_avatarUrl}}"></image>
+                  <span class="nickname">{{item.send_nickname}}{{item.sender_gender=='男'?"♂":"♀"}}</span>
+                  </view>
+                  <view class="td22">
+                  <image src="{{item.receiver_avatarUrl}}"></image>
+                  <span class="nickname">{{item.receiver_nickname}}{{item.receiver_gender=='男'?"♂":"♀"}}</span>
+                  </view>
+                  <view class="td2">{{item.goodsType}}</view> 
+                  <view class="td2">{{item.goodsName}}</view>
+                  <view class="td2">{{item.goodsTitle}}</view>      
+                  <view class="td2">{{item.goodsNum}}</view>
+                  <view class="td2">{{item.goodsMinprice||''}}~{{item.goodsMaxprice}}￥</view>    
+                  <view class="td2">{{item.goodscollege}}</view>   
+                  <view class="td2">{{item.goodsmajor}}</view>
+                  <view class="td2">{{item.goodsphone}}</view>  
+                  <view class="td2">{{item.goodswechat}}</view>  
+                  <view class="td2">{{item.goodsremark}}</view>
+                  <view class="td2">{{item.releaseTime}}</view>
+                  <view class="td2">{{item.receiverTime}}</view>
+                  <checkbox-group bindchange="checkchange" data-images="{{item.goodsImage}}"  data-id="{{item._id}}"  class="td2">
+                    <checkbox>删除</checkbox>
+                  </checkbox-group>                          
+            </view>
+         </view>
+      </scroll-view>
+    <view class="line"></view>
+    <view class="line"></view>
+      <view><span class="tips">已完结订单列表</span></view>
+      <scroll-view scroll-x="true">
+         <view class="scrollView4">
+            <view  class="th2">
+               <view class="tr22">卖方</view>
+               <view class="tr22">买方</view>
+               <view class="tr2">发布类别</view>
+               <view class="tr2">物品名称</view>
+               <view class="tr2">物品类别</view>
+               <view class="tr2">物品数量</view>
+               <view class="tr2">物品价位</view>
+               <view class="tr2">物品所属学院</view>
+               <view class="tr2">物品所属专业</view>
+               <view class="tr2">发布人电话</view>
+               <view class="tr2">发布人微信</view>
+               <view class="tr2">订单备注</view>
+               <view class="tr2">发布时间</view>
+               <view class="tr2">预约时间</view> 
+               <view class="tr2">完结时间</view>
+                <view class="tr2">操作</view>                       
+            </view>
+            <view class="tb2" wx:for="{{allOrderList3}}" wx:key="id">
+                  <view class="td22">
+                      <image src="{{item.send_avatarUrl}}"></image>
+                      <span class="nickname">{{item.send_nickname}}{{item.sender_gender=='男'?"♂":"♀"}}</span>
+                  </view>
+                  <view class="td22">
+                      <image src="{{item.send_avatarUrl}}"></image>
+                      <span class="nickname">{{item.send_nickname}}{{item.sender_gender=='男'?"♂":"♀"}}</span>
+                  </view>
+                  <view class="td2">{{item.goodsType}}</view> 
+                  <view class="td2">{{item.goodsName}}</view>
+                  <view class="td2">{{item.goodsTitle}}</view>      
+                  <view class="td2">{{item.goodsNum}}</view>
+                  <view class="td2">{{item.goodsMinprice||''}}~{{item.goodsMaxprice}}￥</view>    
+                  <view class="td2">{{item.goodscollege}}</view>   
+                  <view class="td2">{{item.goodsmajor}}</view>
+                  <view class="td2">{{item.goodsphone}}</view>  
+                  <view class="td2">{{item.goodswechat}}</view>  
+                  <view class="td2">{{item.goodsremark}}</view>
+                  <view class="td2">{{item.releaseTime}}</view>
+                  <view class="td2">{{item.receiverTime}}</view>
+                  <view class="td2">{{item.finishTime}}</view>
+                  <checkbox-group bindchange="checkchange" data-images="{{item.goodsImage}}"  data-id="{{item._id}}"  class="td2">
+                    <checkbox>删除</checkbox>
+                  </checkbox-group>                           
+            </view>
+         </view>
+      </scroll-view>
+    <view class="line"></view>
+    <view class="line"></view>
 </view>
 
 <view class="userInfo botBox" wx:if="{{current1=='currentClass'}}">
   <view class="title">用户信息统计</view>
+      <view><span class="tips">男生/女生</span></view>
+      <view class="showNum">
+         <view class="showNumItem">男生占比:<view style="{{gendermanData}}">{{manNum}}</view></view>
+         <view class="showNumItem">女生占比:<view style="{{genderwomanData}}">{{womanNum}}</view></view>
+      </view>
+      <view class="line"></view>
+      <view><span class="tips">年级分布</span></view>
+    <view class="showNumOrder">
+        <view class="showNumOrderItem"><view style="{{gradeType1}}">{{gradeType1Num}}</view><view>大一:</view></view>
+        <view class="showNumOrderItem"><view style="{{gradeType2}}">{{gradeType2Num}}</view><view>大二:</view></view>
+        <view class="showNumOrderItem"><view style="{{gradeType3}}">{{gradeType3Num}}</view><view>大三:</view></view>
+        <view class="showNumOrderItem"><view style="{{gradeType4}}">{{gradeType3Num}}</view><view>大四:</view></view>
+    </view>
+    <view class="line"></view>
+    <view><span class="tips">用户数据列表</span></view>
+    <scroll-view scroll-x="true">
+      <view  class="scrollView" >
+         <view  class="th">
+            <view class="tr">头像</view>
+            <view class="tr">昵称</view> 
+            <view class="tr">性别</view>
+            <view class="tr">专业</view>
+            <view class="tr">学院</view>
+            <view class="tr">年级</view>
+            <view class="tr">注册时间</view>                
+         </view>
+         <view class="tb" wx:for="{{userInfoList}}" wx:key="id">
+               <view class="td"><image src="{{item.userinfo.avatarUrl}}"></image></view>
+               <view class="td">{{item.userinfo.nickName}}</view>
+               <view class="td">{{item.userinfo.gender==1?"男":"女"}}</view>   
+               <view class="td">{{item.major}}</view>   
+               <view class="td">{{item.college}}</view>   
+               <view class="td">{{item.grade}}</view>   
+               <view class="td">{{item.registTime}}</view>       
+         </view>
+      </view>
+    </scroll-view>
+    <view class="line"></view>
+    <view class="line"></view>
 </view>
 
 <view class="orderInfo botBox" wx:if="{{current2=='currentClass'}}">
@@ -53,18 +233,18 @@
 <view class="feedBack botBox" wx:if="{{current3=='currentClass'}}">
   <view class="title">用户反馈统计</view>
   <view class="feedBackList">
-      <view class="item" wx:for="{{feedBackList}}" wx:key="id">
-         <view class="mesgBox">
-         <view class="left"><image src="{{item.senderimageUrl}}"></image></view>
-         <view class="mid">
-               <view class="nickName">{{item.senderNickname}}</view>
-               <view class="mesg">{{item.detail}}</view>
+      <view class="item" wx:for="{{feedBackList}}" wx:key="id" >
+         <view class="mesgBox" data-id="{{item._id}}" bindtap="showDetail">
+            <view class="left"><image src="{{item.senderimageUrl}}"></image></view>
+            <view class="mid">
+                  <view class="nickName">{{item.senderNickname}}</view>
+                  <view class="mesg">{{item.detail}}</view>
+            </view>
+            <view class="right">
+            <!-- <view class="del_mesg" bindtap="delFeedback" data-id="{{item._id}}">已读</view> -->
+            <view class="time">{{item.sendTime}}</view>
+            </view>
          </view>
-         <view class="right">
-         <!-- <view class="del_mesg" bindtap="delFeedback" data-id="{{item._id}}">已读</view> -->
-         <view class="time">{{item.sendTime}}</view>
-         </view>
-      </view>
       </view>
   </view>
 </view>

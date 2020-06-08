@@ -119,12 +119,13 @@ Page({
       }
    },
 
-   getsearchTips: function () {//获取搜索数据
+   getsearchTips: function (param) {//获取搜索数据
+      var bpValue = param || wx.getStorageSync("appUserInfo")[0].college;
       var searchTextArr = configData[0].searchText;
       var searchtipArr = [];
       searchTextArr.find(function (item) {
          if (wx.getStorageSync("appUserInfo").length > 0) {
-            if (item.college == wx.getStorageSync("appUserInfo")[0].college) {
+            if (item.college == bpValue) {
                searchtipArr = item.searchtips;
             }
          }
@@ -137,6 +138,17 @@ Page({
       }
    },
    bindinput: function (e) {
+      var value = e.detail.value
+      if (value==""){
+         this.setData({
+            if_search_list:false,
+         })
+      }else{
+         this.setData({
+            goodsName_status: true,
+            goodsName: value,
+         }); 
+      }
       if (this.data.showPicker==true){
          var value = e.detail.value;
          var searchList = [];
@@ -151,7 +163,7 @@ Page({
                if_search_list: true,
                searchList: searchList
             })
-         } 
+         }
       }else{
          return;
       }
@@ -160,6 +172,7 @@ Page({
       var bookValue = base.getDataSet(event, "id");
       this.setData({
          goodsName: bookValue,
+         goodsName_status: true,
          if_search_list: false,
       })
    },
@@ -178,22 +191,7 @@ Page({
       });
       }
    },
-   bind_title:function(e){
-      var value = e.detail.value;
-      if (value == '') {
-         wx.showToast({
-            title: '物品名称不能为空',
-            icon: 'none',
-            duration: 600
-         })
-      } else {
-         this.setData({
-            goodsName_status: true,
-            goodsName: value,
-            if_search_list:false
-         });
-      }
-   },
+
    bind_max: function (e) {
       var value = e.detail.value;
       if (value == '') {
@@ -269,40 +267,39 @@ Page({
       }
       switch (data.multiArray[1][data.multiIndex[1]]) {
          case "物联网工程学院":
-            data.collegeArr = configData[0].wulianwanggongcheng; break;
+            data.collegeArr = configData[0].wulianwanggongcheng; this.getsearchTips("物联网工程学院"); break;
          case "机械学院":
-            data.collegeArr = configData[0].jixeigongcheng; break;
+            data.collegeArr = configData[0].jixeigongcheng; this.getsearchTips("机械学院"); break;
          case "环境与土木工程学院":
-            data.collegeArr = configData[0].huanjinyutumu; break;
+            data.collegeArr = configData[0].huanjinyutumu; this.getsearchTips("环境与土木工程学院"); break;
          case "纺织与服装学院":
-            data.collegeArr = configData[0].fangzhifuzhuang; break;
+            data.collegeArr = configData[0].fangzhifuzhuang; this.getsearchTips("纺织与服装学院"); break;
          case "设计学院":
-            data.collegeArr = configData[0].shejixueyuan; break;
+            data.collegeArr = configData[0].shejixueyuan; this.getsearchTips("设计学院"); break;
          case "人文学院":
-            data.collegeArr = configData[0].renwenxueyuan; break;
+            data.collegeArr = configData[0].renwenxueyuan; this.getsearchTips("人文学院"); break;
          case "理学院":
-            data.collegeArr = configData[0].lixueyuan; break;
+            data.collegeArr = configData[0].lixueyuan; this.getsearchTips("理学院"); break;
          case "商学院":
-            data.collegeArr = configData[0].shangxueyuan; break;
+            data.collegeArr = configData[0].shangxueyuan; this.getsearchTips("商学院"); break;
          case "食品学院":
-            data.collegeArr = configData[0].shipin; break;
+            data.collegeArr = configData[0].shipin; this.getsearchTips("食品学院"); break;
          case "药学院":
-            data.collegeArr = configData[0].yaoxueyuan; break;
+            data.collegeArr = configData[0].yaoxueyuan; this.getsearchTips("药学院"); break;
          case "医学院":
-            data.collegeArr = configData[0].yixueyuan; break;
+            data.collegeArr = configData[0].yixueyuan; this.getsearchTips("医学院"); break;
          case "法学院":
-            data.collegeArr = configData[0].faxueyuan; break;
+            data.collegeArr = configData[0].faxueyuan; this.getsearchTips("法学院"); break;
          case "化学与材料工程学院":
-            data.collegeArr = configData[0].huaxueyucailiao; break;
+            data.collegeArr = configData[0].huaxueyucailiao; this.getsearchTips("化学与材料工程学院"); break;
          case "外国语学院":
-            data.collegeArr = configData[0].waiguoyu; break;
+            data.collegeArr = configData[0].waiguoyu; this.getsearchTips("外国语学院"); break;
          case "生物工程学院":
-            data.collegeArr = configData[0].shengwugongcheng; break;
-         case "数字媒体学院":
-            data.collegeArr = configData[0].shuzimeiti; break;
+            data.collegeArr = configData[0].shengwugongcheng; this.getsearchTips("生物工程学院"); break;
+         case "人工智能与计算机学院":
+            data.collegeArr = configData[0].shuzimeiti;this.getsearchTips("人工智能与计算机学院");break;
          default: break;
       }
-      console.log(data);
       this.setData(data);
       console.log(this.data.collegeArr);
    },
@@ -553,6 +550,11 @@ Page({
      }
   },
 
+  nav_sort:function(){
+     wx.navigateTo({
+        url: '../userAgreement/userAgreement',
+     })
+  } ,
   /**
    * 用户点击右上角分享
    */

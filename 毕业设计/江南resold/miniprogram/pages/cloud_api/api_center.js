@@ -34,7 +34,7 @@ class cloudapi{
            this._db.collection('user').add({//新用户
               data: {
                  userinfo: param,
-                 registTime: date.toLocaleString,
+                 registTime: date.toLocaleString(),
               },
               success(res) {
                  console.log(res)
@@ -69,15 +69,6 @@ class cloudapi{
          console.log(res);
          callback();
       })    
-   }
-
-   queryFeedback(callback) {//意见反馈
-      var that = this;
-      this._db.collection('recommendList').orderBy('sendTime', 'desc').get().then(res => {
-         callback(res.data);
-      }).catch(res => {
-         console.log(res);
-      })
    }
    
    querySendMessage(callback) {//查看我的留言列表

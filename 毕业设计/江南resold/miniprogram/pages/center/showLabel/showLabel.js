@@ -111,7 +111,7 @@ Page({
       this.setData({ addheart: "addheart" });
       var up = "label.heartNum";
       if (this.data.likeTag == 'like') {
-         value = this.data.label.heartNum + 1
+         var value = this.data.label.heartNum + 1;
          this.setData(
             {
                [up]: value,
@@ -119,7 +119,7 @@ Page({
             }
          )
       } else {
-         var value = this.data.label.heartNum - 1
+         var value = this.data.label.heartNum - 1;
          this.setData(
             {
                [up]: value,
@@ -129,7 +129,7 @@ Page({
       }
       var that = this;
       setTimeout(function () { that.setData({ addheart: "" }) }, 1000);
-
+      this.formSubmit();
    },
    formSubmit: function () {//表单提交
       var that = this;
@@ -197,9 +197,9 @@ Page({
             })
             that.getImage(that.data.label.birstday);
          }else{
-            that.setData({
-               label: wx.getStorageSync('customizeLabel')[0],
-            })
+            // that.setData({
+            //    label: wx.getStorageSync('customizeLabel')[0],
+            // })
          }
          for (var i = 0; i < that.data.label.interest.length; i++) {
             that.choiceshow(that.data.label.interest[i], true);

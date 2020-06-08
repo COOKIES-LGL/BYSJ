@@ -39,7 +39,7 @@
 <view class="applicationMusic">
    <view class="top">
       <view class="title" style="color:#888">最近常听🎵</view>
-      <view class="lookMore"><input disabled="true" placeholder="请输入您最近常听的音乐" class="musicInput" bindblur="musicInput" value="{{label.music}}"></input></view>
+      <view class="lookMore"><input disabled="true" placeholder="用户暂未添加最近常听歌曲" class="musicInput" bindblur="musicInput" value="{{label.music}}"></input></view>
    </view>
 </view>
 <view class="line"></view>

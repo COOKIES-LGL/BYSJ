@@ -22,10 +22,6 @@
     <view class='text'><span class="itemTitle">物品名称：{{good.goodsName}}</span><span class="goodsNum">(数量{{good.goodsNum}})</span></view>
   </view>
   <view class='yuan'>
-    <image src='../../../../images/center14.png'></image>
-    <view class='text'><span class="itemTitle">发布时间：</span>{{good.releaseTime}}</view>
-  </view>
-  <view class='yuan'>
     <image src='../../../../images/center12.png'></image>
     <view class='text'><span class="itemTitle">接受价位：</span>{{good.goodsMinprice}}￥→{{good.goodsMaxprice}}￥</view>
   </view>
@@ -39,13 +35,27 @@
            <span class=".blueClass">{{good.goodswechat}}</span></span>
     </view>
   </view>
+  <view class='yuan'>
+    <image src='../../../../images/center14.png'></image>
+    <view class='text'><span class="itemTitle">发布时间：</span>{{good.releaseTime}}</view>
+  </view>
+  <view wx:if="{{good.goodsStatus==2}}">
+   <view class='yuan'>
+      <image src='../../../../images/center14.png'></image>
+      <view class='text'><span class="itemTitle">预约时间：</span>{{good.receiverTime}}</view>
+   </view>
+   <view class='yuan'>
+      <image src='../../../../images/center14.png'></image>
+      <view class='text'><span class="itemTitle">完结时间：</span>{{good.finishTime}}</view>
+   </view>
+  </view>
   <view class='yuanRemark'>
     <image src='../../../../images/center13.png'></image>
     <view class='text'><span class="itemTitle">备注：</span>
        <textarea disabled value="{{good.goodsremark}}"></textarea>
     </view>
   </view>
-  <view class='yuan'>
+  <view class='yuan'  hidden="{{good.goodsStatus==2}}">
     <button class='bingocancel' bindtap='deleteOrder' hidden="{{good.goodsStatus==1}}">取消订单</button>
     <button class='bingocancel' bindtap='cancalOrder' hidden="{{good.goodsStatus==0}}" >取消预约</button>
     <button class='bingo' bindtap='finishOrder' hidden="{{good.goodsStatus==0}}" >完结订单</button>

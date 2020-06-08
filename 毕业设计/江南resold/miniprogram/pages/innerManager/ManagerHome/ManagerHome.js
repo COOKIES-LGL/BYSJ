@@ -1,10 +1,14 @@
 
 import { cloudapi } from "../../cloud_api/api_delOrder.js"
 const cloudApi = new cloudapi();
-import { cloudapi as centerapi }  from "../../cloud_api/api_center.js"
-const centerApi = new centerapi();
+import { cloudapi as managerapi }  from "../../cloud_api/api_manager.js"
+const managerApi = new managerapi();
 import { Base } from '../../base/common.js';
 const base = new Base();
+import { cloudapi as del } from "../../cloud_api/api_delOrder.js"
+const DEL = new del;
+var manNum = 0, womanNum = 0;
+var gradeOne = 0, gradeTwo = 0,gradeThree = 0,gradeFour = 0;
 Page({
    data: {
       add:false,
@@ -19,6 +23,23 @@ Page({
       feedBackList:[],//用户反馈信息列表
       fabu:'',
       yuyue:'',
+      userInfoList:[],
+      genderData:'',
+      grademanData:'',
+      manNum:'',
+      gradewomanData: '',
+      womanNum:'',
+      gradeType1:'',
+      gradeType1:'',
+      gradeType1:'',
+      gradeType1:'',
+      gradeType1Num:'',
+      gradeType2Num: '',
+      gradeType3Num: '',
+      gradeType4Num: '',
+      allOrderList1:[],
+      allOrderList2: [],
+      allOrderList3: [],
    },
   /**
    * 生命周期函数--监听页面加载
@@ -37,7 +58,7 @@ Page({
       });
       var array = [param];
       cloudApi.delImage(array);
-      wx.setStorageSync("navImagesList", this.data.fileIDs);
+      managerApi.addNavImages(that.data.fileIDs, that.data.navImageListId);
       wx.showToast({
          title: '删除成功',
       })
@@ -81,7 +102,7 @@ Page({
                            imgbox:imgbox
                         });
                         reslove();
-                        wx.setStorageSync("navImagesList", that.data.fileIDs);
+                        managerApi.addNavImages(that.data.fileIDs, that.data.navImageListId);
                         wx.hideLoading();
                      },
                      fail: res => {
@@ -100,6 +121,37 @@ Page({
             })
          }
       })
+   },
+   checkchange:function(e){
+     var _id= e.target.dataset.id;
+     var images = e.target.dataset.images;
+     console.log(_id,images);
+     var that = this;
+     wx.showModal({
+        title: '提示',
+        content: '你确定要删除这条记录吗？', 
+        success: function (res) {
+           if (res.cancel) {
+              //点击取消,默认隐藏弹框
+           } else {
+              //点击确定
+              wx.showLoading({
+                 title: '取消订单中',
+              })
+              var param = {
+                 _id: _id,
+                 goodsImage: images,
+              }
+              var callback = function () {
+                 wx.showToast({
+                    title: '记录已删除！',
+                 });
+                 that.initOne();
+              }
+              DEL.deleteOrder(param, callback);
+           }
+        },
+     })
    },
    navTo: function (e) {//页面跳转
       var that = this;
@@ -131,18 +183,133 @@ Page({
          });this.initFour();break;
          default: break;
       }
-
    },
    onSubmit: function (e) {   //发布按钮
    
    },
    initOne:function(){
-      // queryFeedback
+      var that = this;
+      wx.showLoading({
+         title: '载入中',
+      })
+      var callback1 = function(res){
+         console.log(res);
+         that.setData({
+            allOrderList1:res
+         })
+         wx.hideLoading(); 
+      }
+      managerApi.queryOrderInfo1(callback1);
+      var callback2 = function (res) {
+         console.log(res);
+         that.setData({
+            allOrderList2: res
+         })
+         wx.hideLoading();
+      }
+      managerApi.queryOrderInfo2(callback2);
+      var callback3 = function (res) {
+         console.log(res);
+         that.setData({
+            allOrderList3: res
+         })
+         wx.hideLoading();
+      }
+      managerApi.queryOrderInfo3(callback3);
+   },
+   canvasGender:function(res){
+      if(!!res){
+         if (res == 1) {
+            manNum++;
+         } else {
+            womanNum++;
+         }
+      }
+   },
+   canvasGrade: function (res) {
+      if(!!res){
+         if (res == "大一") {
+           gradeOne++;
+         } else if (res == "大二") {
+            gradeTwo++;
+         } else if(res == "大三"){
+            gradeThree++;
+         } else if(res == "大四"){
+            gradeFour++;
+         }
+      }
+   },
+   canvasgraph:function(){
+       var param = manNum/(manNum+womanNum);
+       var temp =  (param.toFixed(2))*100;
+       var param1 = womanNum / (manNum + womanNum);
+       var temp1 = (param1.toFixed(2)) * 100;
+//-----------------------------------------------------
+      var grade1 = gradeOne / (gradeOne+gradeTwo+gradeThree+gradeFour);
+      var tempgrade1 = (grade1.toFixed(2)) * 100;
+      var grade2 = gradeTwo / (gradeOne + gradeTwo + gradeThree + gradeFour);
+      var tempgrade2 = (grade2.toFixed(2)) * 100;
+      var grade3 = gradeThree / (gradeOne + gradeTwo + gradeThree + gradeFour);
+      var tempgrade3 = (grade3.toFixed(2)) * 100;
+      var grade4 = gradeFour / (gradeOne + gradeTwo + gradeThree + gradeFour);
+      var tempgrade4 = (grade4.toFixed(2)) * 100;
+       this.setData({
+          gendermanData: "text-align:center;color:#fff;background:rgb(45,177,251);width:"+temp+"%;height:50rpx;line-height:50rpx;",
+          manNum:temp+'%',
+          genderwomanData: "text-align:center;color:#fff;background:rgb(45,177,251);width:"+temp1+"%;height:50rpx;line-height:50rpx;",
+          womanNum: temp1 + '%',
+          gradeType1: "margin:0 auto;text-align:center;color:#fff;background:rgb(45,177,251);height:" +tempgrade1+ "%;width:100rpx;line-height:50rpx;",
+          gradeType1Num:gradeOne,
+          gradeType2: "margin:0 auto;text-align:center;color:#fff;background:rgb(45,177,251);height:" + tempgrade2 + "%;width:100rpx;line-height:50rpx;",
+          gradeType2Num: gradeTwo,
+          gradeType3: "margin:0 auto;text-align:center;color:#fff;background:rgb(45,177,251);height:" + tempgrade3 + "%;width:100rpx;line-height:50rpx;",
+          gradeType3Num: gradeThree,
+          gradeType4: "margin:0 auto;text-align:center;color:#fff;background:rgb(45,177,251);height:" + tempgrade4 + "%;width:100rpx;line-height:50rpx;",
+          gradeType4Num: gradeFour,
+       })
+      wx.hideLoading();
    },
    initTwo: function () {
-      // queryFeedback
+      wx.showLoading({
+         title: '载入中',
+         mask: true,
+      })
+      var that = this;
+      var userInfo,appUserInfo,userInfoArray=[];
+      manNum = 0;womanNum = 0;
+      gradeOne = 0;gradeTwo = 0;gradeThree = 0;gradeFour = 0;
+      var callback = function(res){
+         userInfo = res;
+         managerApi.queryappUserInfo(callback2);
+      }
+      managerApi.queryUserInfo(callback);
+      var callback2 = function (res) {
+         appUserInfo = res;
+         for (var i = 0; i < userInfo.length; i++) {
+            var param = {
+               registTime: userInfo[i].registTime,
+               userinfo: userInfo[i].userinfo,
+               college: appUserInfo[i].college || '',
+               grade: appUserInfo[i].grade || '',
+               major: appUserInfo[i].major || '',
+            }
+            userInfoArray.push(param);
+         }
+         that.setData({
+           userInfoList: userInfoArray
+         })
+         for (var i = 0; i < that.data.userInfoList.length; i++) {
+            that.canvasGender(that.data.userInfoList[i].userinfo.gender);//绘制性别比例；
+            that.canvasGrade(that.data.userInfoList[i].grade);//绘制年级比例；
+         }
+         that.canvasgraph();
+      }
    },
    initThree: function () {
+      wx.showLoading({
+         title: '载入中',
+         mask: true,
+      })
       var that = this;
       var callback = function (data) {
          var data1 =14;
@@ -155,11 +322,8 @@ Page({
          })
          wx.hideLoading();
       };
-      wx.showLoading({
-         title: '载入中',
-      })
       callback();
-      // centerApi.queryOrder(callback);
+      // managerApi.queryOrder(callback);
       
       var callback2 = function (data) {
          var data1 = 54;
@@ -179,7 +343,7 @@ Page({
          title: '载入中',
       })
       callback2()
-      // centerApi.queryOrder(callback2);
+      // managerApi.queryOrder(callback2);
    },
    initFour: function () {
       var that =this;
@@ -193,7 +357,7 @@ Page({
       wx.showLoading({
          title: '载入中',
       })
-      centerApi.queryFeedback(callback);
+      managerApi.queryFeedback(callback);
    },
    delFeedback: function (event){
       var _id = base.getDataSet(event, "id");
@@ -201,7 +365,7 @@ Page({
       var callback = function () {
          that.initFour();
       };
-      centerApi.delFeedback(_id,callback);
+      managerApi.delFeedback(_id,callback);
    },
    onLoad: function (options) {
    },
@@ -217,15 +381,36 @@ Page({
    * 生命周期函数--监听页面显示
    */
   initData(){
-     this.setData({
-        fileIDs:wx.getStorageSync("navImagesList"),
-        imgbox: wx.getStorageSync("navImagesList")
-     })
+     var that = this;
+     var callback = function (res) {
+        if(res.length>0){
+           that.setData({
+              fileIDs: res[0].imageUrl,
+              imgbox: res[0].imageUrl,
+              navImageListId:res[0]._id
+           })
+        }
+     }
+     managerApi.queryNavImages(callback);
+     this.initOne();
   },
   onShow: function () {
      this.initData();
   },
-
+  showDetail:function(e){
+     var id = e.currentTarget.dataset['id'];
+     for (var item of this.data.feedBackList) {
+        if (id === item._id) {
+           console.log(item.senderNickname)
+           wx.showModal({
+              title: `${item.senderNickname}`,
+              content: `${item.detail}`,
+              showCancel:false,
+           });
+           return;
+        }
+     }
+  },
   /**
    * 生命周期函数--监听页面隐藏
    */

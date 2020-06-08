@@ -14,7 +14,7 @@ Page({
         },
         majorArray:[],
         multiArray: [],
-        collegeArr: ["物联网工程（卓越工程师）", "自动化（卓越工程师）", "自动化", "电气工程及其自动化", "计算机科学与技术", "通信工程", "微电子科学与工程"],
+        collegeArr: ["物联网工程（卓越工程师）", "自动化（卓越工程师）", "自动化", "电气工程及其自动化", "通信工程", "微电子科学与工程"],
         changed1:false,
         changed2:false,
         multiIndex: [0, 0],
@@ -362,7 +362,7 @@ Page({
             data.collegeArr = configData[0].waiguoyu; break;
          case "生物工程学院":
             data.collegeArr = configData[0].shengwugongcheng; break;
-         case "数字媒体学院":
+         case "人工智能与计算机学院":
             data.collegeArr = configData[0].shuzimeiti; break;
          default:break;
       }

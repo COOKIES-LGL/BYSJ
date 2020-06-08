@@ -171,7 +171,7 @@ z-index:1000;
 }
 .item_name{
   margin-top: 10rpx;
-  font-size: 24rpx;
+  font-size: 28rpx;
   text-align: center;
 }
 .typeCheck{

@@ -91,6 +91,8 @@ Page({
       this.setData({
          [up1]: 0,
          [up2]: 0,
+         hasesellData: true,
+         hasebookData: true,
          couldFuncName: "getOrderTopList",
       });
       if (wx.getStorageSync("appUserInfo")[0].major) {

@@ -82,7 +82,7 @@ page{
 }
 .item_name{
   margin-top: 5rpx;
-  font-size: 24rpx;
+  font-size: 28rpx;
   text-align: center;
 }
 .line image{
